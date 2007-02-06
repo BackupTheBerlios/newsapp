@@ -1,3 +1,5 @@
+package framework;
+
 
 public class RegisterController {
 	private SubscriberCollection subscriberCollection;

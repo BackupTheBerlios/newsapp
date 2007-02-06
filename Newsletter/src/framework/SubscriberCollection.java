@@ -1,3 +1,5 @@
+package framework;
+
 import java.util.ArrayList;
 
 
@@ -13,7 +15,7 @@ public class SubscriberCollection {
 	}
 	
 	public Subscriber login(String eMailAddress, String password){
-		return 
+		return null;
 	}
 	
 	public boolean exists(String eMailAddress){
@@ -21,6 +23,6 @@ public class SubscriberCollection {
 	}
 	
 	public Subscriber getSubscriber(String eMailAddress){
-		
+		return null;
 	}
 }
