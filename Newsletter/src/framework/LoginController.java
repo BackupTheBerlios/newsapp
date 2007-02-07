@@ -26,7 +26,7 @@ public class LoginController {
 	
 	/**
 	 * @param eMailAddress
-	 * @return
+	 * @return SubscriberCollection
 	 */
 	public boolean isActive(String eMailAddress){
 		return subscriberCollection.getSubscriber(eMailAddress).isActive();
