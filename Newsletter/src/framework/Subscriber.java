@@ -37,6 +37,11 @@ public class Subscriber {
 		return isSubscriberActive;
 	}
 	
+	public boolean checkPassword(String password){
+		return this.password.equals(password);
+	}
+	
+	
 	private boolean hasNewsletterSubscription(Newsletter newsletter){
 		return newsletterCollection.contains(newsletter);
 	}
