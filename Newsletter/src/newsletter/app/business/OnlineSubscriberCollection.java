@@ -1,4 +1,4 @@
-package framework;
+package newsletter.app.business;
 
 import java.util.ArrayList;
 

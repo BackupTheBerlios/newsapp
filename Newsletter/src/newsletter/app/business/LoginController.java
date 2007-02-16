@@ -1,4 +1,4 @@
-package framework;
+package newsletter.app.business;
 
 /**
  * @author zumsr1@bfh.ch
