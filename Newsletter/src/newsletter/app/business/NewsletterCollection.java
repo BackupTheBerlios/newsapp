@@ -17,12 +17,12 @@ public class NewsletterCollection {
 		return instance;
 	}
 	
-	public boolean add(String name, String description, int periodicity){
+	public String add(String name, String description, int periodicity){
 		if (!exists(name)){
 			newsletters.put(name, new Newsletter(name, description, periodicity));
-			return true;
+			return name;
 		}
-		return false;
+		return null;
 	}
 	
 	public boolean exists(String name){
