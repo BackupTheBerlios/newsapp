@@ -7,6 +7,7 @@ import java.util.Map;
 public class Newsletter {
 	private String name;
 	private String description;
+	private int periodicitiy;
 	private Map<String, Subscriber> subscriberCollection = new HashMap<String, Subscriber>();
 		
 	public Newsletter(String name, String description){
@@ -25,6 +26,12 @@ public class Newsletter {
 	public void subscribe(Subscriber subscriber){
 		if (!hasNewsletterSubscription(subscriber)){
 			subscriberCollection.put(subscriber.getEMailAddress(), subscriber);
+		}
+	}
+	
+	public void unsubscribe(Subscriber subscriber){
+		if (hasNewsletterSubscription(subscriber)){
+			subscriberCollection.remove(subscriber);
 		}
 	}
 	

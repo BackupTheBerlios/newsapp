@@ -25,7 +25,9 @@ public class Subscriber {
 	}
 	
 	public void unsubscribe(Newsletter newsletter){
-		newsletterCollection.remove(newsletter);
+		if (hasNewsletterSubscription(newsletter)){
+			newsletterCollection.remove(newsletter);
+		}
 	}
 	
 	public Map<String, Newsletter> getSubscription(){
