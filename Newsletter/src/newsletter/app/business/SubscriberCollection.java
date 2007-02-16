@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public final class SubscriberCollection {
-	private static ArrayList<Subscriber> subscribers;
+	private static ArrayList<Subscriber> subscribers = new ArrayList<Subscriber>();
 	private static SubscriberCollection instance;
 	
 	private SubscriberCollection(){}

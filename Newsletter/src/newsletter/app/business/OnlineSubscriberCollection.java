@@ -3,7 +3,7 @@ package newsletter.app.business;
 import java.util.ArrayList;
 
 public class OnlineSubscriberCollection {
-	private static ArrayList<Subscriber> onlineSubscribers;
+	private static ArrayList<Subscriber> onlineSubscribers = new ArrayList<Subscriber>();
 	private static OnlineSubscriberCollection instance;
 	
 	private OnlineSubscriberCollection(){}

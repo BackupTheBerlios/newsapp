@@ -24,6 +24,10 @@ public final class LoginController {
 		return false;	
 	}
 	
+	public void logout(String eMailAddress){
+		onlineSubscriberCollection.logout(subscriberCollection.getSubscriber(eMailAddress));
+	}
+	
 	/**
 	 * @param eMailAddress
 	 * @return SubscriberCollection
