@@ -9,7 +9,7 @@ public class Subscriber {
 	private String password;
 	private boolean isSubscriberActive;
 	private boolean isSubscriberAdmin;
-	private ArrayList<Newsletter> newsletterCollection;
+	private ArrayList<Newsletter> newsletterCollection = new ArrayList<Newsletter>();
 
 	public Subscriber(String eMailAddress, String password){
 		this.eMailAddress = eMailAddress;

@@ -5,9 +5,9 @@ package framework;
  * @author schnl1@bfh.ch
  *
  */
-public class LoginController {
-	private SubscriberCollection subscriberCollection;
-	private OnlineSubscriberCollection onlineSubscriberCollection;
+public final class LoginController {
+	private SubscriberCollection subscriberCollection = SubscriberCollection.getInstance();
+	private OnlineSubscriberCollection onlineSubscriberCollection = OnlineSubscriberCollection.getInstance();
 	
 	
 	/**

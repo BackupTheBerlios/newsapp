@@ -3,8 +3,18 @@ package framework;
 import java.util.ArrayList;
 
 
-public class SubscriberCollection {
+public final class SubscriberCollection {
 	private static ArrayList<Subscriber> subscribers;
+	private static SubscriberCollection instance;
+	
+	private SubscriberCollection(){}
+	
+	public static synchronized SubscriberCollection getInstance(){
+		if (instance == null){
+			instance = new SubscriberCollection();
+		}
+		return instance;
+	}
 	
 	public boolean add(String eMailAddress, String password){
 		if (!exists(eMailAddress)){
