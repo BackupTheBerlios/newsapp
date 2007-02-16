@@ -1,10 +1,12 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public final class SubscriberCollection {
-	private static ArrayList<Subscriber> subscribers = new ArrayList<Subscriber>();
+	private Map<String, Subscriber> subscribers = new HashMap<String, Subscriber>();
 	private static SubscriberCollection instance;
 	
 	private SubscriberCollection(){}
@@ -18,7 +20,7 @@ public final class SubscriberCollection {
 	
 	public boolean add(String eMailAddress, String password){
 		if (!exists(eMailAddress)){
-			subscribers.add(new Subscriber(eMailAddress, password));
+			subscribers.put(eMailAddress, new Subscriber(eMailAddress, password));
 			return true;
 		}
 		return false;
@@ -33,6 +35,6 @@ public final class SubscriberCollection {
 	}
 	
 	public Subscriber getSubscriber(String eMailAddress){
-		return null;
+		return subscribers.get(eMailAddress);
 	}
 }

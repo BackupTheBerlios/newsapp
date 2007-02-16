@@ -1,9 +1,11 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class OnlineSubscriberCollection {
-	private static ArrayList<Subscriber> onlineSubscribers = new ArrayList<Subscriber>();
+	private static Map<String, Subscriber> onlineSubscribers = new HashMap<String, Subscriber>();
 	private static OnlineSubscriberCollection instance;
 	
 	private OnlineSubscriberCollection(){}
@@ -17,7 +19,7 @@ public class OnlineSubscriberCollection {
 	
 	public void login(Subscriber subscriber){
 		if (!isAlreadyLoggedIn(subscriber)){
-			onlineSubscribers.add(subscriber);
+			onlineSubscribers.get(subscriber);
 		}
 	}
 	
@@ -26,6 +28,6 @@ public class OnlineSubscriberCollection {
 	}
 	
 	private boolean isAlreadyLoggedIn(Subscriber subscriber){
-		return onlineSubscribers.contains(subscriber);
+		return onlineSubscribers.containsValue(subscriber);
 	}
 }

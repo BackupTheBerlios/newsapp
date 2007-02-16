@@ -1,6 +1,8 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public class Subscriber {
@@ -9,7 +11,7 @@ public class Subscriber {
 	private String password;
 	private boolean isSubscriberActive;
 	private boolean isSubscriberAdmin;
-	private ArrayList<Newsletter> newsletterCollection = new ArrayList<Newsletter>();
+	private Map<String, Newsletter> newsletterCollection = new HashMap<String, Newsletter>();
 
 	public Subscriber(String eMailAddress, String password){
 		this.eMailAddress = eMailAddress;
@@ -18,7 +20,7 @@ public class Subscriber {
 	
 	public void subscribe(Newsletter newsletter){
 		if (!hasNewsletterSubscription(newsletter)){
-			newsletterCollection.add(newsletter);
+			newsletterCollection.put(newsletter.getName(), newsletter);
 		}
 	}
 	
@@ -26,7 +28,7 @@ public class Subscriber {
 		newsletterCollection.remove(newsletter);
 	}
 	
-	public ArrayList<Newsletter> getSubscription(){
+	public Map<String, Newsletter> getSubscription(){
 		return newsletterCollection;
 	}
 	
@@ -43,7 +45,7 @@ public class Subscriber {
 	
 	
 	private boolean hasNewsletterSubscription(Newsletter newsletter){
-		return newsletterCollection.contains(newsletter);
+		return newsletterCollection.containsValue(newsletter);
 	}
 	
 	/* GETTER METHODS*/

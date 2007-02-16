@@ -1,12 +1,13 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Newsletter {
 	private String name;
 	private String description;
-	private ArrayList<Subscriber> subscriberCollection = new ArrayList<Subscriber>();
+	private Map<String, Subscriber> subscriberCollection = new HashMap<String, Subscriber>();
 		
 	public Newsletter(String name, String description){
 		this.name = name;
@@ -23,12 +24,12 @@ public class Newsletter {
 	
 	public void subscribe(Subscriber subscriber){
 		if (!hasNewsletterSubscription(subscriber)){
-			subscriberCollection.add(subscriber);
+			subscriberCollection.put(subscriber.getEMailAddress(), subscriber);
 		}
 	}
 	
 	private boolean hasNewsletterSubscription(Subscriber subscriber){
-		return subscriberCollection.contains(subscriber);
+		return subscriberCollection.containsValue(subscriber);
 	}
 	
 	public void setName(String name){
