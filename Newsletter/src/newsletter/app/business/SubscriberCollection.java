@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 
-public final class SubscriberCollection {
+public class SubscriberCollection {
 	private Map<String, Subscriber> subscribers = new HashMap<String, Subscriber>();
 	private static SubscriberCollection instance;
 	
