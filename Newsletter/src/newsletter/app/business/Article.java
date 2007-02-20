@@ -20,6 +20,7 @@ public class Article {
 	private static synchronized int createId() {
 		return ++actId;
 	}
+	
 
 	public void setIssue(Issue issue){
 		this.issue = issue;

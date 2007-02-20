@@ -32,6 +32,10 @@ public class Issue {
 		return this.number;
 	}
 	
+	public int getYear(){
+		return this.year;
+	}
+	
 	public Date getPublishingDate(){
 		return this.publishingDate;
 	}
