@@ -1,11 +1,15 @@
 package newsletter.app.business;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Article {
 	private String title;
 	private String text;
 	private Issue issue;
 	private int id;
 	private static int actId = 0;
+	private Map<Integer, Author> authorCollection = new HashMap<Integer, Author>();
 
 	public Article(String title, String text){
 		this.id = Article.createId();
@@ -43,5 +47,13 @@ public class Article {
 	
 	public Issue getIssue(){
 		return this.issue;
+	}
+
+	public void addAuthor(Author author){
+		authorCollection.put(author.getId(), author);
+	}
+	
+	public Map getAuthors(){
+		return this.authorCollection;
 	}
 }
