@@ -8,11 +8,15 @@ public class Article {
 	private static int actId = 0;
 
 	public Article(String title, String text){
-		this.id = ++actId;
+		this.id = Article.createId();
 		this.title = title;
 		this.text = text;
 	}
 	
+	private static synchronized int createId() {
+		return ++actId;
+	}
+
 	public void setIssue(Issue issue){
 		this.issue = issue;
 	}
