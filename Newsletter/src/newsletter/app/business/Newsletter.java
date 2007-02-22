@@ -57,6 +57,10 @@ public class Newsletter {
 		this.description = description;
 	}
 	
+	/**
+	 * changes the periodicity
+	 * @param periodicity (how many issues per year)
+	 */
 	public void setPeriodicity(int periodicity){
 		this.periodicitiy = periodicity;
 	}

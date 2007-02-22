@@ -130,6 +130,6 @@ public class Subscriber {
 	 * @return generated activationCode
 	 */
 	private String generateActivationCode(){
-		return "text";
+		return
 	}
 }

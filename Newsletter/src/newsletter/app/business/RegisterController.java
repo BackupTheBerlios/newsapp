@@ -2,7 +2,7 @@ package newsletter.app.business;
 
 
 /**
- * the SubscriberController handles the interactions between GUI and Systemobjects
+ * the RegisterController handles the interactions between GUI and Systemobjects
  * for registration of a new subscriber
  * @author Zumsr1@bfh.ch
  * @author Schnl1@bfh.ch
