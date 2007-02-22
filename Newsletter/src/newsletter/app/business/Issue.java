@@ -10,6 +10,7 @@ public class Issue {
 	private int number;
 	private int id;
 	private Date publishingDate;
+	private Boolean isOpen = true;
 	private Newsletter newsletter;
 	private Map<Integer, Article> articleCollection = new HashMap<Integer, Article>();
 	
@@ -48,6 +49,13 @@ public class Issue {
 	
 	public Map getArticles(){
 		return this.articleCollection;
+	}
+	public Boolean isOpen(){
+		return this.isOpen;
+	}
+	
+	public void closeIssue(){
+		this.isOpen = false;
 	}
 	
 }

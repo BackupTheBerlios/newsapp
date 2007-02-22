@@ -44,5 +44,9 @@ public final class LoginController {
 	public boolean activate(String eMailAddress, String activationCode){
 		return subscriberCollection.getSubscriber(eMailAddress).activate(activationCode);
 	}
+	
+	public boolean isAdmin(String eMailAddress){
+		return subscriberCollection.getSubscriber(eMailAddress).isAdmin();
+	}
 
 }

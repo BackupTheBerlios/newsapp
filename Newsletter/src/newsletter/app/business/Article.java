@@ -42,6 +42,19 @@ public class Article {
 		return this.title;
 	}
 	
+	public boolean equals(Object obj){
+		if(!(obj instanceof Article)) return false;
+		
+		Article article = (Article) obj;
+		
+		if(article.getTitle().equals(this.getTitle())) return false;
+		if(article.getText().equals(this.getText())) return false;
+		if(article.getIssue().equals(this.getIssue())) return false;
+		if(article.getId() == this.getId()) return false;
+		
+		return true;
+	}
+	
 	public String getText(){
 		return this.text;
 	}

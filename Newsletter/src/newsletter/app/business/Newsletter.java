@@ -1,9 +1,7 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -13,8 +11,9 @@ public class Newsletter {
 	private int periodicitiy;
 	private Map<String, Subscriber> subscriberCollection = new HashMap<String, Subscriber>();
 	private Map<Integer, Issue> issueCollection = new HashMap<Integer, Issue>();
-	private List<Article> unlinkedArticleCollection = new ArrayList<Article>();
-	private Issue actIssue;
+	private Map<Integer, Article> unlinkedArticleCollection = new HashMap<Integer, Article>();
+	private Map<Integer, Article> linkedArticleCollection = new HashMap<Integer, Article>();
+	private Issue openIssue;
 		
 	public Newsletter(String name, String description, Integer periodicity){
 		this.name = name;
@@ -63,21 +62,46 @@ public class Newsletter {
 	}
 	
 	public void addArticle(Article article){
-		this.unlinkedArticleCollection.add(article);
+		this.unlinkedArticleCollection.put(article.getId(), article);
 	}
 	
-	public Issue newIssue(int number, int year, Date publishingDate){
+	public void setArticleToOpenIssue(int articleId){
+		Article article = this.unlinkedArticleCollection.get(articleId);
+		
+		if (article != null){
+			this.openIssue.addArticle(article);
+			this.unlinkedArticleCollection.remove(article);
+			this.linkedArticleCollection.put(article.getId(), article);
+		}
+	}
+	
+	public Issue compileIssueAndCreateNew(int year, Date publishingDate){
+		this.openIssue.closeIssue();
+		
+		
+		int number;
+		if (year == this.openIssue.getYear()){
+			number = this.openIssue.getNumber();
+			number++;
+		}else{
+			number = 1;
+		}
+	
 		Issue issue = new Issue(number, year, publishingDate, this);
 		this.issueCollection.put(issue.getId(), issue);
-		this.actIssue = issue;
+		this.openIssue = issue;
 		return issue;
 	}
 	
-	public Issue getActIssue(){
-		return this.actIssue;
+	public Issue getOpenIssue(){
+		return this.openIssue;
 	}
 	
 	public Map getIssues(){
 		return this.issueCollection;
+	}
+	
+	public Article getArticle(int articleId){
+		return this.linkedArticleCollection.get(articleId);
 	}
 }
