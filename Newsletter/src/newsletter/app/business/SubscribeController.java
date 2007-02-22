@@ -1,7 +1,8 @@
 package newsletter.app.business;
 
 /**
- * the SubscriberController handles the interactions between GUI and Systemobjects
+ * the SubscriberController handles the interactions between GUI and Systemobjects 
+ * for subscription and unsubscription.
  * @author Zumsr1@bfh.ch
  * @author Schnly@bfh.ch
  *

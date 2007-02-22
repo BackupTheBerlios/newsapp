@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 /**
  * Contains all registred subscribers of the newsletter-system
  * @author Schnl1@bfh.ch
