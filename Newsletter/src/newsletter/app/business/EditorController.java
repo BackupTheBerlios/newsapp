@@ -8,7 +8,7 @@ public class EditorController {
 	private NewsletterCollection newsletterCollection = NewsletterCollection.getInstance(); 
 	
 	public List getAllUnlinkedArticles(String newsletterName){
-		ArrayList arrReturn = new ArrayList();
+		List arrReturn = new ArrayList();
 		return arrReturn;
 	}
 	
