@@ -88,10 +88,18 @@ public class Newsletter {
 		return subscriberCollection.containsValue(subscriber);
 	}
 	
+	/**
+	 * changes the name of this newsletter
+	 * @param name
+	 */
 	public void setName(String name){
 		this.name = name;
 	}
 	
+	/**
+	 * changes the description of this newsletter
+	 * @param description
+	 */
 	public void setDescription(String description){
 		this.description = description;
 	}
@@ -104,10 +112,18 @@ public class Newsletter {
 		this.periodicitiy = periodicity;
 	}
 	
+	/**
+	 * adds an article to this newsletter, the article isn't linked with an issue
+	 * @param article
+	 */
 	public void addArticle(Article article){
 		this.unlinkedArticleCollection.put(article.getId(), article);
 	}
 	
+	/**
+	 * link an article with the open issue
+	 * @param articleId
+	 */
 	public void setArticleToOpenIssue(int articleId){
 		Article article = this.unlinkedArticleCollection.get(articleId);
 		
@@ -118,17 +134,27 @@ public class Newsletter {
 		}
 	}
 	
+	/**
+	 * compile issue
+	 * @param year
+	 * @param publishingDate
+	 * @return
+	 */
 	public Issue compileIssueAndCreateNew(int year, Date publishingDate){
-		this.openIssue.closeIssue();
-		
-		
 		int number;
-		if (year == this.openIssue.getYear()){
-			number = this.openIssue.getNumber();
-			number++;
+		if (this.openIssue != null){
+			this.openIssue.closeIssue();
+		
+			if (year == this.openIssue.getYear()){
+				number = this.openIssue.getNumber();
+				number++;
+			}else{
+				number = 1;
+			}
 		}else{
 			number = 1;
 		}
+		
 	
 		Issue issue = new Issue(number, year, publishingDate, this);
 		this.issueCollection.put(issue.getId(), issue);
@@ -136,14 +162,27 @@ public class Newsletter {
 		return issue;
 	}
 	
+	/**
+	 * returns the open issue
+	 * @return open issue
+	 */
 	public Issue getOpenIssue(){
 		return this.openIssue;
 	}
 	
+	/**
+	 * gets all issues of this newsletter
+	 * @return MAp with all issues
+	 */
 	public Map getIssues(){
 		return this.issueCollection;
 	}
 	
+	/**
+	 * gets an Article from id
+	 * @param articleId
+	 * @return article
+	 */
 	public Article getArticle(int articleId){
 		return this.linkedArticleCollection.get(articleId);
 	}

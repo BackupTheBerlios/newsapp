@@ -8,17 +8,12 @@ public class Article {
 	private String text;
 	private Issue issue;
 	private int id;
-	private static int actId = 0;
 	private Map<Integer, Author> authorCollection = new HashMap<Integer, Author>();
 
-	public Article(String title, String text){
-		this.id = Article.createId();
+	public Article(int id, String title, String text){
+		this.id = id;;
 		this.title = title;
 		this.text = text;
-	}
-	
-	private static synchronized int createId() {
-		return ++actId;
 	}
 	
 
@@ -40,19 +35,6 @@ public class Article {
 	
 	public String getTitle(){
 		return this.title;
-	}
-	
-	public boolean equals(Object obj){
-		if(!(obj instanceof Article)) return false;
-		
-		Article article = (Article) obj;
-		
-		if(!article.getTitle().equals(this.getTitle())) return false;
-		if(!article.getText().equals(this.getText())) return false;
-		if(!article.getIssue().equals(this.getIssue())) return false;
-		if(!(article.getId() == this.getId())) return false;
-		
-		return true;
 	}
 	
 	public String getText(){

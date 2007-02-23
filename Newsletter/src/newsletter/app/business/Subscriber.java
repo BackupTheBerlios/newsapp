@@ -124,4 +124,13 @@ public class Subscriber {
 	public String getEMailAddress(){
 		return eMailAddress;
 	}
+	
+	
+	/**
+	 * changes admin state of the subscriber
+	 * @param isAdmin
+	 */
+	public void setAdmin(Boolean isAdmin){
+		this.isSubscriberAdmin = isAdmin;
+	}
 }
