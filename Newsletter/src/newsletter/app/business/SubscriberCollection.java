@@ -74,4 +74,10 @@ public class SubscriberCollection {
 	public Subscriber getSubscriber(String eMailAddress){
 		return subscribers.get(eMailAddress);
 	}
+	
+	public void clear(){
+		OnlineSubscriberCollection onlineSubscriberCollection = OnlineSubscriberCollection.getInstance();
+		onlineSubscriberCollection.clear();
+		subscribers.clear();
+	}
 }

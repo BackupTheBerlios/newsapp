@@ -59,4 +59,11 @@ public class OnlineSubscriberCollection {
 	public boolean isAlreadyLoggedIn(Subscriber subscriber){
 		return onlineSubscribers.containsValue(subscriber);
 	}
+	
+	/**
+	 * Clear OnlineSubscribers
+	 */
+	public void clear(){
+		onlineSubscribers.clear();
+	}
 }
