@@ -48,7 +48,7 @@ public class Subscriber {
 	 */
 	public void unsubscribe(Newsletter newsletter){
 		if (hasNewsletterSubscription(newsletter)){
-			newsletterCollection.remove(newsletter);
+			newsletterCollection.remove(newsletter.getName());
 		}
 	}
 	

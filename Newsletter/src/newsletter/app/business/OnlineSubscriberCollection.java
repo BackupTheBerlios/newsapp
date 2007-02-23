@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * OnlineSubscriberCollection contains all online Subscribers
  * @author Zumsr1@bfh.ch
  * @author Schnl1@bfh.ch
  * @version 1.0
