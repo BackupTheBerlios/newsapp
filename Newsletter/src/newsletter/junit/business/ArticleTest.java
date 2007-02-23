@@ -9,7 +9,8 @@ import newsletter.app.business.Newsletter;
 
 /**
  * Test class for the article
- * @author schnl, zumsr1
+ * @author schnl1@bfh.ch
+ * @author zumsr1@bfh.ch
  */
 public class ArticleTest extends TestCase{
 
