@@ -80,4 +80,34 @@ public class AuthorCollection {
 	public void clear(){
 		authors.clear();
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((authors == null) ? 0 : authors.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final AuthorCollection other = (AuthorCollection) obj;
+		if (authors == null) {
+			if (other.authors != null)
+				return false;
+		} else if (!authors.equals(other.authors))
+			return false;
+		return true;
+	}
+	
+	
+	
 }

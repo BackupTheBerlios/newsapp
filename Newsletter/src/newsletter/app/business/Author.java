@@ -15,7 +15,7 @@ public class Author {
 	
 	/**
 	 * constructor
-	 * @param id id of the author
+	 * @param emailaddress emailaddress of the author
 	 * @param name name of the author
 	 * @param firstName firstname of the author
 	 */

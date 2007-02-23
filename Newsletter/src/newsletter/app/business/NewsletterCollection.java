@@ -71,4 +71,33 @@ public class NewsletterCollection {
 	public void clear(){
 		newsletters.clear();
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((newsletters == null) ? 0 : newsletters.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final NewsletterCollection other = (NewsletterCollection) obj;
+		if (newsletters == null) {
+			if (other.newsletters != null)
+				return false;
+		} else if (!newsletters.equals(other.newsletters))
+			return false;
+		return true;
+	}
+	
+	
 }

@@ -3,6 +3,8 @@ package newsletter.app.business;
 import java.util.HashMap;
 import java.util.Map;
 
+import newsletter.app.utils.RandomString;
+
 
 
 /**

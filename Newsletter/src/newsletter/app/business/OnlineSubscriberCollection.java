@@ -12,7 +12,7 @@ import java.util.Map;
  * OnlineSubscriberCollection enthält alle Subscriber, die zur Zeit online sind.
  */
 public class OnlineSubscriberCollection {
-	private static Map<String, Subscriber> onlineSubscribers = new HashMap<String, Subscriber>();
+	private  Map<String, Subscriber> onlineSubscribers = new HashMap<String, Subscriber>();
 	private static OnlineSubscriberCollection instance;
 	
 	
@@ -67,4 +67,33 @@ public class OnlineSubscriberCollection {
 	public void clear(){
 		onlineSubscribers.clear();
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((onlineSubscribers == null) ? 0 : onlineSubscribers.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final OnlineSubscriberCollection other = (OnlineSubscriberCollection) obj;
+		if (onlineSubscribers == null) {
+			if (other.onlineSubscribers != null)
+				return false;
+		} else if (!onlineSubscribers.equals(other.onlineSubscribers))
+			return false;
+		return true;
+	}
+	
+	
 }

@@ -89,4 +89,33 @@ public class SubscriberCollection {
 		onlineSubscriberCollection.clear();
 		subscribers.clear();
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((subscribers == null) ? 0 : subscribers.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final SubscriberCollection other = (SubscriberCollection) obj;
+		if (subscribers == null) {
+			if (other.subscribers != null)
+				return false;
+		} else if (!subscribers.equals(other.subscribers))
+			return false;
+		return true;
+	}
+	
+	
 }

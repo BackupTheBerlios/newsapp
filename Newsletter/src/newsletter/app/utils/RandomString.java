@@ -1,4 +1,4 @@
-package newsletter.app.business;
+package newsletter.app.utils;
 
 import java.util.*;
 
