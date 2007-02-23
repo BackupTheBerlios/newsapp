@@ -75,6 +75,15 @@ public class SubscriberCollection {
 		return subscribers.get(eMailAddress);
 	}
 	
+	
+	/**
+	 * returns all Subscribers
+	 * @return Map with all subscribers
+	 */
+	public Map getAllSubscribers(){
+		return subscribers;
+	}
+	
 	public void clear(){
 		OnlineSubscriberCollection onlineSubscriberCollection = OnlineSubscriberCollection.getInstance();
 		onlineSubscriberCollection.clear();

@@ -89,7 +89,7 @@ public class Subscriber {
 	 * @param newsletter
 	 * @return boolean, exists a subscription for this newsletter?
 	 */
-	private boolean hasNewsletterSubscription(Newsletter newsletter){
+	public boolean hasNewsletterSubscription(Newsletter newsletter){
 		return newsletterCollection.containsValue(newsletter);
 	}
 	
