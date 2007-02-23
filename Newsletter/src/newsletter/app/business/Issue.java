@@ -1,26 +1,23 @@
 package newsletter.app.business;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
+
 import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 
 public class Issue {
 	private int number;
-	private int id;
 	private Date publishingDate;
 	private Boolean isOpen = true;
 	private Newsletter newsletter;
 	private Map<Integer, Article> articleCollection = new HashMap<Integer, Article>();
+	private int year;
 	
-	public Issue(int number, Date publishingDate, Newsletter newsletter){
+	public Issue(int number, int year, Date publishingDate, Newsletter newsletter){
 		this.number = number;
 		this.publishingDate = publishingDate;
 		this.newsletter = newsletter;
-		
-		DateFormat df = DateFormat.getInstance(DateFormat.YEAR_FIELD);
-		this.id = df.format(publishingDate)*100 + number; 
+		this.year = year;
 	}
 	
 	public void addArticle(Article article){
@@ -28,7 +25,7 @@ public class Issue {
 	}
 	
 	public int getId(){
-		return this.id;
+		return this.year*100 + this.number;
 	}
 	
 	public int getNumber(){
@@ -56,6 +53,19 @@ public class Issue {
 	
 	public void closeIssue(){
 		this.isOpen = false;
+	}
+	
+	public boolean equals(Object obj){
+		if(!(obj instanceof Issue)) return false;
+	
+		Issue issue = (Issue) obj;
+		
+		if(!(issue.getId() == this.getId())) return false;
+		if(!issue.getPublishingDate().equals(this.getPublishingDate())) return false;
+		if(!issue.getNewsletter().equals(this.getNewsletter())) return false;
+		if(!issue.getArticles().equals(this.getArticles())) return false;
+		
+		return true;
 	}
 	
 }

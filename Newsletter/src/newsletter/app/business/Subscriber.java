@@ -26,11 +26,11 @@ public class Subscriber {
 	 * @param password
 	 */
 	public Subscriber(String eMailAddress, String password){
+		RandomString rs = new RandomString(System.currentTimeMillis());
 		this.eMailAddress = eMailAddress;
 		this.password = password;
-		this.activationCode = generateActivationCode();
+		this.activationCode = rs.nextString(6);
 	}
-	
 	
 	/**
 	 * adds a newsletter to his subscriptionlist.
@@ -123,13 +123,5 @@ public class Subscriber {
 	 */
 	public String getEMailAddress(){
 		return eMailAddress;
-	}
-	
-	/**
-	 * generates an activationCode
-	 * @return generated activationCode
-	 */
-	private String generateActivationCode(){
-		return
 	}
 }

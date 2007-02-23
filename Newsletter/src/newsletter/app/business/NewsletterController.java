@@ -2,6 +2,7 @@ package newsletter.app.business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * the NewsletterController handles the interactions between GUI and Systemobjects
@@ -24,16 +25,11 @@ public class NewsletterController {
 	}
 	
 	/**
-	 * returns a list with the name of every newsletters
+	 * returns a list with the name of every newsletter
 	 * @return List with the name of every newsletter
 	 */
-	public List getAllNewsletter(){
-		List arrReturn = new ArrayList();
-		
-		for (){
-			
-		}
-		return arrReturn;
+	public Set getAllNewsletters(){
+		return newsletterCollection.getAllNewsletters().keySet();
 	}
 	
 	/**

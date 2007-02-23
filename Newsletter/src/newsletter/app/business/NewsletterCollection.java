@@ -63,4 +63,8 @@ public class NewsletterCollection {
 	public Newsletter getNewsletter(String name){
 		return newsletters.get(name);
 	}
+	
+	public Map getAllNewsletters(){
+		return this.newsletters;
+	}
 }

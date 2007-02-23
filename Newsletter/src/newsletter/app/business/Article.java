@@ -47,10 +47,10 @@ public class Article {
 		
 		Article article = (Article) obj;
 		
-		if(article.getTitle().equals(this.getTitle())) return false;
-		if(article.getText().equals(this.getText())) return false;
-		if(article.getIssue().equals(this.getIssue())) return false;
-		if(article.getId() == this.getId()) return false;
+		if(!article.getTitle().equals(this.getTitle())) return false;
+		if(!article.getText().equals(this.getText())) return false;
+		if(!article.getIssue().equals(this.getIssue())) return false;
+		if(!(article.getId() == this.getId())) return false;
 		
 		return true;
 	}
