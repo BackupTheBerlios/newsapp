@@ -67,4 +67,8 @@ public class NewsletterCollection {
 	public Map getAllNewsletters(){
 		return this.newsletters;
 	}
+	
+	public void clear(){
+		newsletters.clear();
+	}
 }

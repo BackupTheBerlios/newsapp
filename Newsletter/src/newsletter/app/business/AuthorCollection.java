@@ -22,7 +22,7 @@ public class AuthorCollection {
 	
 	/**
 	 * returns always the same instance of AuthorCollection
-	 * @return SubscriberCollection instance
+	 * @return AuthorCollection instance
 	 */
 	public static synchronized AuthorCollection getInstance(){
 		if (instance == null){
@@ -32,14 +32,14 @@ public class AuthorCollection {
 	}
 	
 	/**
-	 * Creates a new Subscriber if it doesn't already exist.
+	 * Creates a new Author if it doesn't already exist.
 	 * @param eMailAddress
 	 * @param password
 	 * @return boolean, could the system create the new subscriber?
 	 */
 	public boolean add(String eMailAddress, String name, String firstName){
 		if (!exists(eMailAddress)){
-			authors.put(eMailAddress, new Author(eMailAddress, name, firstname));
+			authors.put(eMailAddress, new Author(eMailAddress, name, firstName));
 			return true;
 		}
 		return false;
@@ -63,5 +63,21 @@ public class AuthorCollection {
 	 */
 	public Author getAuthor(String eMailAddress){
 		return authors.get(eMailAddress);
+	}
+	
+
+	/**
+	 * returns all authors
+	 * @return Map of all authors
+	 */
+	public Map getAllAuthors(){
+		return authors;
+	}
+	
+	/**
+	 * clear the authorCollection
+	 */
+	public void clear(){
+		authors.clear();
 	}
 }

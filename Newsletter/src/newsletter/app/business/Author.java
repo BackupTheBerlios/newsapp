@@ -57,6 +57,14 @@ public class Author {
 		return articleCollection;
 	}
 
+	/**
+	 * add an article to authors articleCollection
+	 * @param article
+	 */
+	public void addArticle(Article article){
+		articleCollection.put(article.getId(), article);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;

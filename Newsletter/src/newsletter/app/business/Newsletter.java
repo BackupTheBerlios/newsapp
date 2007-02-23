@@ -77,16 +77,17 @@ public class Newsletter {
 	 */
 	public void unsubscribe(Subscriber subscriber){
 		if (hasNewsletterSubscription(subscriber)){
-			subscriberCollection.remove(subscriber);
+			System.out.println("remove Subscriber");
+			subscriberCollection.remove(subscriber.getEMailAddress());
 		}
 	}
 	
 	
 	/** has the subscriber a subscription for this newsletter
 	 * @param subscriber
-	 * @return
+	 * @return has a subscriber a subscription for this newsletter
 	 */
-	private boolean hasNewsletterSubscription(Subscriber subscriber){
+	public boolean hasNewsletterSubscription(Subscriber subscriber){
 		return subscriberCollection.containsValue(subscriber);
 	}
 	
@@ -118,11 +119,11 @@ public class Newsletter {
 	 * adds an article to this newsletter, the article isn't linked with an issue
 	 * @param article
 	 */
-	public int addArticle(String title, String text){
+	public Article addArticle(String title, String text){
 		Article article = new Article(articleId, title, text);
 		this.unlinkedArticleCollection.put(article.getId(), article);
 		articleId++;
-		return article.getId();
+		return article;
 	}
 	
 	/**
@@ -134,7 +135,7 @@ public class Newsletter {
 		
 		if (article != null){
 			this.openIssue.addArticle(article);
-			this.unlinkedArticleCollection.remove(article);
+			this.unlinkedArticleCollection.remove(article.getId());
 			this.linkedArticleCollection.put(article.getId(), article);
 		}
 	}
@@ -190,7 +191,11 @@ public class Newsletter {
 	 * @return article
 	 */
 	public Article getArticle(int articleId){
-		return this.linkedArticleCollection.get(articleId);
+		if (this.linkedArticleCollection.get(articleId) == null){
+			return this.unlinkedArticleCollection.get(articleId);
+		}else{
+			return this.linkedArticleCollection.get(articleId);
+		}
 	}
 	
 	public Map getUnlinkedArticles(){

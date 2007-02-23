@@ -36,7 +36,7 @@ public class EditorController {
 	 * @return articleId of the created article
 	 */
 	public int newArticle(String title, String text, String newsletterName){
-		return newsletterCollection.getNewsletter(newsletterName).addArticle(title, text);
+		return newsletterCollection.getNewsletter(newsletterName).addArticle(title, text).getId();
 	}
 	
 	/**
@@ -47,7 +47,11 @@ public class EditorController {
 	 */
 	public void setAuthorToArticle(String newsletterName, int articleId, String authorMailAddress){
 		Author author = authorCollection.getAuthor(authorMailAddress);
-		newsletterCollection.getNewsletter(newsletterName).getArticle(articleId).addAuthor(author);
+		Newsletter newsletter = newsletterCollection.getNewsletter(newsletterName);
+		Article article = newsletter.getArticle(articleId);
+		
+		article.addAuthor(author);
+		author.addArticle(article);
 	}
 	
 	/**
