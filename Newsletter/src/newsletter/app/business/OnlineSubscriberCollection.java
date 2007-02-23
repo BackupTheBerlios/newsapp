@@ -47,7 +47,7 @@ public class OnlineSubscriberCollection {
 	 * @param subscriber
 	 */
 	public void logout(Subscriber subscriber){
-		onlineSubscribers.remove(subscriber);
+		onlineSubscribers.remove(subscriber.getEMailAddress());
 	}
 	
 	
