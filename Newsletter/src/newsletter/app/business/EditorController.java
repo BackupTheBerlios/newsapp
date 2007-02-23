@@ -41,9 +41,9 @@ public class EditorController {
 	
 	/**
 	 * adds an author to an article
-	 * @param newsletterName
-	 * @param articleId
-	 * @param authorId
+	 * @param newsletterName name of the newsletter
+	 * @param articleId article id
+	 * @param authorMailAddress eMailAddress of the author
 	 */
 	public void setAuthorToArticle(String newsletterName, int articleId, String authorMailAddress){
 		Author author = authorCollection.getAuthor(authorMailAddress);
@@ -68,7 +68,7 @@ public class EditorController {
 	 * @param newsletterName
 	 * @param year
 	 * @param publishingDate
-	 * @return 
+	 * @return Id of the generated Issue
 	 */
 	public int compileIssueAndCreateNew(String newsletterName, int year, Date publishingDate){
 		return newsletterCollection.getNewsletter(newsletterName).compileIssueAndCreateNew(year, publishingDate).getId();

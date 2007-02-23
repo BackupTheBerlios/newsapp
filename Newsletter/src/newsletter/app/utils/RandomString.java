@@ -23,7 +23,7 @@ public class RandomString extends Random {
 	/**
 	 * generates a random string with length maxlen
 	 * @param maxlen
-	 * @return
+	 * @return a random string with length maxlen
 	 */
 	public String nextString( int maxlen ) {
 		char c[] = new char[maxlen];

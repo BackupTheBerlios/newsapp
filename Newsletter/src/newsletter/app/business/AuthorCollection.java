@@ -33,8 +33,9 @@ public class AuthorCollection {
 	
 	/**
 	 * Creates a new Author if it doesn't already exist.
-	 * @param eMailAddress
-	 * @param password
+	 * @param eMailAddress eMailAddress of the author
+	 * @param name name of the author
+	 * @param firstName firstName of the author
 	 * @return boolean, could the system create the new subscriber?
 	 */
 	public boolean add(String eMailAddress, String name, String firstName){

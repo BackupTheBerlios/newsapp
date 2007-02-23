@@ -13,7 +13,7 @@ public class NewsletterController {
 	
 	/**
 	 * creates a new newsletter
-	 * @param name, name of the newsletter
+	 * @param name name of the newsletter
 	 * @param description
 	 * @param periodicity
 	 * @return the name of the new created newsletter

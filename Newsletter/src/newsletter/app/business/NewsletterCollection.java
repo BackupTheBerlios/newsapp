@@ -58,7 +58,7 @@ public class NewsletterCollection {
 	/**
 	 * gets a newsletter from name
 	 * @param name
-	 * @return
+	 * @return the newsletter
 	 */
 	public Newsletter getNewsletter(String name){
 		return newsletters.get(name);

@@ -117,7 +117,8 @@ public class Newsletter {
 	
 	/**
 	 * adds an article to this newsletter, the article isn't linked with an issue
-	 * @param article
+	 * @param title title of the article
+	 * @param text text of the article
 	 */
 	public Article addArticle(String title, String text){
 		Article article = new Article(articleId, title, text);
@@ -144,7 +145,7 @@ public class Newsletter {
 	 * compile issue
 	 * @param year
 	 * @param publishingDate
-	 * @return
+	 * @return the new generated issue
 	 */
 	public Issue compileIssueAndCreateNew(int year, Date publishingDate){
 		int number;
