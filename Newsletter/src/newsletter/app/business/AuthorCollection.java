@@ -39,7 +39,7 @@ public class AuthorCollection {
 	 */
 	public boolean add(String eMailAddress, String name, String firstName){
 		if (!exists(eMailAddress)){
-			authors.put(eMailAddress, new Author(eMailAddress, name, firstName));
+			authors.put(eMailAddress, new Author(eMailAddress, name, firstname));
 			return true;
 		}
 		return false;
