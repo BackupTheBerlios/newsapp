@@ -149,6 +149,7 @@ public class Newsletter {
 		int number;
 		if (this.openIssue != null){
 			this.openIssue.closeIssue();
+			System.out.println("compile issue and send mails");
 		
 			if (year == this.openIssue.getYear()){
 				number = this.openIssue.getNumber();

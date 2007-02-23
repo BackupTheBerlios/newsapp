@@ -2,7 +2,8 @@ package newsletter.app.business;
 
 /**
  * Controller for all articles
- * @author schnl1, zumsr1
+ * @author schnl1@bfh.ch
+ * @author zumsr1@bfh.ch
  *
  */
 public class ArticleController {
