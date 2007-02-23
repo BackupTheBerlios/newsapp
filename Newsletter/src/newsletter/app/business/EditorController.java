@@ -1,13 +1,12 @@
 package newsletter.app.business;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 
 /**
  * the EditorController handles the interactions between GUI and Systemobjects
- * for
+ * for manage and compile issues.
  * 
  * @author Zumsr1@bfh.ch
  * @author Schnl1@bfh.ch
@@ -17,39 +16,42 @@ public class EditorController {
 	/**
 	 * Constructor
 	 */
-	private NewsletterCollection newsletterCollection = NewsletterCollection.getInstance(); 
+	private NewsletterCollection newsletterCollection = NewsletterCollection.getInstance();
+	private AuthorCollection authorCollection = AuthorCollection.getInstance();
 	
 	/**
+	 * returns all unlinked articles of a newsletter
 	 * @param newsletterName
-	 * @return
+	 * @return Set of all unlinked articles of the newsletter
 	 */
-	public List getAllUnlinkedArticles(String newsletterName){
-		List arrReturn = new ArrayList();
-		return arrReturn;
+	public Set getAllUnlinkedArticles(String newsletterName){
+		return newsletterCollection.getNewsletter(newsletterName).getUnlinkedArticles().keySet();
 	}
 	
 	/**
+	 * creates a new article for a newsletter
 	 * @param title
 	 * @param text
 	 * @param newsletterName
-	 * @return
+	 * @return articleId of the created article
 	 */
 	public int newArticle(String title, String text, String newsletterName){
-		Article article = new Article(title, text);
-		newsletterCollection.getNewsletter(newsletterName).addArticle(article);
-		return article.getId();
+		return newsletterCollection.getNewsletter(newsletterName).addArticle(title, text);
 	}
 	
 	/**
+	 * adds an author to an article
 	 * @param newsletterName
 	 * @param articleId
 	 * @param authorId
 	 */
-	public void setAuthorToArticle(String newsletterName, String articleId, String authorId){
-		
+	public void setAuthorToArticle(String newsletterName, int articleId, String authorMailAddress){
+		Author author = authorCollection.getAuthor(authorMailAddress);
+		newsletterCollection.getNewsletter(newsletterName).getArticle(articleId).addAuthor(author);
 	}
 	
 	/**
+	 * link an article with openIssue
 	 * @param newsletterName
 	 * @param articleId
 	 */
@@ -58,10 +60,11 @@ public class EditorController {
 	}
 	
 	/**
+	 * Compile the open issue and create a new open Issue
 	 * @param newsletterName
 	 * @param year
 	 * @param publishingDate
-	 * @return
+	 * @return 
 	 */
 	public int compileIssueAndCreateNew(String newsletterName, int year, Date publishingDate){
 		return newsletterCollection.getNewsletter(newsletterName).compileIssueAndCreateNew(year, publishingDate).getId();

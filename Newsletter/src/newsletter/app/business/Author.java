@@ -10,7 +10,7 @@ import java.util.Map;
 public class Author {
 	private String name;
 	private String firstName;
-	private int id;
+	private String emailaddress;
 	private Map<Integer, Article> articleCollection = new HashMap<Integer, Article>();
 	
 	/**
@@ -19,18 +19,18 @@ public class Author {
 	 * @param name name of the author
 	 * @param firstName firstname of the author
 	 */
-	public Author(int id, String name, String firstName){
+	public Author(String emailaddress, String name, String firstName){
 		this.name = name;
 		this.firstName = firstName;
-		this.id = id;
+		this.emailaddress = emailaddress;
 	}
 	
 	/**
 	 * get the id of the author
 	 * @return id
 	 */
-	public int getId(){
-		return this.id;
+	public String getEMailAddress(){
+		return this.emailaddress;
 	}
 	
 	/**
@@ -57,13 +57,12 @@ public class Author {
 		return articleCollection;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
 		int result = 1;
+		result = PRIME * result + ((emailaddress == null) ? 0 : emailaddress.hashCode());
 		result = PRIME * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = PRIME * result + id;
 		result = PRIME * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -77,12 +76,15 @@ public class Author {
 		if (getClass() != obj.getClass())
 			return false;
 		final Author other = (Author) obj;
+		if (emailaddress == null) {
+			if (other.emailaddress != null)
+				return false;
+		} else if (!emailaddress.equals(other.emailaddress))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -92,6 +94,5 @@ public class Author {
 		return true;
 	}
 	
-
 
 }

@@ -7,11 +7,11 @@ public class Article {
 	private String title;
 	private String text;
 	private Issue issue;
-	private int id;
+	private String emailaddress;
 	private Map<Integer, Author> authorCollection = new HashMap<Integer, Author>();
 
-	public Article(int id, String title, String text){
-		this.id = id;;
+	public Article(String emailaddress, String title, String text){
+		this.emailaddress = emailaddress;
 		this.title = title;
 		this.text = text;
 	}
@@ -29,7 +29,7 @@ public class Article {
 		this.text = text;
 	}
 	
-	public int getId(){
+	public int getEmailAddress(){
 		return this.id;
 	}
 	

@@ -20,6 +20,7 @@ public class Newsletter {
 	private Map<Integer, Article> unlinkedArticleCollection = new HashMap<Integer, Article>();
 	private Map<Integer, Article> linkedArticleCollection = new HashMap<Integer, Article>();
 	private Issue openIssue;
+	private static int articleId;
 
 	/**
 	 * Constructor
@@ -31,6 +32,7 @@ public class Newsletter {
 		this.name = name;
 		this.description = description;
 		this.periodicitiy = periodicity;
+		articleId = 1;
 	}
 	
 	/**
@@ -116,8 +118,11 @@ public class Newsletter {
 	 * adds an article to this newsletter, the article isn't linked with an issue
 	 * @param article
 	 */
-	public void addArticle(Article article){
+	public int addArticle(String title, String text){
+		Article article = new Article(articleId, title, text);
 		this.unlinkedArticleCollection.put(article.getId(), article);
+		articleId++;
+		return article.getId();
 	}
 	
 	/**
@@ -185,5 +190,9 @@ public class Newsletter {
 	 */
 	public Article getArticle(int articleId){
 		return this.linkedArticleCollection.get(articleId);
+	}
+	
+	public Map getUnlinkedArticles(){
+		return unlinkedArticleCollection;
 	}
 }
