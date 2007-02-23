@@ -56,7 +56,7 @@ public class OnlineSubscriberCollection {
 	 * @param subscriber
 	 * @return Boolean, is the user already logged in?
 	 */
-	private boolean isAlreadyLoggedIn(Subscriber subscriber){
+	public boolean isAlreadyLoggedIn(Subscriber subscriber){
 		return onlineSubscribers.containsValue(subscriber);
 	}
 }
