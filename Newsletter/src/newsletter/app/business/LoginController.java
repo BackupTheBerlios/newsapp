@@ -1,6 +1,9 @@
 package newsletter.app.business;
 
 /**
+ * the LoginController handles the interactions between GUI and Systemobjects
+ * for login and logout operations
+ * 
  * @author zumsr1@bfh.ch
  * @author schnl1@bfh.ch
  *

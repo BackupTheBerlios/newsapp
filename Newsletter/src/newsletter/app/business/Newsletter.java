@@ -20,7 +20,7 @@ public class Newsletter {
 	private Map<Integer, Article> unlinkedArticleCollection = new HashMap<Integer, Article>();
 	private Map<Integer, Article> linkedArticleCollection = new HashMap<Integer, Article>();
 	private Issue openIssue;
-		
+
 	/**
 	 * Constructor
 	 * @param name of the newsletter
