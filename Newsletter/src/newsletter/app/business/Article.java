@@ -7,11 +7,11 @@ public class Article {
 	private String title;
 	private String text;
 	private Issue issue;
-	private String emailaddress;
-	private Map<Integer, Author> authorCollection = new HashMap<Integer, Author>();
+	private int id;
+	private Map<String, Author> authorCollection = new HashMap<String, Author>();
 
-	public Article(String emailaddress, String title, String text){
-		this.emailaddress = emailaddress;
+	public Article(int id, String title, String text){
+		this.id = id;
 		this.title = title;
 		this.text = text;
 	}
@@ -29,7 +29,7 @@ public class Article {
 		this.text = text;
 	}
 	
-	public int getEmailAddress(){
+	public int getId(){
 		return this.id;
 	}
 	
@@ -46,7 +46,7 @@ public class Article {
 	}
 
 	public void addAuthor(Author author){
-		authorCollection.put(author.getId(), author);
+		authorCollection.put(author.getEMailAddress(), author);
 	}
 	
 	public Map getAuthors(){
