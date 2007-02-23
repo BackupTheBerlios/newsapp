@@ -8,6 +8,7 @@ import java.util.*;
  * @author Schnl1@bfh.ch
  *
  */
+@SuppressWarnings("serial")
 public class RandomString extends Random {
 
 	/**

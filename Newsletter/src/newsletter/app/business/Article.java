@@ -99,4 +99,42 @@ public class Article {
 	public Map getAuthors(){
 		return this.authorCollection;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + id;
+		result = PRIME * result + ((text == null) ? 0 : text.hashCode());
+		result = PRIME * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Article other = (Article) obj;
+		if (id != other.id)
+			return false;
+		if (text == null) {
+			if (other.text != null)
+				return false;
+		} else if (!text.equals(other.text))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+	
+	
 }

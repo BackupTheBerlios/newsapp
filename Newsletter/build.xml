@@ -27,7 +27,8 @@
 	</path>
 
 	<path id="javadoc.src.path">
-		<pathelement location="${src.dir}" />
+		<pathelement location="C:\\Program Files\\Java\\jdk1.6.0\\bin" />
+		<!--<pathelement location="${src.dir}" />-->
 	</path>
 
 
