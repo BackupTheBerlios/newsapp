@@ -27,10 +27,8 @@
 	</path>
 
 	<path id="javadoc.src.path">
-		<pathelement location="C:\\Program Files\\Java\\jdk1.6.0\\bin" />
-		<!--<pathelement location="${src.dir}" />-->
+		<pathelement location="${src.dir}" />
 	</path>
-
 
 	<!-- =================================================================== -->
 	<!-- Init targets                                                        -->
@@ -57,9 +55,7 @@
 	<!-- =================================================================== -->
 	<!-- Run and Run-tests targets                                           -->
 	<!-- =================================================================== -->
-	<target name="run" depends="compile" description="Runs the program">
-		<java classname="${main.class}" fork="yes" classpathref="run.class.path">
-		</java>
+	<target name="run" depends="run-tests" description="Runs the program">
 	</target>
 
 	<target name="run-tests" depends="compile" description="Runs the tests">

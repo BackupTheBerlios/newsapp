@@ -38,5 +38,18 @@ public class SubscribeController {
 		newsletter.unsubscribe(subscriber);
 		subscriber.unsubscribe(newsletter);
 	}
+	
+	/**
+	 * chechs, if already a subscription exists
+	 * @param eMailAddress
+	 * @param newsletterName
+	 * @return boolean, exists a subscription?
+	 */
+	public boolean hasNewsletterSubscription(String eMailAddress, String newsletterName){
+		Newsletter newsletter = newsletterCollection.getNewsletter(newsletterName);
+		Subscriber subscriber = subscriberCollection.getSubscriber(eMailAddress);
+
+		return newsletter.hasNewsletterSubscription(subscriber);
+	}
 
 }
