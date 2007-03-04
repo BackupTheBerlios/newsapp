@@ -87,7 +87,7 @@
 	<!-- Zip targets                                                         -->
 	<!-- =================================================================== -->
 
-	<target name="zip" depends="clean, javadoc" description="Builds the ZIP file containing all stuff">
+	<target name="zip" depends="clean, compile, javadoc" description="Builds the ZIP file containing all stuff">
 		<delete file="enl.zip" />
 		<zip destfile="enl.zip" basedir="." includes="src/**, doc/**, javadoc/**, build.xml, build.properties">
 		</zip>
