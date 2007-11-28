@@ -1,11 +1,11 @@
 <!--
-  $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/newsapp/Repository/euro08/build.xml,v 1.1 2007/11/28 10:35:38 newsletter Exp $
+  $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/newsapp/Repository/euro08/build.xml,v 1.2 2007/11/28 13:34:22 newsletter Exp $
 -->
 
 
 <project name="First Example for servlet" default="compile" basedir=".">
 
-  <property file="build.properties"/>
+  <property file="../../build.properties"/>
   <property file="persistence.properties"/>
   <property name="app.name"      value="euro08"/>
   <property name="app.version"   value="1.0"/>
