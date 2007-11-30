@@ -32,23 +32,23 @@
       <div id="mainContent">
         <h2>User Login</h2>
         <h:form>
-  		<h:panelGrid width="375px" columns="2" border="0">
+
 			<h:outputText value="Enter Login ID:"/>
-			<h:inputText required="true" id="userid"
-                             binding="#{login.userid}" />
-            <h:message for="userid" errorClass="ValidateError"/>
-
+			<h:inputText required="true" id="userid" binding="#{login.userid}" />
+			<br />
+            <font color="red"><h:message for="userid" errorClass="ValidateError"/></font>
+			<br />
 			<h:outputText value="Enter Password: "/>
-			<h:inputSecret required="true" id="password"
-                               binding="#{login.password}"/>
-            <h:message for="password" errorClass="ValidateError"/>
-
-			<h:outputText value=" "/>
+			<h:inputSecret required="true" id="password" binding="#{login.password}"/>
+			<br />
+            <font color="red"><h:message for="password" errorClass="ValidateError"/></font>
+			<br />
 			<h:commandButton value="Login" action="#{login.login}" />
-
-			<h:outputText value="New User?"/>					
-			<h:commandLink value="Register Here" action="newuser" />
-		</h:panelGrid>
+			<br /><br />
+			<h:outputText value="New User?" /><br />
+			<h:commandLink value="Register here" action="newuser" /><br />				
+			
+		
     </h:form>
         <!-- end #mainContent --></div>
     	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
