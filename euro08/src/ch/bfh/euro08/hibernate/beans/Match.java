@@ -22,8 +22,8 @@ public class Match {
 	public void setStade_fkey(int stade_fkey) {
 		this.stade_fkey = stade_fkey;
 	}
-	public Date getDatetime() {
-		return datetime;
+	public String getDatetime() {
+		return datetime.toString();
 	}
 	public void setDatetime(Date datetime) {
 		this.datetime = datetime;

@@ -23,7 +23,47 @@
   <property generated="never" lazy="false" name="superuser"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Category" table="category">
-  <id name="id" type="integer"/>
+  <id name="id" type="integer">
+   <generator class="increment"/>
+  </id>
   <property name="name"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Order" table="order">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property name="quantity"/>
+  <property name="status"/>
+  <property name="ticket_fkey"/>
+  <property name="user_fkey"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Stade" table="stade">
+  <id name="id"/>
+  <property name="name"/>
+  <property name="country"/>
+  <property name="city"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.StadeCategory" table="stadecategory">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property name="description"/>
+  <property name="tickets"/>
+  <property name="category_fkey"/>
+  <property name="stade_fkey"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Team" table="team">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property name="country"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Ticket" table="ticket">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property name="price"/>
+  <property name="match_fkey"/>
+  <property name="category_fkey"/>
  </class>
 </hibernate-mapping>
