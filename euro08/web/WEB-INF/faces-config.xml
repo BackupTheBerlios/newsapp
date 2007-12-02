@@ -78,12 +78,12 @@
   <from-view-id>/in-index.jsp</from-view-id>
   <navigation-case>
    <from-outcome>games</from-outcome>
-   <to-view-id>/faces/app/games.jsp</to-view-id>
+   <to-view-id>/app/games.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-action>#{login.logout}</from-action>
    <from-outcome>success</from-outcome>
-   <to-view-id>/faces/index.jsp</to-view-id>
+   <to-view-id>/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
@@ -92,14 +92,14 @@
   <navigation-case>
    <from-action>#{login.login}</from-action>
    <from-outcome>success</from-outcome>
-   <to-view-id>/faces/app/index.jsp</to-view-id>
+   <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <navigation-case>
    <from-outcome>login</from-outcome>
-   <to-view-id>/faces/login.jsp</to-view-id>
+   <to-view-id>/login.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <validator>

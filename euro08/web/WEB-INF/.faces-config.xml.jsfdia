@@ -5,11 +5,11 @@
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#in-index.jsp:0"
    NAME="item" PATH="/in-index.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="games::#faces#app#games.jsp" NAME="output"
-    PATH="/faces/app/games.jsp" TARGET="rules:#faces#app#games.jsp" TITLE="games"/>
+    ID="games::#app#games.jsp" NAME="output" PATH="/app/games.jsp"
+    TARGET="rules:#app#games.jsp" TITLE="games"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{login.logout}:#faces#index.jsp" NAME="output1"
-    PATH="/faces/index.jsp" TARGET="rules:#faces#index.jsp" TITLE="#{login.logout}:success"/>
+    ID="success:#{login.logout}:#index.jsp" NAME="output1"
+    PATH="/index.jsp" TARGET="rules:#index.jsp" TITLE="#{login.logout}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#login.jsp"
@@ -17,23 +17,21 @@
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#login.jsp:0"
    NAME="item" PATH="/login.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{login.login}:#faces#app#index.jsp" NAME="output"
-    PATH="/faces/app/index.jsp" TARGET="rules:#faces#app#index.jsp" TITLE="#{login.login}:success"/>
+    ID="success:#{login.login}:#app#index.jsp" NAME="output"
+    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.login}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="32,385,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="login::#faces#login.jsp" NAME="output" PATH="/faces/login.jsp"
-    TARGET="rules:#faces#login.jsp" TITLE="login"/>
+    ID="login::#login.jsp" NAME="output" PATH="/login.jsp"
+    TARGET="rules:#login.jsp" TITLE="login"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#faces#index.jsp"
-  PATH="/faces/index.jsp" SHAPE="256,177,0,0"/>
- <PROCESS-ITEM ENTITY="JSFProcessGroup"
-  NAME="rules:#faces#app#index.jsp" PATH="/faces/app/index.jsp" SHAPE="240,289,0,0"/>
- <PROCESS-ITEM ENTITY="JSFProcessGroup"
-  NAME="rules:#faces#app#games.jsp" PATH="/faces/app/games.jsp" SHAPE="256,33,0,0"/>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#faces#login.jsp"
-  PATH="/faces/login.jsp" SHAPE="240,401,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#index.jsp"
+  PATH="/app/index.jsp" SHAPE="32,497,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#index.jsp"
+  PATH="/index.jsp" SHAPE="240,481,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#games.jsp"
+  PATH="/app/games.jsp" SHAPE="448,465,0,0"/>
 </PROCESS>
