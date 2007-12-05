@@ -47,36 +47,52 @@
     
   <h:outputLabel for="firstname" value="Firstname"/>
   <h:panelGroup>
-  <h:inputText required="true" id="firstname" value="#{user.firstname}"
+  <h:inputText required="true" id="firstname" value="#{register.firstname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="firstName" styleClass="formUserError"/>
   </h:panelGroup>
   
   <h:outputLabel for="lastname" value="Lastname"/>
   <h:panelGroup>
-  <h:inputText required="true" id="lastname" value="#{user.lastname}"
+  <h:inputText required="true" id="lastname" value="#{register.lastname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="lastName" styleClass="formUserError"/>
   </h:panelGroup>
   
   <h:outputLabel for="email" value="Email"/>
   <h:panelGroup>
-  <h:inputText id="email" value="#{user.email}" 
+  <h:inputText id="email" value="#{register.email}" 
     maxlength="255" size="40" 
     required="true">
       <f:validator validatorId="EmailValidator"/>
   </h:inputText><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="email" styleClass="formUserError"/>
   </h:panelGroup>
+  
+  <h:outputLabel for="emailConfirm" value="Email Confirm"/>
+  <h:panelGroup>
+  <h:inputText id="emailConfirm" value="#{register.emailConfirm}" 
+    maxlength="255" size="40" 
+    required="true"/><f:verbatim><br/></f:verbatim>
+  <h:outputText value=" "/><h:message for="emailConfirm" styleClass="formUserError"/>
+  </h:panelGroup>
 
   <h:outputLabel for="password" value="Password"/>
   <h:panelGroup>
-  <h:inputSecret id="password" value="#{user.password}" 
+  <h:inputSecret id="password" value="#{register.password}" 
     maxlength="64" size="20" 
     required="true" redisplay="true">
       <f:validateLength minimum="6"/>
   </h:inputSecret><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="password" styleClass="formUserError"/>
+  </h:panelGroup>
+  
+  <h:outputLabel for="passwordConfirm" value="Password Confirm"/>
+  <h:panelGroup>
+  <h:inputSecret id="passwordConfirm" value="#{register.passwordConfirm}" 
+    maxlength="64" size="20" 
+    required="true" redisplay="true"/><f:verbatim><br/></f:verbatim>
+  <h:outputText value=" "/><h:message for="passwordConfirm" styleClass="formUserError"/>
   </h:panelGroup>
 
     
