@@ -12,7 +12,7 @@
  
  Hibernate based UserRegistry -->
  <managed-bean>
-  <managed-bean-name>UserRegistry</managed-bean-name>
+  <managed-bean-name>userRegistry</managed-bean-name>
   <managed-bean-class>ch.bfh.euro08.hibernate.UserRegistry</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
@@ -65,7 +65,7 @@
    <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
-    <navigation-case>
+  <navigation-case>
    <from-outcome>register</from-outcome>
    <to-view-id>/register.jsp</to-view-id>
    <redirect/>
@@ -84,6 +84,10 @@
  <validator>
   <validator-id>pastDateValidate</validator-id>
   <validator-class>com.jsfcompref.trainer.util.PastDateValidator</validator-class>
+ </validator>
+ <validator>
+  <validator-id>EmailValidator</validator-id>
+  <validator-class>ch.bfh.euro08.jsf.beans.EmailValidator</validator-class>
  </validator>
  <!-- application settings -->
  <application>
