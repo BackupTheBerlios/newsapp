@@ -43,7 +43,7 @@
 			<br />
             <font color="red"><h:message for="password" errorClass="ValidateError"/></font>
 			<br />
-			<h:commandButton value="Login" action="#{login.login}" />
+			<h:commandButton value="Login" action="#{login.login}" /> <h:message for="formId" />
 			<br /><br />
 			<h:outputText value="New User?" /><br />
 			<h:commandLink value="Register here" action="newuser" /><br />				
