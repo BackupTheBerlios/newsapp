@@ -3,16 +3,7 @@ package ch.bfh.euro08.jsf.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.xml.soap.MessageFactory;
-import java.util.*;
 
-import javax.faces.context.*;
-import javax.faces.application.*;
-import javax.faces.model.SelectItem;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -89,5 +80,5 @@ public class UserRegistry {
 		}
 		return false;
 	}
-	
 }
+	

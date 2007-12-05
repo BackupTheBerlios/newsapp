@@ -35,30 +35,26 @@
 <h:form id="registerForm">
 
 <div class="center">
-<h:panelGrid columns="2"  
-  styleClass="form" 
-  headerClass="tableHeader"
-  footerClass="tableFooter"
-  rowClasses="tableRowOdd, tableRowEven">
+<h:panelGrid columns="2">
 
   
   <f:facet name="footer">
     <h:panelGroup>
     <h:commandButton value="submit" 
-      action="#{registrationBean.register}" />
+      action="#{userRegistry.register}" />
     </h:panelGroup>
   </f:facet>
     
   <h:outputLabel for="firstname" value="Firstname"/>
   <h:panelGroup>
-  <h:inputText id="firstname" value="#{user.firstname}"
+  <h:inputText required="true" id="firstname" value="#{user.firstname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="firstName" styleClass="formUserError"/>
   </h:panelGroup>
   
   <h:outputLabel for="lastname" value="Lastname"/>
   <h:panelGroup>
-  <h:inputText id="lastname" value="#{user.lastname}"
+  <h:inputText required="true" id="lastname" value="#{user.lastname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="lastName" styleClass="formUserError"/>
   </h:panelGroup>

@@ -12,8 +12,8 @@
  
  Hibernate based UserRegistry -->
  <managed-bean>
-  <managed-bean-name>userRegistry</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.UserRegistry</managed-bean-class>
+  <managed-bean-name>UserRegistry</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.UserRegistry</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <!-- To run with non Hibernate registry, uncomment the following bean
