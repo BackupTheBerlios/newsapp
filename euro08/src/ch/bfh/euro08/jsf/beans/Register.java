@@ -62,7 +62,7 @@ public class Register {
 			    
 			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registration Successful!"));
 			    System.out.println("Done Registering User..");
-			    return("main");
+			    return("success");
 			  
 			  }
 		}
