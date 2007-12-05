@@ -7,22 +7,23 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import ch.bfh.euro08.hibernate.beans.Match;
+import ch.bfh.euro08.hibernate.beans.Ticket;
 import ch.bfh.euro08.hibernate.beans.User;
 import ch.bfh.euro08.util.HibernateUtil;
 
 public class GameManager {
-	private List<Match> gameList = new ArrayList<Match>();
+	private List<Ticket> gameList = new ArrayList<Ticket>();
 
-	public List<Match> getGameList() {
+	public List<Ticket> getGameList() {
 
 		Query q = null;
-		List<Match> results = null;
+		List<Ticket> results = new ArrayList<Ticket>();
 		gameList = null;
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
-		q = session.createQuery("select * from Match");
+		q = session.createQuery("select * from ticket");
 		results = q.list();
 		session.close();
 
