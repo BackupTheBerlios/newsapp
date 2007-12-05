@@ -1,4 +1,4 @@
-package ch.bfh.euro08.hibernate;
+package ch.bfh.euro08.jsf.beans;
 
 import java.util.ArrayList;
 import java.util.List;

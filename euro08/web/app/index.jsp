@@ -26,7 +26,7 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><a href="in-games.jsp">View all Games</a><br />
+        <p><a href="games.jsp">View all Games</a><br />
         Place an Order</p>
         <p>View Order<br />
         View Your Tickets<!-- end #sidebar1 --></p>

@@ -10,7 +10,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import ch.bfh.euro08.hibernate.UserRegistry;
 import ch.bfh.euro08.hibernate.beans.User;
 import ch.bfh.euro08.util.JSFUtil;
 import ch.bfh.euro08.util.UserUtil;

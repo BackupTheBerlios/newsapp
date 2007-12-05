@@ -35,43 +35,13 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>category</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Category</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>match</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Match</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>order</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Order</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>stade</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Stade</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>stadecategory</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.StadeCategory</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>team</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Team</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>ticket</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.beans.Ticket</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
   <managed-bean-name>TicketSystem</managed-bean-name>
   <managed-bean-class>ch.bfh.euro08.hibernate.TicketSystem</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>GameManager</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.GameManager</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>

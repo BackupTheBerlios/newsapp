@@ -46,6 +46,8 @@
 			<h:commandButton value="Login" action="#{login.login}" />
 			<h:messages globalOnly="true" infoClass="LoginError"/>  
 			<br /><br />
+	</h:form>
+	<h:form>
 			<h:outputText value="New User?" /><br />
 			<h:commandLink value="Register here" action="register" /><br />				
 
