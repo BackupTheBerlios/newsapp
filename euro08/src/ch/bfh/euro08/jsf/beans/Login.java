@@ -43,8 +43,7 @@ public class Login {
 			managedUserBean.setLoggedIn(true);
 
 			// Place authorized user on session to disable security filter
-			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(),
-					AUTH_USER, "Authorized_User");
+			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
 			System.out.println("yes");
 			return "success";
 		}

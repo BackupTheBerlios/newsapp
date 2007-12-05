@@ -31,8 +31,8 @@
         <!-- end #sidebar1 --></div>
       <div id="mainContent">
         <h2>User Login</h2>
+        
         <h:form id="formId">
-
 			<h:outputText value="Enter Login ID:"/>
 			<h:inputText required="true" id="userid" binding="#{login.userid}" />
 			<br />
@@ -43,13 +43,13 @@
 			<br />
             <font color="red"><h:message for="password" errorClass="ValidateError"/></font>
 			<br />
-			<h:commandButton value="Login" action="#{login.login}" /> <h:message for="formId" />
+			<h:commandButton value="Login" action="#{login.login}" />
+			<h:messages globalOnly="true" infoClass="LoginError"/>  
 			<br /><br />
 			<h:outputText value="New User?" /><br />
 			<h:commandLink value="Register here" action="newuser" /><br />				
-			
-		
     </h:form>
+    
         <!-- end #mainContent --></div>
     	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
       <div id="footer">
