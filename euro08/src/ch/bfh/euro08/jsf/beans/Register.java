@@ -1,8 +1,6 @@
 package ch.bfh.euro08.jsf.beans;
 
 
-import java.util.Date;
-
 import javax.faces.context.*;
 import javax.faces.application.*;
 
