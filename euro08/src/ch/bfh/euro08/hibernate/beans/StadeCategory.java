@@ -4,8 +4,9 @@ public class StadeCategory {
 	private int id;
 	private String description;
 	private int tickets;
-	private int category_fkey;
-	private int stade_fkey;
+	private Category category_fkey;
+	private Stade stade_fkey;
+	
 	public int getId() {
 		return id;
 	}
@@ -24,16 +25,18 @@ public class StadeCategory {
 	public void setTickets(int tickets) {
 		this.tickets = tickets;
 	}
-	public int getCategory_fkey() {
+	public Category getCategory_fkey() {
 		return category_fkey;
 	}
-	public void setCategory_fkey(int category_fkey) {
+	public void setCategory_fkey(Category category_fkey) {
 		this.category_fkey = category_fkey;
 	}
-	public int getStade_fkey() {
+	public Stade getStade_fkey() {
 		return stade_fkey;
 	}
-	public void setStade_fkey(int stade_fkey) {
+	public void setStade_fkey(Stade stade_fkey) {
 		this.stade_fkey = stade_fkey;
 	}
+	
+	
 }

@@ -4,8 +4,9 @@ public class Order {
 	private String id;
 	private int quantity;
 	private boolean status;
-	private int ticket_fkey;
-	private int user_fkey;
+	private Ticket ticket_fkey;
+	private User user_fkey;
+	
 	public String getId() {
 		return id;
 	}
@@ -24,16 +25,17 @@ public class Order {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public int getTicket_fkey() {
+	public Ticket getTicket_fkey() {
 		return ticket_fkey;
 	}
-	public void setTicket_fkey(int ticket_fkey) {
+	public void setTicket_fkey(Ticket ticket_fkey) {
 		this.ticket_fkey = ticket_fkey;
 	}
-	public int getUser_fkey() {
+	public User getUser_fkey() {
 		return user_fkey;
 	}
-	public void setUser_fkey(int user_fkey) {
+	public void setUser_fkey(User user_fkey) {
 		this.user_fkey = user_fkey;
 	}
+
 }

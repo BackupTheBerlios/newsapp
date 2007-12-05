@@ -6,10 +6,13 @@
   <id name="id" type="integer">
    <generator class="increment"/>
   </id>
-  <property name="datetime"/>
-  <property name="team1_fkey"/>
-  <property name="team2_fkey"/>
-  <property name="stade_fkey"/>
+  <property generated="never" lazy="false" name="datetime"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Team"
+   column="team1_fkey" name="team1"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Team"
+   column="team2_fkey" name="team2"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Stade"
+   column="stade_fkey" name="stade"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.User" table="user">
   <id name="id" type="integer">
@@ -26,44 +29,50 @@
   <id name="id" type="integer">
    <generator class="increment"/>
   </id>
-  <property name="name"/>
+  <property generated="never" lazy="false" name="name"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Order" table="order">
   <id name="id">
    <generator class="increment"/>
   </id>
-  <property name="quantity"/>
-  <property name="status"/>
-  <property name="ticket_fkey"/>
-  <property name="user_fkey"/>
+  <property generated="never" lazy="false" name="quantity"/>
+  <property generated="never" lazy="false" name="status"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Ticket"
+   column="ticket_fkey" name="ticket"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.User"
+   column="user_fkey" name="user"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Stade" table="stade">
   <id name="id"/>
-  <property name="name"/>
-  <property name="country"/>
-  <property name="city"/>
+  <property generated="never" lazy="false" name="name"/>
+  <property generated="never" lazy="false" name="country"/>
+  <property generated="never" lazy="false" name="city"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.StadeCategory" table="stadecategory">
   <id name="id">
    <generator class="increment"/>
   </id>
-  <property name="description"/>
-  <property name="tickets"/>
-  <property name="category_fkey"/>
-  <property name="stade_fkey"/>
+  <property generated="never" lazy="false" name="description"/>
+  <property generated="never" lazy="false" name="tickets"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Category"
+   column="category_fkey" name="category"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Stade"
+   column="stade_fkey" name="stad"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Team" table="team">
   <id name="id">
    <generator class="increment"/>
   </id>
-  <property name="country"/>
+  <property generated="never" lazy="false" name="country"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Ticket" table="ticket">
   <id name="id">
    <generator class="increment"/>
   </id>
-  <property name="price"/>
-  <property name="match_fkey"/>
-  <property name="category_fkey"/>
+  <property generated="never" lazy="false" name="price"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Match"
+   column="match_fkey" name="match"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Category"
+   column="category_fkey" name="category"/>
  </class>
 </hibernate-mapping>

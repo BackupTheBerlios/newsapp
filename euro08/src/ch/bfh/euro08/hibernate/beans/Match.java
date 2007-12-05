@@ -3,11 +3,12 @@ package ch.bfh.euro08.hibernate.beans;
 import java.sql.Date;
 
 public class Match {
+	
 	private int id;
-	private int stade_fkey;
+	private Stade stade;
 	private Date datetime;
-	private int team1_fkey;
-	private int team2_fkey;
+	private Team team1;
+	private Team team2;
 	
 	
 	public int getId() {
@@ -16,28 +17,29 @@ public class Match {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getStade_fkey() {
-		return stade_fkey;
+	public Stade getStade() {
+		return stade;
 	}
-	public void setStade_fkey(int stade_fkey) {
-		this.stade_fkey = stade_fkey;
+	public void setStade(Stade stade) {
+		this.stade = stade;
 	}
-	public String getDatetime() {
-		return datetime.toString();
+	public Date getDatetime() {
+		return datetime;
 	}
 	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
-	public int getTeam1_fkey() {
-		return team1_fkey;
+	public Team getTeam1() {
+		return team1;
 	}
-	public void setTeam1_fkey(int team1_fkey) {
-		this.team1_fkey = team1_fkey;
+	public void setTeam1(Team team1) {
+		this.team1 = team1;
 	}
-	public int getTeam2_fkey() {
-		return team2_fkey;
+	public Team getTeam2() {
+		return team2;
 	}
-	public void setTeam2_fkey(int team2_fkey) {
-		this.team2_fkey = team2_fkey;
+	public void setTeam2(Team team2) {
+		this.team2 = team2;
 	}
+	
 }

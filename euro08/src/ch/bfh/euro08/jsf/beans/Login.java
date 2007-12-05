@@ -33,8 +33,7 @@ public class Login {
 		
 		if (currentUser == null) {
 			// login failed
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Invalid Login!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid Login!"));
 			System.out.println("no");
 			return "failure";
 		} else {

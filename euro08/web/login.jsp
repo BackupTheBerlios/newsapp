@@ -31,7 +31,7 @@
         <!-- end #sidebar1 --></div>
       <div id="mainContent">
         <h2>User Login</h2>
-        <h:form>
+        <h:form id="formId">
 
 			<h:outputText value="Enter Login ID:"/>
 			<h:inputText required="true" id="userid" binding="#{login.userid}" />
