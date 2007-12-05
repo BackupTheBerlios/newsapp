@@ -48,6 +48,7 @@
 			<br /><br />
 			<h:outputText value="New User?" /><br />
 			<h:commandLink value="Register here" action="newuser" /><br />				
+
     </h:form>
     
         <!-- end #mainContent --></div>
