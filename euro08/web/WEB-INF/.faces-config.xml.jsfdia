@@ -38,8 +38,8 @@
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#register.jsp:0"
    NAME="item" PATH="/register.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{register.register}:#login.jsp" NAME="output"
-    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="#{register.register}:success"/>
+    ID="success:#{register.register}:#app#index.jsp" NAME="output"
+    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{register.register}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
