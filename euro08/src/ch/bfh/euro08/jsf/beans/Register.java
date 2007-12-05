@@ -36,6 +36,7 @@ public class Register {
 			newUser.setLastname(lastname);
 			newUser.setEmail(email);
 			newUser.setPassword(password);
+			newUser.setActivationcode("activationcode");
 			  
 			UserRegistry ManagedUserRegistry = (UserRegistry) JSFUtil.getManagedObject("UserRegistry");
 			 
@@ -50,7 +51,7 @@ public class Register {
 			  }
 			  else {
 
-			      // Is a new user, continue logging in
+			    // Is a new user, continue logging in
 			    User managedUserBean = (User)JSFUtil.getManagedObject("User");
 			    UserUtil.copyUserProperties(newUser, managedUserBean);
 			    managedUserBean.setLoggedIn(true);
