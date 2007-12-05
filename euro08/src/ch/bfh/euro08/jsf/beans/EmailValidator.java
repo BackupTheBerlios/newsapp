@@ -32,7 +32,7 @@ public class EmailValidator implements Validator {
       isValid = false;
     }
     if ( !isValid ) {
-      FacesMessage errMsg = new FacesMessage("errorEmailFormat");
+      FacesMessage errMsg = new FacesMessage("Validation Error: Wrong Email-Format");
       FacesContext.getCurrentInstance().addMessage(null, errMsg);
       throw new ValidatorException(errMsg);
     }

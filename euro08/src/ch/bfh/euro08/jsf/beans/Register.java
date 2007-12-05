@@ -1,6 +1,5 @@
 package ch.bfh.euro08.jsf.beans;
 
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.*;
 import javax.faces.application.*;
 
@@ -19,7 +18,7 @@ public class Register {
 	}
 
 	public String register() {
-		System.out.println("validate Email & Password");
+
 		String toReturn = "failure";
 
 		if (validateData()) {

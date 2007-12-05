@@ -49,14 +49,14 @@
   <h:panelGroup>
   <h:inputText required="true" id="firstname" value="#{register.firstname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
-  <h:outputText value=" "/><h:message for="firstName" styleClass="formUserError"/>
+  <h:outputText value=" "/><h:message for="firstname" styleClass="formUserError"/>
   </h:panelGroup>
   
   <h:outputLabel for="lastname" value="Lastname"/>
   <h:panelGroup>
   <h:inputText required="true" id="lastname" value="#{register.lastname}"
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
-  <h:outputText value=" "/><h:message for="lastName" styleClass="formUserError"/>
+  <h:outputText value=" "/><h:message for="lastname" styleClass="formUserError"/>
   </h:panelGroup>
   
   <h:outputLabel for="email" value="Email"/>
