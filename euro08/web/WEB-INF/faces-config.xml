@@ -45,16 +45,10 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
-  <from-view-id>/in-index.jsp</from-view-id>
+  <from-view-id>/app/index.jsp</from-view-id>
   <navigation-case>
    <from-outcome>games</from-outcome>
    <to-view-id>/app/games.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-action>#{login.logout}</from-action>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/index.jsp</to-view-id>
-   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -75,6 +69,12 @@
   <navigation-case>
    <from-outcome>login</from-outcome>
    <to-view-id>/login.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{login.logout}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/login.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <validator>
@@ -98,4 +98,3 @@
   </locale-config>
  </application>
 </faces-config>
-

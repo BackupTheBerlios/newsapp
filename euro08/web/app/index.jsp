@@ -33,6 +33,7 @@
       </div>
       <div id="mainContent">
         <h2>Welcome</h2>
+        <h:form id="userInfo">
         <p>Your Personal Data:</p>
         <table width="200" border="1">
           <tr>
@@ -47,7 +48,12 @@
             <td>E-Mail</td>
             <td><h:outputText value="#{user.email}"/></td>
           </tr>
+          <tr>
+          	<td colspan="2"><h:commandButton value="Logout" action="#{login.logout}" /></td>
+          </tr>
         </table>
+        
+        </h:form>
         <p><br />
         </p>
         <!-- end #mainContent --></div>

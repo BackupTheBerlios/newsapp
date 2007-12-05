@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS ENTITY="JSFProcess">
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#in-index.jsp"
-  PATH="/in-index.jsp" SHAPE="32,17,0,0">
-  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#in-index.jsp:0"
-   NAME="item" PATH="/in-index.jsp">
-   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="games::#app#games.jsp" NAME="output" PATH="/app/games.jsp"
-    TARGET="rules:#app#games.jsp" TITLE="games"/>
-   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="success:#{login.logout}:#index.jsp" NAME="output1"
-    PATH="/index.jsp" TARGET="rules:#index.jsp" TITLE="#{login.logout}:success"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#login.jsp"
   PATH="/login.jsp" SHAPE="32,273,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#login.jsp:0"
@@ -29,12 +17,20 @@
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="login::#login.jsp" NAME="output" PATH="/login.jsp"
     TARGET="rules:#login.jsp" TITLE="login"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{login.logout}:#login.jsp" NAME="output1"
+    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="#{login.logout}:success"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#index.jsp"
-  PATH="/app/index.jsp" SHAPE="32,497,0,0"/>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#index.jsp"
-  PATH="/index.jsp" SHAPE="240,481,0,0"/>
+  PATH="/app/index.jsp" SHAPE="32,497,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#app#index.jsp:0"
+   NAME="item" PATH="/app/index.jsp">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="games::#app#games.jsp" NAME="output" PATH="/app/games.jsp"
+    TARGET="rules:#app#games.jsp" TITLE="games"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#games.jsp"
   PATH="/app/games.jsp" SHAPE="448,465,0,0"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#register.jsp"

@@ -56,12 +56,10 @@ public class Login {
 
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		Application app = ctx.getApplication();
-		app.getNavigationHandler().handleNavigation(ctx, "/welcome.jsp",
-				"welcome");
 
 		// To avoid using the navigation handler you could also use...
 		// response.sendRedirect("../index.jsp");
-		return null;
+		return "success";
 
 	}
 

@@ -25,17 +25,17 @@ public class Order {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public Ticket getTicket_fkey() {
-		return ticket_fkey;
-	}
-	public void setTicket_fkey(Ticket ticket_fkey) {
-		this.ticket_fkey = ticket_fkey;
-	}
 	public User getUser_fkey() {
 		return user_fkey;
 	}
 	public void setUser_fkey(User user_fkey) {
 		this.user_fkey = user_fkey;
+	}
+	public Ticket getTicket_fkey() {
+		return ticket_fkey;
+	}
+	public void setTicket_fkey(Ticket ticket_fkey) {
+		this.ticket_fkey = ticket_fkey;
 	}
 
 }
