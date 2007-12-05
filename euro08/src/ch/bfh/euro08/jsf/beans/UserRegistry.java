@@ -48,7 +48,7 @@ public class UserRegistry {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
-		q = session.createQuery("select from User usr where usr.email = :inuserid and usr.password = PASSWORD(:inuserpassword)");
+		q = session.createQuery("select from User usr where usr.email = :inuserid and usr.password = :inuserpassword");
 		q.setParameter("inuserid", userid);
 		q.setParameter("inuserpassword", password);
 		results = q.list();
