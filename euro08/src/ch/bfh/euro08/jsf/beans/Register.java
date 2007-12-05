@@ -66,9 +66,6 @@ public class Register {
 			    return("main");
 			  
 			  }
-			  
-			
-			return "success";
 		}
 		return toReturn;
 	}
