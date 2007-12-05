@@ -95,6 +95,11 @@
    <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
+    <navigation-case>
+   <from-outcome>register</from-outcome>
+   <to-view-id>/register.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <navigation-case>

@@ -47,7 +47,7 @@
 			<h:messages globalOnly="true" infoClass="LoginError"/>  
 			<br /><br />
 			<h:outputText value="New User?" /><br />
-			<h:commandLink value="Register here" action="newuser" /><br />				
+			<h:commandLink value="Register here" action="register" /><br />				
 
     </h:form>
     
