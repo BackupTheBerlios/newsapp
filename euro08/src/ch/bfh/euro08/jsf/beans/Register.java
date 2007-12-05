@@ -1,6 +1,5 @@
 package ch.bfh.euro08.jsf.beans;
 
-import UserBean;
 
 import java.util.Date;
 
@@ -56,14 +55,13 @@ public class Register {
 			      // Is a new user, continue logging in
 			    User managedUserBean = (User)JSFUtil.getManagedObject("User");
 			    UserUtil.copyUserProperties(newUser, managedUserBean);
-			    managedUserBean.setIsLoggedIn(true);
+			    managedUserBean.setLoggedIn(true);
 
 			    //Place AUTH_USER string on session to disable security filter on session to disable security filter
 			    JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
 
 			    
-			    FacesContext.getCurrentInstance().addMessage(null,
-			                 new FacesMessage("Registration Successful!"));
+			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registration Successful!"));
 			    System.out.println("Done Registering User..");
 			    return("main");
 			  
