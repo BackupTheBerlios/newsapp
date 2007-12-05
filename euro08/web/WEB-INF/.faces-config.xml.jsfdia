@@ -34,5 +34,12 @@
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#games.jsp"
   PATH="/app/games.jsp" SHAPE="448,465,0,0"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#register.jsp"
-  PATH="/register.jsp" SHAPE="256,657,0,0"/>
+  PATH="/register.jsp" SHAPE="256,657,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#register.jsp:0"
+   NAME="item" PATH="/register.jsp">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success:#{register.register}:#login.jsp" NAME="output"
+    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="#{register.register}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -7,12 +7,12 @@ import javax.faces.application.*;
 
 public class Register {
 
-	private HtmlInputText firstname;
-	private HtmlInputText lastname;
-	private HtmlInputText password;
-	private HtmlInputText passwordConfirm;
-	private HtmlInputText email;
-	private HtmlInputText emailConfirm;
+	private String firstname;
+	private String lastname;
+	private String password;
+	private String passwordConfirm;
+	private String email;
+	private String emailConfirm;
 
 	public Register() {
 
@@ -48,51 +48,51 @@ public class Register {
 		return toReturn;
 	}
 
-	public HtmlInputText getFirstname() {
+	public String getFirstname() {
 		return firstname;
 	}
 
-	public void setFirstname(HtmlInputText firstname) {
+	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
-	public HtmlInputText getLastname() {
+	public String getLastname() {
 		return lastname;
 	}
 
-	public void setLastname(HtmlInputText lastname) {
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
-	public HtmlInputText getEmailConfirm() {
+	public String getEmailConfirm() {
 		return emailConfirm;
 	}
 
-	public void setEmailConfirm(HtmlInputText emailConfirm) {
+	public void setEmailConfirm(String emailConfirm) {
 		this.emailConfirm = emailConfirm;
 	}
 
-	public HtmlInputText getPasswordConfirm() {
+	public String getPasswordConfirm() {
 		return passwordConfirm;
 	}
 
-	public void setPasswordConfirm(HtmlInputText passwordConfirm) {
+	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public HtmlInputText getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(HtmlInputText password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public HtmlInputText getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(HtmlInputText email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
