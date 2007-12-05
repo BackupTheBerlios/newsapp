@@ -52,7 +52,7 @@ public class Register {
 			  else {
 
 			    // Is a new user, continue logging in
-			    User managedUserBean = (User)JSFUtil.getManagedObject("User");
+			    User managedUserBean = (User)JSFUtil.getManagedObject("user");
 			    UserUtil.copyUserProperties(newUser, managedUserBean);
 			    managedUserBean.setLoggedIn(true);
 
