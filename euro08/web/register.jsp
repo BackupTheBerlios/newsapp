@@ -41,7 +41,7 @@
   <f:facet name="footer">
     <h:panelGroup>
     <h:commandButton value="submit" 
-      action="#{userRegistry.register}" />
+      action="#{register.register}" />
     </h:panelGroup>
   </f:facet>
     

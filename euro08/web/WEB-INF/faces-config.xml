@@ -44,6 +44,11 @@
   <managed-bean-class>ch.bfh.euro08.jsf.beans.GameManager</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>register</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.Register</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/app/index.jsp</from-view-id>
   <navigation-case>
