@@ -82,6 +82,14 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/register.jsp</from-view-id>
+  <navigation-case>
+   <from-action>#{register.register}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/login.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
  <validator>
   <validator-id>futureDateValidate</validator-id>
   <validator-class>com.jsfcompref.trainer.util.FutureDateValidator</validator-class>
