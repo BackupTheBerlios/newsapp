@@ -42,6 +42,8 @@
     <h:panelGroup>
     <h:commandButton value="submit" 
       action="#{register.register}" />
+      <br />
+      <h:messages globalOnly="true" styleClass="formUserError"/>
     </h:panelGroup>
   </f:facet>
     

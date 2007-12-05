@@ -44,7 +44,7 @@ public class Register {
 			    // userid exists
 			    
 			    FacesContext.getCurrentInstance().addMessage(null, 
-			      new FacesMessage("User with email " + newUser.getEmail() + " already exists! Please choose another." ));
+			      new FacesMessage("User with E-mail address \"" + newUser.getEmail() + "\" already exists! Please choose another." ));
 			    newUser = null;
 			    
 			    return(null);

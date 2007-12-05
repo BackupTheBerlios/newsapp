@@ -22,7 +22,7 @@ public class UserRegistry {
 	public String AddRegisteredUser(User newUser) {
 		{
 
-			if (!userIdAlreadyExists(newUser.getId())) {
+			if (!userAlreadyExists(newUser.getEmail())) {
 
 				Session session = HibernateUtil.getSessionFactory()
 						.getCurrentSession();
@@ -61,7 +61,7 @@ public class UserRegistry {
 		return null;//new User(1, "Not", "Existing", "pwd", "actCode", "notexisting@euro08.ch", true);
 	}
 
-	public boolean userIdAlreadyExists(int userid) {
+	public boolean userAlreadyExists(String email) {
 
 		Query q = null;
 		List<User> results = null;
@@ -69,8 +69,8 @@ public class UserRegistry {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
-		q = session.createQuery("from User usr where usr.id = :inuserid");
-		q.setParameter("inuserid", userid);
+		q = session.createQuery("from User usr where usr.email = :inuserid");
+		q.setParameter("inuserid", email);
 		results = q.list();
 		session.close();
 
