@@ -40,8 +40,8 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>GameManager</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.jsf.beans.GameManager</managed-bean-class>
+  <managed-bean-name>GameRegistry</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.GameRegistry</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
