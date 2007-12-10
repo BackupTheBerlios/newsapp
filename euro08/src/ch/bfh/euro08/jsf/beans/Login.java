@@ -36,23 +36,26 @@ public class Login {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid Login!"));
 			System.out.println("no");
 			return "failure";
-		} else if (currentUser.isSuperuser()) {
-			// ask for activation code
-			System.out.println(currentUser.isSuperuser() + "go to admin interface");
-			return "admin";
-		} else if (!currentUser.isActivated()) {
-			// ask for activation code
-			System.out.println(currentUser.isActivated() + "ask for activation code");
-			return "activationcode";
+
+
 		} else {
 			// login success
 			User managedUserBean = (User) JSFUtil.getManagedObject("user");
 			UserUtil.copyUserProperties(currentUser, managedUserBean);
 			managedUserBean.setLoggedIn(true);
 
+			if (!currentUser.isActivated()) {
+				// ask for activation code
+				System.out.println(currentUser.isActivated() + "ask for activation code");
+				return "activationcode";
+			}
+			if (currentUser.isSuperuser()) {
+				// ask for activation code
+				System.out.println(currentUser.isSuperuser() + "go to admin interface");
+				return "admin";
+			}
 			// Place authorized user on session to disable security filter
 			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
-			System.out.println("yes");
 			return "success";
 		}
 	}
