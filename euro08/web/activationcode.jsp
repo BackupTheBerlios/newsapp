@@ -26,9 +26,11 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <!-- end #sidebar1 --></div>
+        <p><h:commandLink value="View Tickets" action="games" /></p>
+        <form id="logout">
+        	<h:commandButton value="Logout" action="#{login.logout}" />
+        </form>
+      </div>
       <div id="mainContent">
         <h2>User Login</h2>
 
@@ -37,11 +39,8 @@
 			<h:outputText value="Enter Activation Code: "/>
 			<h:inputText required="true" id="activationcode" binding="#{login.activationcode}" />
 			<br /><br />
-			<h:commandButton value="Login" action="#{login.login}" />&nbsp;
+			<h:commandButton value="Activate" action="#{login.login}" />&nbsp;
 			<font color="red"><h:messages globalOnly="true" infoClass="LoginError"/></font>
-		</h:form>
-		<h:form id="logout">
-			<h:commandButton value="Logout" action="#{login.logout}" />&nbsp;
 		</h:form>
 
     
