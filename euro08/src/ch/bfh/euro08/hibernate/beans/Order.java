@@ -1,16 +1,16 @@
 package ch.bfh.euro08.hibernate.beans;
 
 public class Order {
-	private String id;
+	private int id;
 	private int quantity;
 	private boolean status;
 	private Ticket ticket_fkey;
 	private User user_fkey;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public int getQuantity() {
