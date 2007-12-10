@@ -63,6 +63,19 @@ public class Login {
 		}
 	}
 
+	public String activate() {
+		User user = (User) JSFUtil.getManagedObject("user");
+		
+		if (user.getActivationcode() == activationcode.getValue().toString()) {
+			user.setActivated(true);
+			// ask for activation code
+			System.out.println("Correct Activationcode");
+			return "success";
+		}
+		return "activationcode";
+		
+	}
+	
 	public String logout() throws IOException {
 		ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
 		HttpSession session = (HttpSession) ectx.getSession(false);

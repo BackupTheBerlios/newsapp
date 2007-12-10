@@ -93,6 +93,11 @@
    <to-view-id>/login.jsp</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>games</from-outcome>
+   <to-view-id>/app/games.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/register.jsp</from-view-id>

@@ -48,8 +48,8 @@
 			<br /><br />
 	</h:form>
 	<h:form>
-			<h:outputText value="New User?" /><br />
-			<h:commandLink value="Register here" action="register" /><br />				
+			<h:outputText value="New User?" />&nbsp;
+			<h:commandLink value="Register here" action="register" /><br /><br />			
 
     </h:form>
     

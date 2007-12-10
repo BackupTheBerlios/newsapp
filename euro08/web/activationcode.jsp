@@ -39,7 +39,7 @@
 			<h:outputText value="Enter Activation Code: "/>
 			<h:inputText required="true" id="activationcode" binding="#{login.activationcode}" />
 			<br /><br />
-			<h:commandButton value="Activate" action="#{login.login}" />&nbsp;
+			<h:commandButton value="Activate" action="#{login.activate}" />&nbsp;
 			<font color="red"><h:messages globalOnly="true" infoClass="LoginError"/></font>
 		</h:form>
 

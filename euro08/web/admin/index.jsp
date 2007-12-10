@@ -26,10 +26,10 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><a href="games.jsp">View all Games</a><br />
-        Place an Order</p>
-        <p>View Order<br />
-        View Your Tickets<!-- end #sidebar1 --></p>
+        <p><h:commandLink value="View Tickets" action="games" /></p>
+        <form id="logout">
+        	<h:commandButton value="Logout" action="#{login.logout}" />
+        </form>
       </div>
       <div id="mainContent">
         <h2>Welcome</h2>
