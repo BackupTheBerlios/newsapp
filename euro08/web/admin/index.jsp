@@ -26,7 +26,8 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><a href="games.jsp">View all Games</a><br /></p>
+        <p><a href="games.jsp">View all Games</a><br />
+        Place an Order</p>
         <p>View Order<br />
         View Your Tickets<!-- end #sidebar1 --></p>
       </div>
@@ -47,9 +48,10 @@
             <td>E-Mail</td>
             <td><h:outputText value="#{user.email}"/></td>
           </tr>
+          <tr>
+          	<td colspan="2"><h:commandButton value="Logout" action="#{login.logout}" /></td>
+          </tr>
         </table>
-        <br />
-        <h:commandButton value="Logout" action="#{login.logout}" />
         
         </h:form>
         <p><br />

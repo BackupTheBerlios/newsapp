@@ -29,6 +29,11 @@ h2 {
 	font-size: small;
 	font-style: normal;
 }
+
+h3 {
+	font-size: smaller;
+	font-style: normal;
+}
     .twoColLiqLtHdr #container { 
     	width: 80%;  /* Hierdurch wird ein Container mit einer Breite erstellt, die 80% der Browserbreite betrÃ¤gt. */
     	background: #FFFFFF;

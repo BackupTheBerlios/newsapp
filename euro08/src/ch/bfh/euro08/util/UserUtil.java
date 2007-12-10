@@ -15,6 +15,7 @@ public class UserUtil
     userTo.setId(userFrom.getId());
     userTo.setPassword(userFrom.getPassword());
     userTo.setSuperuser(userFrom.isSuperuser());
+    userTo.setActivated(userFrom.isActivated());
     userTo.setActivationcode(userFrom.getActivationcode());
   }
   

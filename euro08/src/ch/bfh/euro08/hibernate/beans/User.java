@@ -7,6 +7,7 @@ public class User {
 	private String lastname;
 	private String password;
 	private String activationcode;
+	private boolean activated;
 	private String email;
 	private boolean superuser;
 	
@@ -15,13 +16,14 @@ public class User {
 	public User(){}
 	
 	public User(int id, String firstname, String lastname, String password,
-			String activationcode, String email, boolean superuser) {
+			String activationcode, String email, boolean superuser, boolean activated) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.password = password;
 		this.activationcode = activationcode;
+		this.activated = activated;
 		this.email = email;
 		this.superuser = superuser;
 	}
@@ -76,4 +78,14 @@ public class User {
 	public void setLoggedIn(boolean isLoggedIn) {
 		this.loggedIn = isLoggedIn;
 	}
+
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+
 }

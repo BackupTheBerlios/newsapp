@@ -22,6 +22,7 @@
   <property generated="never" lazy="false" name="lastname"/>
   <property generated="never" lazy="false" name="email"/>
   <property generated="never" lazy="false" name="activationcode"/>
+  <property generated="never" lazy="false" name="activated"/>
   <property generated="never" lazy="false" name="password"/>
   <property generated="never" lazy="false" name="superuser"/>
  </class>

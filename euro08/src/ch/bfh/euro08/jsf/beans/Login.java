@@ -18,6 +18,7 @@ public class Login {
 
 	private HtmlInputText userid; 
 	private HtmlInputSecret password;
+	private HtmlInputText activationcode;
 
 	private final static String AUTH_USER = "Authorized_User";
 
@@ -35,6 +36,14 @@ public class Login {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid Login!"));
 			System.out.println("no");
 			return "failure";
+		} else if (currentUser.isSuperuser()) {
+			// ask for activation code
+			System.out.println(currentUser.isSuperuser() + "go to admin interface");
+			return "admin";
+		} else if (!currentUser.isActivated()) {
+			// ask for activation code
+			System.out.println(currentUser.isActivated() + "ask for activation code");
+			return "activationcode";
 		} else {
 			// login success
 			User managedUserBean = (User) JSFUtil.getManagedObject("user");
@@ -77,5 +86,13 @@ public class Login {
 
 	public HtmlInputSecret getPassword() {
 		return password;
+	}
+
+	public HtmlInputText getActivationcode() {
+		return activationcode;
+	}
+
+	public void setActivationcode(HtmlInputText activationcode) {
+		this.activationcode = activationcode;
 	}
 }

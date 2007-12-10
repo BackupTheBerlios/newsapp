@@ -7,8 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Welcome</title>
-<link href="../style.css" rel="stylesheet" type="text/css" />
+<title>Login</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
     <style type="text/css"> 
     /* FÃ¼gen Sie CSS-Korrekturen fÃ¼r alle IE-Versionen in diesen bedingten Kommentar ein. */
@@ -22,40 +22,32 @@
 
     <div id="container"> 
       <div id="header">
-        <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
+        <h1><img src="images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><a href="games.jsp">View all Games</a><br /></p>
-        <p>View Order<br />
-        View Your Tickets<!-- end #sidebar1 --></p>
-      </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <!-- end #sidebar1 --></div>
       <div id="mainContent">
-        <h2>Welcome</h2>
-        <h:form id="userInfo">
-        <p>Your Personal Data:</p>
-        <table width="200" border="1">
-          <tr>
-            <td>Firstname</td>
-            <td><h:outputText value="#{user.firstname}"/></td>
-          </tr>
-          <tr>
-            <td>Lastname</td>
-            <td><h:outputText value="#{user.lastname}"/></td>
-          </tr>
-          <tr>
-            <td>E-Mail</td>
-            <td><h:outputText value="#{user.email}"/></td>
-          </tr>
-        </table>
-        <br />
-        <h:commandButton value="Logout" action="#{login.logout}" />
+        <h2>User Login</h2>
+        <h:outputText value="This is the first time you try to log into this system. Please provide the Activation Code sent you by email."/>
         
-        </h:form>
-        <p><br />
-        </p>
+        <h:form id="formId">
+			<h:outputText value="Enter Activation Code: "/>
+			<h:inputText required="true" id="activationcode" binding="#{login.activationcode}" />
+			<br />
+            <font color="red"></font>
+			<br />
+			<br />
+			<h:commandButton value="Login" action="#{login.login}" />
+			<h:messages globalOnly="true" infoClass="LoginError"/>  
+			<br /><br />
+	</h:form>
+
+    
         <!-- end #mainContent --></div>
-    	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
+    	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. -->
       <div id="footer">
         <p>Lars Schnyder, Lorenz Grimm</p>
         <!-- end #footer --></div>
