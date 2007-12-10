@@ -31,7 +31,6 @@ public class Login {
 
 		UserRegistry userRegCopy = (UserRegistry) JSFUtil.getManagedObject("UserRegistry");
 		User currentUser = userRegCopy.findUserByCredentials(userid.getValue().toString(), password.getValue().toString());
-		//User currentUser = userRegCopy.findUserByCredentials("schnl1@euro08.ch", "euro08");
 		
 		if (currentUser == null) {
 			// login failed
@@ -65,16 +64,10 @@ public class Login {
 	}
 
 	public String logout() throws IOException {
-		ExternalContext ectx = FacesContext.getCurrentInstance()
-				.getExternalContext();
+		ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
 		HttpSession session = (HttpSession) ectx.getSession(false);
 		session.invalidate();
-
-		FacesContext ctx = FacesContext.getCurrentInstance();
-		Application app = ctx.getApplication();
-
-		// To avoid using the navigation handler you could also use...
-		// response.sendRedirect("../index.jsp");
+		System.out.println("logout");
 		return "success";
 
 	}

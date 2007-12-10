@@ -31,20 +31,21 @@
         <!-- end #sidebar1 --></div>
       <div id="mainContent">
         <h2>User Login</h2>
-        <h:outputText value="This is the first time you try to log into this system. Please provide the Activation Code sent you by email."/>
         
-        <h:form id="formId">
+        Hello <b><h:outputText value="#{user.firstname}"/></b>! This is the first time you try to log into this system. Please provide the Activation Code sent you by email.
+        <h:form id="activate">
+        	<br />
 			<h:outputText value="Enter Activation Code: "/>
 			<h:inputText required="true" id="activationcode" binding="#{login.activationcode}" />
 			<br />
-            <font color="red"></font>
 			<br />
-			<br />
-			<h:commandButton value="Login" action="#{login.login}" />&nbsp;
+			<h:commandButton value="Login" action="#{login.login}" />&nbsp;	
+			<font color="red"><h:messages globalOnly="true" infoClass="LoginError"/></font>
+		</h:form>
+		<br />
+		<h:form>
 			<h:commandButton value="Logout" action="#{login.logout}" />&nbsp;
-			<h:messages globalOnly="true" infoClass="LoginError"/>  
-			<br /><br />
-	</h:form>
+		</h:form>
 
     
         <!-- end #mainContent --></div>
