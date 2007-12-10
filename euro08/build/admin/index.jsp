@@ -7,8 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<title>Welcome</title>
+<link href="../style.css" rel="stylesheet" type="text/css" />
 <!--[if IE]>
     <style type="text/css"> 
     /* FÃ¼gen Sie CSS-Korrekturen fÃ¼r alle IE-Versionen in diesen bedingten Kommentar ein. */
@@ -22,37 +22,40 @@
 
     <div id="container"> 
       <div id="header">
-        <h1><img src="images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
+        <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <!-- end #sidebar1 --></div>
+        <p><a href="games.jsp">View all Games</a><br />
+        Place an Order</p>
+        <p>View Order<br />
+        View Your Tickets<!-- end #sidebar1 --></p>
+      </div>
       <div id="mainContent">
-        <h2>User Login</h2>
+        <h2>Welcome</h2>
+        <h:form id="userInfo">
+        <p>Your Personal Data:</p>
+        <table width="200" border="1">
+          <tr>
+            <td>Firstname</td>
+            <td><h:outputText value="#{user.firstname}"/></td>
+          </tr>
+          <tr>
+            <td>Lastname</td>
+            <td><h:outputText value="#{user.lastname}"/></td>
+          </tr>
+          <tr>
+            <td>E-Mail</td>
+            <td><h:outputText value="#{user.email}"/></td>
+          </tr>
+          <tr>
+          	<td colspan="2"><h:commandButton value="Logout" action="#{login.logout}" /></td>
+          </tr>
+        </table>
         
-        <h:form id="formId">
-			<h:outputText value="Enter Login ID:"/>
-			<h:inputText required="true" id="userid" binding="#{login.userid}" />
-			<br />
-            <font color="red"><h:message for="userid" errorClass="ValidateError"/></font>
-			<br />
-			<h:outputText value="Enter Password: "/>
-			<h:inputSecret required="true" id="password" binding="#{login.password}"/>
-			<br />
-            <font color="red"><h:message for="password" errorClass="ValidateError"/></font>
-			<br />
-			<h:commandButton value="Login" action="#{login.login}" />
-			<h:messages globalOnly="true" infoClass="LoginError"/>  
-			<br /><br />
-	</h:form>
-	<h:form>
-			<h:outputText value="New User?" /><br />
-			<h:commandLink value="Register here" action="register" /><br />				
-
-    </h:form>
-    
+        </h:form>
+        <p><br />
+        </p>
         <!-- end #mainContent --></div>
     	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
       <div id="footer">

@@ -3,6 +3,8 @@ package ch.bfh.euro08.jsf.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.component.UIData;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -17,8 +19,11 @@ import ch.bfh.euro08.util.HibernateUtil;
 import ch.bfh.euro08.util.JSFUtil;
 
 public class GameRegistry {
+	
+	  private UIData data = null;
+	  
 
-	public List getTrainingEventsForUser()
+	public List getOrderedGames()
 	{
 		List<GameListing> gameList = new ArrayList<GameListing>();
 		
@@ -111,5 +116,29 @@ public class GameRegistry {
 
 		session.close();
 		return elist;
+	}
+	
+    public void scroll(int row) {
+
+        int rows = data.getRows();
+        if (rows < 1) {
+            return; // Showing entire table already
+        }
+        if (row < 0) {
+            data.setFirst(0);
+        } else if (row >= data.getRowCount()) {
+            data.setFirst(data.getRowCount() - 1);
+        } else {
+            data.setFirst(row - (row % rows));
+        }
+
+    }
+
+	public UIData getData() {
+		return data;
+	}
+
+	public void setData(UIData data) {
+		this.data = data;
 	}
 }

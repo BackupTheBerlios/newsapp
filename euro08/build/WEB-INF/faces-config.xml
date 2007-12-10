@@ -13,7 +13,7 @@
  Hibernate based UserRegistry -->
  <managed-bean>
   <managed-bean-name>UserRegistry</managed-bean-name>
-  <managed-bean-class>ch.bfh.euro08.hibernate.UserRegistry</managed-bean-class>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.UserRegistry</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <!-- To run with non Hibernate registry, uncomment the following bean
@@ -34,17 +34,26 @@
   <managed-bean-class>ch.bfh.euro08.jsf.beans.Login</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>TicketSystem</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.hibernate.TicketSystem</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>GameRegistry</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.GameRegistry</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>register</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.Register</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
-  <from-view-id>/in-index.jsp</from-view-id>
+  <from-view-id>/app/index.jsp</from-view-id>
   <navigation-case>
    <from-outcome>games</from-outcome>
-   <to-view-id>/faces/app/games.jsp</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-action>#{login.logout}</from-action>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/faces/index.jsp</to-view-id>
-   <redirect/>
+   <to-view-id>/app/games.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -52,14 +61,46 @@
   <navigation-case>
    <from-action>#{login.login}</from-action>
    <from-outcome>success</from-outcome>
-   <to-view-id>/faces/app/index.jsp</to-view-id>
+   <to-view-id>/app/index.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{login.login}</from-action>
+   <from-outcome>admin</from-outcome>
+   <to-view-id>/admin/index.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{login.login}</from-action>
+   <from-outcome>activationcode</from-outcome>
+   <to-view-id>/activationcode.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>register</from-outcome>
+   <to-view-id>/register.jsp</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <navigation-case>
    <from-outcome>login</from-outcome>
-   <to-view-id>/faces/login.jsp</to-view-id>
+   <to-view-id>/login.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{login.logout}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/login.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/register.jsp</from-view-id>
+  <navigation-case>
+   <from-action>#{register.register}</from-action>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/app/index.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <validator>
@@ -69,6 +110,10 @@
  <validator>
   <validator-id>pastDateValidate</validator-id>
   <validator-class>com.jsfcompref.trainer.util.PastDateValidator</validator-class>
+ </validator>
+ <validator>
+  <validator-id>EmailValidator</validator-id>
+  <validator-class>ch.bfh.euro08.jsf.beans.EmailValidator</validator-class>
  </validator>
  <!-- application settings -->
  <application>

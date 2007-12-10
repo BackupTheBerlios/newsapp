@@ -22,6 +22,6 @@ property name="hibernate.hbm2ddl.auto">create</property
   <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
   <!-- Echo all executed SQL to stdout -->
   <property name="show_sql">true</property>
-  <mapping resource="ch/bfh/euro08/hibernate/beans/User.hbm.xml"/>
+  <mapping resource="ch/bfh/euro08/hibernate/beans/Mapping.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

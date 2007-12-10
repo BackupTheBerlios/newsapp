@@ -27,7 +27,7 @@
         <h2>Welcome</h2>
         <div align="center"><a href="faces/login.jsp"><img src="images/euro08.jpg" alt="Logo" width="600" height="400" /><br />
           <br />
-          &lt; Log in &gt;
+          &lt; ENTER &gt;
 </a></div>
         <!-- end #mainContent --></div>
 <br class="clearfloat" />

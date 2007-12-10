@@ -21,6 +21,8 @@ public class Login {
 	private HtmlInputText activationcode;
 
 	private final static String AUTH_USER = "Authorized_User";
+	private final static String ACT_USER = "Activated_User";
+	private final static String SUP_USER = "Super_User";
 
 	public Login() {
 	}
@@ -43,19 +45,23 @@ public class Login {
 			User managedUserBean = (User) JSFUtil.getManagedObject("user");
 			UserUtil.copyUserProperties(currentUser, managedUserBean);
 			managedUserBean.setLoggedIn(true);
+			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
 
 			if (!currentUser.isActivated()) {
 				// ask for activation code
 				System.out.println(currentUser.isActivated() + "ask for activation code");
 				return "activationcode";
+			}else{
+				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
 			}
 			if (currentUser.isSuperuser()) {
 				// ask for activation code
+				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), SUP_USER, "Super_User");
 				System.out.println(currentUser.isSuperuser() + "go to admin interface");
 				return "admin";
 			}
+			
 			// Place authorized user on session to disable security filter
-			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
 			return "success";
 		}
 	}

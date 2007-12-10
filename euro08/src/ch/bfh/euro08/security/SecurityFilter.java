@@ -13,39 +13,49 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class SecurityFilter implements Filter {
-    private FilterConfig _filterConfig = null;
+	private FilterConfig _filterConfig = null;
 
-    public void init(FilterConfig filterConfig) throws ServletException {
-        _filterConfig = filterConfig;
-    }
+	public void init(FilterConfig filterConfig) throws ServletException {
+		_filterConfig = filterConfig;
+	}
 
-    public void destroy() {
-        _filterConfig = null;
-    }
+	public void destroy() {
+		_filterConfig = null;
+	}
 
-    public void doFilter(ServletRequest request, ServletResponse response, 
-                         FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        
-        String AUTH_USER = "Authorized_User";
-        String validuser = null;
-        
-        HttpSession session = req.getSession(true);        
-        
-        //If authorization key not in session, redirect to login page.
-        validuser = (String) session.getAttribute(AUTH_USER);
-        
-        if(validuser != null) {
-          //If the user is allowed access to the URI, let the flow proceed as normal
-          chain.doFilter(request, response);
-          return;
-        } 
-        else{
-          //User not allowed access - redirect to login page
-          res.sendRedirect(req.getContextPath() +  "/faces/login.jsp");
-          return;
-        }
+	public void doFilter(ServletRequest request, ServletResponse response,
+		FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
 
-    }
+		String AUTH_USER = "Authorized_User";
+		String ACT_USER = "Activated_User";
+		String validuser = null;
+
+		HttpSession session = req.getSession(true);
+
+		// If authorization key not in session, redirect to login page.
+		validuser = (String) session.getAttribute(AUTH_USER);
+
+		if (validuser != null) {
+
+			String actuser = null;
+			actuser = (String) session.getAttribute(ACT_USER);
+			
+			if (actuser == null){
+				res.sendRedirect(req.getContextPath() + "/faces/activationcode.jsp");
+				return;
+			}
+
+			// If the user is allowed access to the URI, let the flow proceed as
+			// normal
+			chain.doFilter(request, response);
+			return;
+		} else {
+			// User not allowed access - redirect to login page
+			res.sendRedirect(req.getContextPath() + "/faces/login.jsp");
+			return;
+		}
+
+	}
 }
