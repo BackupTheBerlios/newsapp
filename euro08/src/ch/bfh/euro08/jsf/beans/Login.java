@@ -38,8 +38,6 @@ public class Login {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Invalid Login!"));
 			System.out.println("no");
 			return "failure";
-
-
 		} else {
 			// login success
 			User managedUserBean = (User) JSFUtil.getManagedObject("user");
