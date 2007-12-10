@@ -96,7 +96,6 @@
   <navigation-case>
    <from-outcome>games</from-outcome>
    <to-view-id>/app/games.jsp</to-view-id>
-   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>

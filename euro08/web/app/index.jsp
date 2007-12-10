@@ -26,7 +26,6 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><h:commandLink value="View Tickets" action="games" /></p>
         <form id="logout">
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </form>

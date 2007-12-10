@@ -26,10 +26,11 @@
       <!-- end #header --></div>
       <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><h:commandLink value="View Tickets" action="games" /></p>
         <form id="logout">
+        	<p><h:commandLink value="View Tickets" action="games" /></p>
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </form>
+        <br />
       </div>
       <div id="mainContent">
         <h2>Welcome</h2>
@@ -47,9 +48,6 @@
           <tr>
             <td>E-Mail</td>
             <td><h:outputText value="#{user.email}"/></td>
-          </tr>
-          <tr>
-          	<td colspan="2"><h:commandButton value="Logout" action="#{login.logout}" /></td>
           </tr>
         </table>
         

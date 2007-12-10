@@ -46,7 +46,7 @@ public class Login {
 
 			if (!currentUser.isActivated()) {
 				// ask for activation code
-				System.out.println(currentUser.isActivated() + "ask for activation code");
+				System.out.println(currentUser.isActivated() + " ask for activation code");
 				return "activationcode";
 			}else{
 				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
@@ -54,7 +54,7 @@ public class Login {
 			if (currentUser.isSuperuser()) {
 				// ask for activation code
 				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), SUP_USER, "Super_User");
-				System.out.println(currentUser.isSuperuser() + "go to admin interface");
+				System.out.println(currentUser.isSuperuser() + " go to admin interface");
 				return "admin";
 			}
 			
