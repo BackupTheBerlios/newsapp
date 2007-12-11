@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Erstellungszeit: 11. Dezember 2007 um 15:12
+-- Erstellungszeit: 11. Dezember 2007 um 18:08
 -- Server Version: 5.0.45
 -- PHP-Version: 5.2.3
 
@@ -79,18 +79,22 @@ CREATE TABLE `ordering` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `quantity` int(10) unsigned NOT NULL default '1',
   `status` tinyint(1) NOT NULL,
+  `seat` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `order_user_fkey` (`user_fkey`),
   KEY `order_ticket_fkey` (`ticket_fkey`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 -- 
 -- Daten für Tabelle `ordering`
 -- 
 
-INSERT INTO `ordering` (`user_fkey`, `ticket_fkey`, `id`, `quantity`, `status`) VALUES 
-(2, 1, 1, 3, 0),
-(2, 2, 2, 1, 0);
+INSERT INTO `ordering` (`user_fkey`, `ticket_fkey`, `id`, `quantity`, `status`, `seat`) VALUES 
+(2, 1, 9, 1, 0, 0),
+(2, 1, 12, 1, 0, 0),
+(2, 1, 17, 1, 0, 0),
+(2, 1, 18, 1, 0, 0),
+(2, 11, 19, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -246,7 +250,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`firstname`, `lastname`, `password`, `activationcode`, `email`, `id`, `superuser`, `active`) VALUES 
 ('admin', 'admin', 'euro08', 'admin', 'admin@euro08.ch', 1, 1, 1),
 ('Lars', 'Schnyder', 'euro08', 'euro08', 'schnl1@euro08.ch', 2, 0, 1),
-('Lorenz', 'Grimm', 'euro08', 'euro08', 'griml1@euro08.ch', 3, 1, 1),
+('Lorenz', 'Grimm', 'euro08', 'euro08', 'griml1@euro08.ch', 3, 0, 1),
 ('Hans', 'Muster', 'euro08', 'activationcode', 'hans@muster.ch', 4, 0, 0),
 ('Christian', 'Hunziker', 'euro08', 'activationcode', 'chrigu@euro08.ch', 5, 0, 0);
 
