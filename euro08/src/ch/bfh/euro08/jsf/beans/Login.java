@@ -76,7 +76,6 @@ public class Login {
 			
 			// Set Activated Flag
 			user.setActive(true);
-			user.setSuperuser(true);
 		
 			// Persist to Database
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();

@@ -21,22 +21,26 @@ import ch.bfh.euro08.util.JSFUtil;
 public class GameRegistry {
 
 	private UIData data = null;
+	private UIData data2 = null;
+	private int delete_number;
+	private int request_number;
+	private int request_quantity;
 
-	public void delete(int id){
-		System.out.println(id);
+	public void delete()
+	{
+		System.out.println("Delete: " + delete_number);
 	}
-	public List getOrderedGames() {
-		List<GameListing> gameList = new ArrayList<GameListing>();
+	
+	public void request()
+	{
+		System.out.println("Request: " + request_number);
+	}
 
-		Query q = null;
-		List<Ordering> order_results = null;
-		List<Ticket> ticket_results = null;
-		List<Match> match_results = null;
-		List<Team> team_results = null;
-		List<Stade> stade_results = null;
+	public boolean getSomeOrdered() {
 
 		User managedUserBean = (User) JSFUtil.getManagedObject("user");
-
+		Query q = null;
+		List<Ordering> order_results = null;
 		int userid = managedUserBean.getId();
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -48,8 +52,63 @@ public class GameRegistry {
 		q.setParameter("inuserid", userid);
 		order_results = q.list();
 
+		if (order_results.size() > 0)
+			return true;
+		return false;
+	}
+
+	public List getAllGames() {
+
+		List<GameListing> gameList = new ArrayList<GameListing>();
+		List<Ticket> ticket_result = null;
+		Query q = null;
+
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		int userid = managedUserBean.getId();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		q = session.createQuery("select from Ticket tck");
+		ticket_result = q.list();
+
+		for (int i = 0; i < ticket_result.size(); i++) {
+			System.out.println("found all tickets");
+			Ticket ticket = ticket_result.get(i);
+
+			gameList.add(new GameListing(ticket.getId(), ticket.getMatch_fkey()
+					.getStade_fkey().getName(), ticket.getMatch_fkey()
+					.getDatetime(), ticket.getMatch_fkey().getTeam1_fkey()
+					.getCountry(), ticket.getMatch_fkey().getTeam2_fkey()
+					.getCountry(), 0, ticket.getCategory_fkey().getName(), ticket.getMatch_fkey()
+					.getStade_fkey().getCountry(), ticket.getPrice()));
+		}
+		
+		return gameList;
+	}
+
+	public List getOrderedGames() {
+		List<GameListing> gameList = new ArrayList<GameListing>();
+
+		Query q = null;
+		List<Ordering> order_results = null;
+		List<Ticket> ticket_results = null;
+		List<Match> match_results = null;
+		List<Team> team_results = null;
+		List<Stade> stade_results = null;
+
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		int userid = managedUserBean.getId();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session
+				.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
+		q.setParameter("inuserid", userid);
+		order_results = q.list();
+
 		for (int i = 0; i < order_results.size(); i++) {
-			System.out.println("found tickets");
+			System.out.println("found ordered tickets");
 			Ordering order = order_results.get(i);
 
 			gameList.add(new GameListing(order.getId(), order.getTicket_fkey()
@@ -60,7 +119,7 @@ public class GameRegistry {
 					.getTeam2_fkey().getCountry(), order.getQuantity(), order
 					.getTicket_fkey().getCategory_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getStade_fkey()
-					.getCountry()));
+					.getCountry(), order.getTicket_fkey().getPrice()));
 		}
 
 		session.close();
@@ -106,6 +165,22 @@ public class GameRegistry {
 		}
 
 	}
+	
+	public void scroll2(int row) {
+
+		int rows = data2.getRows();
+		if (rows < 1) {
+			return; // Showing entire table already
+		}
+		if (row < 0) {
+			data2.setFirst(0);
+		} else if (row >= data.getRowCount()) {
+			data2.setFirst(data.getRowCount() - 1);
+		} else {
+			data2.setFirst(row - (row % rows));
+		}
+
+	}
 
 	public UIData getData() {
 		return data;
@@ -114,4 +189,38 @@ public class GameRegistry {
 	public void setData(UIData data) {
 		this.data = data;
 	}
+
+	public int getDelete_number() {
+		return delete_number;
+	}
+
+	public void setDelete_number(int delete_number) {
+		this.delete_number = delete_number;
+	}
+
+	public UIData getData2() {
+		return data2;
+	}
+
+	public void setData2(UIData data2) {
+		this.data2 = data2;
+	}
+
+	public int getRequest_number() {
+		return request_number;
+	}
+
+	public void setRequest_number(int request_number) {
+		this.request_number = request_number;
+	}
+
+	public int getRequest_quantity() {
+		return request_quantity;
+	}
+
+	public void setRequest_quantity(int request_quantity) {
+		this.request_quantity = request_quantity;
+	}
+
+
 }
