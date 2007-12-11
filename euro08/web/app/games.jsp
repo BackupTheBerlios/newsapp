@@ -31,29 +31,73 @@
         View Your Tickets<!-- end #sidebar1 --></p>
       </div>
       <div id="mainContent">
-        <h2>All Games</h2>
         <h:form id="games">
-        
-        	<h3>Tickets requested:</h3>
+        	<h2>All Games tickets requested for:</h2>
         	<h:dataTable id="eventsTable" rows="5"
                     value="#{GameRegistry.orderedGames}"
-                             var="te" rowClasses="list-row-odd,list-row-even" 
+                             var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
                              width="100%" binding="#{GameRegistry.data}">
 
-                  <h:column rendered="#{UserBean.trainer}">
+                  <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                     <h:commandLink actionListener="#{GameRegistry.sortByDate}"
-                                     immediate="true">
-                      <h:outputText value="Date"/>
-                      </h:commandLink>
-                      <h:graphicImage url="images/icons/date.gif" height="13"
-                                      width="9"/>                                      
+                       <h:outputText value="Date"/>
+                       <h:graphicImage url="images/icons/date.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
-                    <h:outputText value="#{game.datetime}"/>
-                  </h:column>              
+                   <h:outputText value="#{game.datetime}"/>
+                  </h:column>
+                  
+                   <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Stade"/>
+                       <h:graphicImage url="images/icons/date.gif"/>                                      
+                      </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{game.stade}, #{game.country}"/>
+                  </h:column>  
+                 
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Teams"/>
+                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
+                      </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{game.team1}- #{game.team2}"/>
+                  </h:column>  
+                  
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Category"/>
+                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
+                      </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{game.category}"/>
+                  </h:column>   
+                  
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Quantity"/>
+                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
+                      </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{game.ticketcount}"/>
+                  </h:column>
+                  
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Action"/>
+                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
+                      </h:panelGroup>
+                    </f:facet>
+                   <h:commandButton value="Delete" action="#{GameRegistry.delete(game.id)}" />
+                  </h:column>
 
                 </h:dataTable>
             
