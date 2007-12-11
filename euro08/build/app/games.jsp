@@ -84,7 +84,8 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value=""/>
-                       </h:panelGroup>
+                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
+                      </h:panelGroup>
                     </f:facet>
                     <h:form id="delete">
                     	<h:commandButton value="Delete"  action="#{game.delete}" />
@@ -140,6 +141,7 @@
                   <h:column rendered="#{GameRegistry.anyLeft}">
                    <f:facet name="header">
                     <h:panelGroup>
+                      <h:outputText value="#"/>
                       </h:panelGroup>
                    </f:facet>
                    <h:panelGroup>

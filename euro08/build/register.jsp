@@ -36,11 +36,12 @@
 
 <div class="center">
 <h:panelGrid columns="2">
-
-  
   <f:facet name="footer">
     <h:panelGroup>
-    <h:commandButton value="submit" action="#{register.register}" />
+    <br />
+    <h:commandButton value="submit" 
+      action="#{register.register}" />
+      <br />
       <h:messages globalOnly="true" styleClass="formUserError"/>
     </h:panelGroup>
   </f:facet>
@@ -58,7 +59,7 @@
     maxlength="255" size="30"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="lastname" styleClass="formUserError"/>
   </h:panelGroup>
-  <f:verbatim><br/></f:verbatim><f:verbatim><br/></f:verbatim>
+  
   <h:outputLabel for="email" value="Email"/>
   <h:panelGroup>
   <h:inputText id="email" value="#{register.email}" 
@@ -94,23 +95,8 @@
     required="true" redisplay="true"/><f:verbatim><br/></f:verbatim>
   <h:outputText value=" "/><h:message for="passwordConfirm" styleClass="formUserError"/>
   </h:panelGroup>
-  
-  <f:verbatim><br/></f:verbatim><f:verbatim><br/></f:verbatim>
-  <h:outputText value="Credit Card Information" style="font-weight:bold"/>
-  <f:verbatim><br/></f:verbatim>
-  
-  <h:outputLabel for="card" value="Credit Card Number"/>
-  <h:panelGroup>
-  <h:inputText id="card" value="#{register.card}" required="true">
-  	<f:validator validatorId="CardValidator"/>
-  </h:inputText>
-  
-  <f:verbatim><br/></f:verbatim>
-  <h:outputText value=" "/>
-  <h:message for="card" styleClass="formUserError" />
-  </h:panelGroup>
-  <f:verbatim><br/></f:verbatim><f:verbatim><br/></f:verbatim>
-  
+
+    
 </h:panelGrid>
 </div>
 </h:form>

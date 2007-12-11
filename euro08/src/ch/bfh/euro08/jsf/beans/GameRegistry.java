@@ -1,6 +1,9 @@
 package ch.bfh.euro08.jsf.beans;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.component.UIData;
@@ -24,6 +27,26 @@ public class GameRegistry {
 	private UIData data2 = null;
 	private int request_quantity;
 
+	public boolean getAnyLeft()
+	{
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		Query q = null;
+		List<Ordering> order_results = null;
+		int userid = managedUserBean.getId();
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
+		q.setParameter("inuserid", userid);
+		order_results = q.list();
+		
+		if (order_results.size() < 4)
+			return true;
+		return false;
+	}
+	
 	public boolean getSomeOrdered() {
 
 		User managedUserBean = (User) JSFUtil.getManagedObject("user");
@@ -38,10 +61,31 @@ public class GameRegistry {
 		q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
 		q.setParameter("inuserid", userid);
 		order_results = q.list();
+	
 
 		if (order_results.size() > 0)
 			return true;
 		return false;
+	}
+	
+	public boolean getNotYetRollout() {
+
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		Query q = null;
+		List<Ordering> order_results = null;
+		int userid = managedUserBean.getId();
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session.createQuery("select from Ordering ord where ord.status = 1");
+		order_results = q.list();
+	
+
+		if (order_results.size() > 0)
+			return false;
+		return true;
 	}
 
 	public List getAllGames() {
@@ -66,10 +110,22 @@ public class GameRegistry {
 					.getStade_fkey().getName(), ticket.getMatch_fkey()
 					.getDatetime(), ticket.getMatch_fkey().getTeam1_fkey()
 					.getCountry(), ticket.getMatch_fkey().getTeam2_fkey()
-					.getCountry(), 0, ticket.getCategory_fkey().getName(), ticket.getMatch_fkey()
+					.getCountry(), ticket.getCategory_fkey().getName(), ticket.getMatch_fkey()
 					.getStade_fkey().getCountry(), ticket.getPrice(), 0));
 		}
 		
+		
+		Comparator<GameListing> comp =  new Comparator<GameListing>(){
+			public int compare(GameListing arg0, GameListing arg1) {
+	               Date d1 = arg0.getDatetime();
+	               Date d2 = arg1.getDatetime();
+	               return d1.compareTo(d2);
+			}
+		};
+	           
+		Collections.sort(gameList, comp);
+		
+		session.close();
 		return gameList;
 	}
 
@@ -103,12 +159,22 @@ public class GameRegistry {
 					.getTicket_fkey().getMatch_fkey().getDatetime(), order
 					.getTicket_fkey().getMatch_fkey().getTeam1_fkey()
 					.getCountry(), order.getTicket_fkey().getMatch_fkey()
-					.getTeam2_fkey().getCountry(), order.getQuantity(), order
+					.getTeam2_fkey().getCountry(), order
 					.getTicket_fkey().getCategory_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getStade_fkey()
 					.getCountry(), order.getTicket_fkey().getPrice(), order.getId()));
 		}
-
+		
+		Comparator<GameListing> comp =  new Comparator<GameListing>(){
+			public int compare(GameListing arg0, GameListing arg1) {
+	               Date d1 = arg0.getDatetime();
+	               Date d2 = arg1.getDatetime();
+	               return d1.compareTo(d2);
+			}
+		};
+	           
+		Collections.sort(gameList, comp);
+		
 		session.close();
 		return gameList;
 	}

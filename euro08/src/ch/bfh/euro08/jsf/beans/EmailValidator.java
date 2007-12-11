@@ -9,8 +9,7 @@ import javax.faces.application.*;
 
 public class EmailValidator implements Validator {
   
-  public void validate(FacesContext context, UIComponent
-      component, Object toValidate) {
+  public void validate(FacesContext context, UIComponent component, Object toValidate) {
     boolean isValid = true;
     String value = null;
     
@@ -33,7 +32,7 @@ public class EmailValidator implements Validator {
     }
     if ( !isValid ) {
       FacesMessage errMsg = new FacesMessage("Validation Error: Wrong Email-Format");
-      FacesContext.getCurrentInstance().addMessage(null, errMsg);
+      FacesContext.getCurrentInstance().addMessage("email", errMsg);
       throw new ValidatorException(errMsg);
     }
   }

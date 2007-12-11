@@ -10,6 +10,7 @@ public class User {
 	private boolean active;
 	private String email;
 	private boolean superuser;
+	private String card;
 	
 	private boolean loggedIn;
 	
@@ -81,6 +82,12 @@ public class User {
 	}
 	public boolean isActive() {
 		return active;
+	}
+	public String getCard() {
+		return card;
+	}
+	public void setCard(String card) {
+		this.card = card;
 	}
 
 }

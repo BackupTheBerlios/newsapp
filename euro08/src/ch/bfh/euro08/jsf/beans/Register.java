@@ -17,6 +17,7 @@ public class Register {
 	private String passwordConfirm;
 	private String email;
 	private String emailConfirm;
+	private String card;
 	
 	private final static String AUTH_USER = "Authorized_User";
 
@@ -37,6 +38,7 @@ public class Register {
 			newUser.setEmail(email);
 			newUser.setPassword(password);
 			newUser.setActivationcode("activationcode");
+			newUser.setCard(card);
 			  
 			UserRegistry ManagedUserRegistry = (UserRegistry) JSFUtil.getManagedObject("UserRegistry");
 			 
@@ -81,8 +83,7 @@ public class Register {
 		}
 		// check passwordConfirm is same as password
 		if (!passwordConfirm.equals(getPassword())) {
-			ctx.addMessage("registerForm:passwordConfirm", new FacesMessage(
-					"Password Confirm Error"));
+			ctx.addMessage("registerForm:passwordConfirm", new FacesMessage("Password Confirm Error"));
 			toReturn = false;
 		}
 		return toReturn;
@@ -134,6 +135,14 @@ public class Register {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCard() {
+		return card;
+	}
+
+	public void setCard(String card) {
+		this.card = card;
 	}
 
 }

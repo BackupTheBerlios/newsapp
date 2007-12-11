@@ -153,10 +153,6 @@
   <validator-id>EmailValidator</validator-id>
   <validator-class>ch.bfh.euro08.jsf.beans.EmailValidator</validator-class>
  </validator>
- <validator>
-  <validator-id>CardValidator</validator-id>
-  <validator-class>ch.bfh.euro08.jsf.beans.CardValidator</validator-class>
- </validator>
  <!-- application settings -->
  <application>
   <locale-config>

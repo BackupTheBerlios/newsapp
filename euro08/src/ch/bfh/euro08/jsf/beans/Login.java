@@ -76,6 +76,7 @@ public class Login {
 			
 			// Set Activated Flag
 			user.setActive(true);
+			
 			// Set Activated-Session Variable
 			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
 		

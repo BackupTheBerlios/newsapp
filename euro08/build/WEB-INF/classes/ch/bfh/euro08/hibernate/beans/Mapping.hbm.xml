@@ -25,7 +25,6 @@
   <property generated="never" lazy="false" name="active"/>
   <property generated="never" lazy="false" name="password"/>
   <property generated="never" lazy="false" name="superuser"/>
-  <property name="card"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Category" table="category">
   <id name="id" type="integer">

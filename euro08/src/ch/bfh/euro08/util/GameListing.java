@@ -18,13 +18,12 @@ public class GameListing {
 	private Date datetime;
 	private String team1;
 	private String team2;
-	private int quantity;
 	private String category;
 	private int price;
 	private int orderID;
 
 	public GameListing(Ticket ticket, String stade, Date datetime,
-			String team1, String team2, int quantity, String category,
+			String team1, String team2, String category,
 			String country, int price, int orderID) {
 		super();
 		this.ticket = ticket;
@@ -33,7 +32,6 @@ public class GameListing {
 		this.datetime = datetime;
 		this.team1 = team1;
 		this.team2 = team2;
-		this.quantity = quantity;
 		this.category = category;
 		this.price = price;
 		this.orderID = orderID;
@@ -54,26 +52,18 @@ public class GameListing {
 
 	public void request() {
 
-		System.out.println("QUANTITY: " + quantity);
-		if (quantity < 1) {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(
-							"Please insert only quantities bigger than 0."));
-		} else {
 			Session session = HibernateUtil.getSessionFactory()
 					.getCurrentSession();
 			session.beginTransaction();
 
 			try {
 				User managedUser = (User) JSFUtil.getManagedObject("user");
-				session.saveOrUpdate(new Ordering(quantity, false, ticket,
+				session.saveOrUpdate(new Ordering(1, false, ticket,
 						managedUser));
 				session.getTransaction().commit();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 	}
 
 	public String getStade() {
@@ -140,12 +130,5 @@ public class GameListing {
 		this.ticket = ticket;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 }
