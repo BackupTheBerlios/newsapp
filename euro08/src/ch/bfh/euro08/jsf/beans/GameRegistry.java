@@ -20,12 +20,14 @@ import ch.bfh.euro08.hibernate.beans.User;
 import ch.bfh.euro08.util.GameListing;
 import ch.bfh.euro08.util.HibernateUtil;
 import ch.bfh.euro08.util.JSFUtil;
+import ch.bfh.euro08.util.RolloutListing;
 
 public class GameRegistry {
 
 	private UIData data = null;
 	private UIData data2 = null;
 	private UIData wonData = null;
+	private UIData rolloutData = null;
 
 	public boolean getAnyLeft()
 	{
@@ -137,7 +139,7 @@ public class GameRegistry {
 	
 	public List getRolloutGames(){
 		
-		List<GameListing> gameList = new ArrayList<GameListing>();
+		List<RolloutListing> gameList = new ArrayList<RolloutListing>();
 		List<Ticket> ticket_result = null;
 		List<Integer> order_result = null;
 		Query q = null;
@@ -166,14 +168,16 @@ public class GameRegistry {
 			order_result = q.list();
 			int seats = order_result.get(0);
 			
-			
-			
-			
+			gameList.add(new RolloutListing(ticket.getMatch_fkey().getStade_fkey().getName(),
+					ticket.getMatch_fkey().getStade_fkey().getCountry(),
+					ticket.getMatch_fkey().getDatetime(), ticket.getMatch_fkey().getTeam1_fkey().getCountry(),
+					ticket.getMatch_fkey().getTeam2_fkey().getCountry(), ticket.getCategory_fkey().getName(),
+					requested,seats));
 		}
 		
 		
-		Comparator<GameListing> comp =  new Comparator<GameListing>(){
-			public int compare(GameListing arg0, GameListing arg1) {
+		Comparator<RolloutListing> comp =  new Comparator<RolloutListing>(){
+			public int compare(RolloutListing arg0, RolloutListing arg1) {
 	               Date d1 = arg0.getDatetime();
 	               Date d2 = arg1.getDatetime();
 	               return d1.compareTo(d2);
@@ -342,6 +346,14 @@ public class GameRegistry {
 
 	public void setWonData(UIData wonData) {
 		this.wonData = wonData;
+	}
+
+	public UIData getRolloutData() {
+		return rolloutData;
+	}
+
+	public void setRolloutData(UIData rolloutData) {
+		this.rolloutData = rolloutData;
 	}
 
 

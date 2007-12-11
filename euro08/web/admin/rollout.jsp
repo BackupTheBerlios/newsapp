@@ -42,10 +42,10 @@
        
         
 <h:dataTable id="rolloutTable" rows="100"
-                    value="#{GameRegistry.rollout}" 
+                    value="#{GameRegistry.rolloutGames}" 
                              var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
-                             width="100%" binding="#{GameRegistry.data2}">
+                             width="100%" binding="#{GameRegistry.rolloutData}">
 
                   <h:column>
                     <f:facet name="header">
@@ -77,10 +77,10 @@
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Cat."/>
+                       <h:outputText value="Statistic"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category}"/>
+                   <h:outputText value="#{game.requested_seats} req / #{game.available_seats} av }"/>
                   </h:column>   
                   
 
