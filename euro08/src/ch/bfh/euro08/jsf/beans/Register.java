@@ -1,6 +1,8 @@
 package ch.bfh.euro08.jsf.beans;
 
 
+import java.util.Random;
+
 import javax.faces.context.*;
 import javax.faces.application.*;
 
@@ -17,6 +19,7 @@ public class Register {
 	private String passwordConfirm;
 	private String email;
 	private String emailConfirm;
+	private String activationcode;
 	private String card;
 	
 	private final static String AUTH_USER = "Authorized_User";
@@ -30,14 +33,17 @@ public class Register {
 		String toReturn = "failure";
 
 		if (validateData()) {
-
+			// generate a Random- String 
+			Random r = new Random();
+			String activationcode = Long.toString(Math.abs(r.nextLong()), 36);
+			
 			User newUser = new User();
 			  
 			newUser.setFirstname(firstname);
 			newUser.setLastname(lastname);
 			newUser.setEmail(email);
 			newUser.setPassword(password);
-			newUser.setActivationcode("activationcode");
+			newUser.setActivationcode(activationcode);
 			newUser.setCard(card);
 			  
 			UserRegistry ManagedUserRegistry = (UserRegistry) JSFUtil.getManagedObject("UserRegistry");
@@ -143,6 +149,14 @@ public class Register {
 
 	public void setCard(String card) {
 		this.card = card;
+	}
+
+	public String getActivationcode() {
+		return activationcode;
+	}
+
+	public void setActivationcode(String activationcode) {
+		this.activationcode = activationcode;
 	}
 
 }
