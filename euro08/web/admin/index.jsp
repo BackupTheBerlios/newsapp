@@ -27,6 +27,7 @@
             <div id="sidebar1">
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
+			<h:commandLink value="Home" action="login" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>

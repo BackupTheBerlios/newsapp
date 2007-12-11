@@ -26,6 +26,10 @@ public class GameListing {
 		this.category = category;
 		this.price = price;
 	}
+	
+	public void delete(){
+		System.out.println("DELTE AUS GAMELISTING: " + id);
+	}
 	public int getId() {
 		return id;
 	}

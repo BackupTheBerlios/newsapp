@@ -24,15 +24,18 @@
       <div id="header">
         <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
-      <div id="sidebar1">
+            <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><a href="games.jsp">View all Games</a><br /></p>
-        <p>View Order<br />
-        View Your Tickets<!-- end #sidebar1 --></p>
+        <h:form id="app_index_logout">
+		<h:commandLink value="Home" action="login" /><br />
+		<h:commandLink value="View Tickets" action="games" />
+		<br /><br />
+        	<h:commandButton value="Logout" action="#{login.logout}" />
+        </h:form>
+        <br />
       </div>
       <div id="mainContent">
       <div id="gameListing">
-        <h:form id="games">
         <h:message for="ticket" styleClass="formUserError"/>
         	<h2><h:outputText rendered="#{GameRegistry.someOrdered}" value="All Matches you requested tickets for:"/></h2>
         	<h:dataTable id="orderedMatchesTable" rows="100" rendered="#{GameRegistry.someOrdered}"
@@ -98,9 +101,9 @@
                        <h:graphicImage url="images/icons/soccer.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
-                    <h:form>
+                    <h:form id="delete">
                     	<h:inputHidden value="#{GameRegistry.delete_number}" />
-                    	<h:commandButton value="Delete" action="#{GameRegistry.delete}" />
+                    	<h:commandButton value="Delete"  action="#{game.delete}" />
                     </h:form>
                   </h:column>
                   
@@ -169,11 +172,11 @@
                   </h:column>
 
                 </h:dataTable>
-        </h:form>
         <p><br />
         </p>
-        <!-- end #mainContent --></div></div>
-    	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
+        
+        </div></div>
+ 
       <div id="footer">
         <p>Lars Schnyder, Lorenz Grimm</p>
         <!-- end #footer --></div>

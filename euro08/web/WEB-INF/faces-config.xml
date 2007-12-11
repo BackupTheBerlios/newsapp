@@ -122,6 +122,10 @@
    <to-view-id>/app/games.jsp</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>home</from-outcome>
+   <to-view-id>/app/index.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/register.jsp</from-view-id>
