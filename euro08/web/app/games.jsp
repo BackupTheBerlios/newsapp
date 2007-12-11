@@ -49,7 +49,7 @@
                       <h:outputText value="Date"/>
                       </h:commandLink>
                       <h:graphicImage url="images/icons/date.gif" height="13"
-                                      width="9" rendered="#{GameRegistry.showSortUserIdIcon}"/>                                      
+                                      width="9"/>                                      
                       </h:panelGroup>
                     </f:facet>
                     <h:outputText value="#{game.datetime}"/>

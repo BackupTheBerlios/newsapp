@@ -32,7 +32,7 @@
   </id>
   <property generated="never" lazy="false" name="name"/>
  </class>
- <class name="ch.bfh.euro08.hibernate.beans.Order" table="order">
+ <class name="ch.bfh.euro08.hibernate.beans.Ordering" table="ordering">
   <id name="id">
    <generator class="increment"/>
   </id>

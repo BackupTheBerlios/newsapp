@@ -9,7 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import ch.bfh.euro08.hibernate.beans.Match;
-import ch.bfh.euro08.hibernate.beans.Order;
+import ch.bfh.euro08.hibernate.beans.Ordering;
 import ch.bfh.euro08.hibernate.beans.Stade;
 import ch.bfh.euro08.hibernate.beans.Team;
 import ch.bfh.euro08.hibernate.beans.Ticket;
@@ -28,14 +28,14 @@ public class GameRegistry {
 		List<GameListing> gameList = new ArrayList<GameListing>();
 		
 		Query q = null;
-		List<Order> order_results = null;
+		List<Ordering> order_results = null;
 		List<Ticket> ticket_results = null;
 		List<Match> match_results = null;
 		List<Team> team_results = null;
 		List<Stade> stade_results = null;
 		
 		  User managedUserBean = 
-		     (User)JSFUtil.getManagedObject("UserBean");  
+		     (User)JSFUtil.getManagedObject("user");  
 		     
 		  int userid = managedUserBean.getId();
 
@@ -43,51 +43,20 @@ public class GameRegistry {
 		session.beginTransaction();
 		
 		//ORDER
-		q = session.createQuery("SELECT FROM `order` WHERE order.user_fkey = :inuserid");
+		q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid");
 		q.setParameter("inuserid", userid);
 		order_results = q.list();
 
 		for (int i = 0; i < order_results.size(); i++) {
-			Order order = order_results.get(i);
+			System.out.println("found tickets");
+			Ordering order = order_results.get(i);
 			
-			//TICKET
-			q = session.createQuery("SELECT FROM `order` WHERE order.user_fkey = :inticketfkey");
-			q.setParameter("inticketfkey", order.getTicket_fkey());
-			ticket_results = q.list();
-
-			Ticket ticket = ticket_results.get(0);
-			
-			//MATCH
-			q = session.createQuery("SELECT FROM `match` WHERE order.user_fkey = :inmatchfkey");
-			q.setParameter("inmatchfkey", ticket.getMatch_fkey());
-			match_results = q.list();
-			
-			Match match = match_results.get(0);
-			
-			//STADE
-			q = session.createQuery("SELECT FROM `stade` WHERE team.user_fkey = :instadefkey");
-			q.setParameter("instadefkey", match.getStade_fkey());
-			stade_results = q.list();
-			
-			Stade stade = stade_results.get(0);
-			
-			//TEAM1
-			q = session.createQuery("SELECT FROM `team` WHERE team.team1_fkey = :inteam1fkey");
-			q.setParameter("inteam1fkey", match.getTeam1_fkey());
-			match_results = q.list();
-			
-			Team team1 = team_results.get(0);
-			
-			//TEAM2
-			q = session.createQuery("SELECT FROM `team` WHERE team.team2_fkey = :inteam2fkey");
-			q.setParameter("inteam2fkey", match.getTeam1_fkey());
-			match_results = q.list();
-			
-			Team team2 = team_results.get(0);
-			
-			gameList.add(new GameListing(order.getId(), stade.getName(), match.getDatetime(), team1.getCountry(), team2.getCountry(), order.getQuantity()));
-			
-					
+			gameList.add(new GameListing(order.getId(),
+					order.getTicket_fkey().getMatch_fkey().getStade_fkey().getName(),
+					order.getTicket_fkey().getMatch_fkey().getDatetime(),
+					order.getTicket_fkey().getMatch_fkey().getTeam1_fkey().getCountry(),
+					order.getTicket_fkey().getMatch_fkey().getTeam2_fkey().getCountry(),
+					order.getQuantity()));
 		}
 		
 		session.close();

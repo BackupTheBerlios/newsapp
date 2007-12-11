@@ -1,6 +1,6 @@
 package ch.bfh.euro08.hibernate.beans;
 
-public class Order {
+public class Ordering {
 	private int id;
 	private int quantity;
 	private boolean status;

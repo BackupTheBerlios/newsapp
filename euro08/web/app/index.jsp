@@ -30,6 +30,7 @@
         	<h:commandLink value="View Tickets" action="games" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>
+        <br />
       </div>
       <div id="mainContent">
         <h2>Welcome</h2>
