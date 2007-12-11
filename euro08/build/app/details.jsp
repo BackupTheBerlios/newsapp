@@ -22,41 +22,31 @@
 
     <div id="container"> 
       <div id="header">
-        <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Admininterface  - Euro 08  Ticketing System</h1>
+        <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
             <div id="sidebar1">
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
-			<h:commandLink value="Home" action="admin" /><br />
-        	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
+		<h:commandLink value="Home" action="login" /><br />
+		<h:commandLink value="View Tickets" action="games" />
+		<br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>
         <br />
       </div>
       <div id="mainContent">
-        <h2>Welcome</h2>
-        <h:form id="admin_index_userInfo">
-        <p>Your Personal Data:</p>
-        <table width="200" border="">
-          <tr>
-            <td>Firstname</td>
-            <td><h:outputText value="#{user.firstname}"/></td>
-          </tr>
-          <tr>
-            <td>Lastname</td>
-            <td><h:outputText value="#{user.lastname}"/></td>
-          </tr>
-          <tr>
-            <td>E-Mail</td>
-            <td><h:outputText value="#{user.email}"/></td>
-          </tr>
-        </table>
+       <br /><h:messages globalOnly="true" styleClass="formUserError"/>
+      <div id="gameListing">
+      
+			   
+                  
+                </h:dataTable>
+                <h:form id="games">
+                	<h3><h:commandLink action="games" value="Back.." /></h3>
+                </h:form>
         
-        </h:form>
-        <p><br />
-        </p>
-        <!-- end #mainContent --></div>
-    	<!-- Dieses clear-Element sollte direkt auf das #mainContent-div folgen, um das #container-div anzuweisen, alle untergeordneten Floats aufzunehmen. --><br class="clearfloat" />
+        </div></div>
+ 
       <div id="footer">
         <p>Lars Schnyder, Lorenz Grimm</p>
         <!-- end #footer --></div>

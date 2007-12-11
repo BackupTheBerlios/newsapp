@@ -34,59 +34,54 @@
         <br />
       </div>
       <div id="mainContent">
-      <h2>Ticket Rollout</h2>
-       <b>Do Rollout</b> 
-       <h:form id="admin_rollout_rollout">
-       	<h:commandButton action="#{rollout.rollout}" value="Rollout now!" />
-       </h:form>
-       
-        
-<h:dataTable id="rolloutTable" rows="100"
-                    value="#{GameRegistry.rollout}" 
-                             var="game" rowClasses="list-row-odd,list-row-even" 
+        <h2>Registerd Users</h2>
+        <h:form id="admin_users_change">
+        <h:dataTable id="userlist" rows="100" value="#{UserRegistry.allUsers}"
+                             var="users" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
-                             width="100%" binding="#{GameRegistry.data2}">
-
-                  <h:column>
-                    <f:facet name="header">
-                     <h:panelGroup>
-                       <h:outputText value="Date"/>
-                       </h:panelGroup>
-                    </f:facet>
-                   <h:outputText value="#{game.datetime}"/>
-                  </h:column>
-                  
+                             width="100%" binding="#{UserRegistry.data}">
+                                   
                    <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Stade"/>
+                       <h:outputText value="Firstname"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.stade}, #{game.country}"/>
+                   <h:outputText value="#{users.firstname}"/>
                   </h:column>  
                  
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Teams"/>
+                       <h:outputText value="Lastname"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.team1} - #{game.team2}"/>
+                   <h:outputText value="#{users.lastname}"/>
                   </h:column>  
                   
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Cat."/>
+                       <h:outputText value="Email"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category}"/>
+                   <h:outputText value="#{users.superuser}"/>
                   </h:column>   
                   
-
-
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value=""/>
+                       </h:panelGroup>
+                    </f:facet>
+                    <h:form id="superuser">
+                    	<h:commandButton value="Make Superuser"  action="#{users.superuser}" />
+                    </h:form>
+                  </h:column>
+                  
                 </h:dataTable>
         
+        </h:form>
         <p><br />
         </p>
         <!-- end #mainContent --></div>

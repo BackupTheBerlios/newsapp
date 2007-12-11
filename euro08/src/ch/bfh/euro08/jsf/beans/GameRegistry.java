@@ -26,7 +26,6 @@ public class GameRegistry {
 	private UIData data = null;
 	private UIData data2 = null;
 	private UIData wonData = null;
-	private int request_quantity;
 
 	public boolean getAnyLeft()
 	{
@@ -70,7 +69,7 @@ public class GameRegistry {
 			q.setParameter("inuserid", userid);
 			order_results = q.list();
 			
-			if(order_results.size() > 1)return true;
+			if(order_results.size() > 0)return true;
 		}
 			
 		return false;
@@ -126,15 +125,68 @@ public class GameRegistry {
 		session.beginTransaction();
 
 		// ORDER
-		q = session.createQuery("select from Ordering ord where ord.status = 1 and ord.user_fkey = :inuserid");
+		q = session.createQuery("select from Ordering ord where ord.status = 1 and ord.user_fkey <> :inuserid");
 			q.setParameter("inuserid", userid);
 		order_results = q.list();
 	
 		if (order_results.size() > 0)
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 
+	
+	public List getRolloutGames(){
+		
+		List<GameListing> gameList = new ArrayList<GameListing>();
+		List<Ticket> ticket_result = null;
+		List<Integer> order_result = null;
+		Query q = null;
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		
+		
+		q = session.createQuery("select from Ticket");
+		ticket_result = q.list();
+		
+		for (int i = 0; i < ticket_result.size(); i++) {
+			Ticket ticket = ticket_result.get(i);
+			
+			// REQUESTED 
+			q = session.createQuery("select SUM(ord.ticket_fkey) as sum from ordering ord where ord.ticket_fkey = :inticket group by ord.ticket_fkey ");
+			q.setParameter("inticket", ticket.getId());
+			order_result = q.list();
+			int requested = order_result.get(0);
+			
+			
+			// SEATS 
+			q = session.createQuery("select * from StadeCategory std where std.stade_fkey = :instade and std.category_fkey = :incat");
+			q.setParameter("instade", ticket.getMatch_fkey().getStade_fkey().getId());
+			q.setParameter("incat", ticket.getCategory_fkey().getId());
+			order_result = q.list();
+			int seats = order_result.get(0);
+			
+			
+			
+			
+		}
+		
+		
+		Comparator<GameListing> comp =  new Comparator<GameListing>(){
+			public int compare(GameListing arg0, GameListing arg1) {
+	               Date d1 = arg0.getDatetime();
+	               Date d2 = arg1.getDatetime();
+	               return d1.compareTo(d2);
+			}
+		};
+	           
+		Collections.sort(gameList, comp);
+		
+		session.close();
+		return gameList;
+	}
+	
+	
 	public List getAllGames() {
 
 		List<GameListing> gameList = new ArrayList<GameListing>();
@@ -170,6 +222,7 @@ public class GameRegistry {
 	           
 		Collections.sort(gameList, comp);
 		
+		session.flush();
 		session.close();
 		return gameList;
 	}
@@ -282,13 +335,6 @@ public class GameRegistry {
 		this.data2 = data2;
 	}
 
-	public int getRequest_quantity() {
-		return request_quantity;
-	}
-
-	public void setRequest_quantity(int request_quantity) {
-		this.request_quantity = request_quantity;
-	}
 
 	public UIData getWonData() {
 		return wonData;

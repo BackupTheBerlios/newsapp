@@ -25,35 +25,6 @@ public class Rollout {
 	
 	public String rollout() {
 
-		List<Match> match = null;
-		List<StadeCategory> stadion = null;
-		
-		Query q = null;
-
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-
-
-		q = session.createQuery("select from Match");
-		match = q.list();
-		
-		
-		for (int i = 0; i < match.size(); i++) {
-			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Match: " + match.get(i).getStade_fkey().getId());
-			
-			// get
-			
-			
-			q = session.createQuery("select from StadeCategory std where std.stade_fkey = :instade_fkey");
-			q.setParameter("instade_fkey", match.get(i).getStade_fkey().getId());
-			stadion = q.list();
-			stadion.get(1).getTickets();
-			for (int j = 0; j < stadion.size(); j++) {
-				System.out.println("!!!!!!!!!!!!" + i + "!!!!!!!!!!!!!!!!!!Category: " + stadion.get(j).getCategory_fkey().getName() + " Capacity: " + stadion.get(j).getTickets());
-			}
-			
-		}
-		session.close();
 		
 		return "success";
 	

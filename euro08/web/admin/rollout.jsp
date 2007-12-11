@@ -41,8 +41,8 @@
        </h:form>
        
         
-<h:dataTable id="allMatchesTable" rows="100"
-                    value="#{GameRegistry.allGames}" 
+<h:dataTable id="rolloutTable" rows="100"
+                    value="#{GameRegistry.rollout}" 
                              var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
                              width="100%" binding="#{GameRegistry.data2}">
@@ -83,17 +83,7 @@
                    <h:outputText value="#{game.category}"/>
                   </h:column>   
                   
-                  <h:column rendered="#{GameRegistry.anyLeft}">
-                   <f:facet name="header">
-                    <h:panelGroup>
-                      </h:panelGroup>
-                   </f:facet>
-                   <h:panelGroup>
-                    <h:form id="request">
-					  <h:commandButton value="Request" action="#{game.request}" />
-                    </h:form>
-				   </h:panelGroup>
-                  </h:column>
+
 
                 </h:dataTable>
         

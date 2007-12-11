@@ -54,6 +54,11 @@
   <managed-bean-class>ch.bfh.euro08.util.GameListing</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>rollout</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.Rollout</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/app/index.jsp</from-view-id>
   <navigation-case>
@@ -115,6 +120,7 @@
   <navigation-case>
    <from-outcome>login</from-outcome>
    <to-view-id>/login.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
   <navigation-case>
    <from-action>#{login.logout}</from-action>
@@ -130,14 +136,26 @@
   <navigation-case>
    <from-outcome>home</from-outcome>
    <to-view-id>/app/index.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/register.jsp</from-view-id>
+  <from-view-id>/app/games.jsp</from-view-id>
   <navigation-case>
-   <from-action>#{register.register}</from-action>
-   <from-outcome>success</from-outcome>
+   <from-outcome>details</from-outcome>
+   <to-view-id>/app/details.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/app/*</from-view-id>
+  <navigation-case>
+   <from-outcome>home</from-outcome>
    <to-view-id>/app/index.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+    <navigation-case>
+   <from-outcome>ticketmanagement</from-outcome>
+   <to-view-id>/admin/rollout.jsp</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
