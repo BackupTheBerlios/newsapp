@@ -115,6 +115,7 @@
   <navigation-case>
    <from-outcome>login</from-outcome>
    <to-view-id>/login.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
   <navigation-case>
    <from-action>#{login.logout}</from-action>
@@ -132,7 +133,22 @@
    <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/app/games.jsp</from-view-id>
   <navigation-case>
+   <from-outcome>details</from-outcome>
+   <to-view-id>/app/details.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/app/*</from-view-id>
+  <navigation-case>
+   <from-outcome>home</from-outcome>
+   <to-view-id>/app/index.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+    <navigation-case>
    <from-outcome>ticketmanagement</from-outcome>
    <to-view-id>/admin/rollout.jsp</to-view-id>
    <redirect/>

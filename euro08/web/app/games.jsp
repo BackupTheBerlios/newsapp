@@ -36,10 +36,10 @@
       </div>
       <div id="mainContent">
        <br /><h:messages globalOnly="true" styleClass="formUserError"/>
-      <div id="gameListing">
       
-			<h2><h:outputText rendered="#{GameRegistry.rollout}" value="CONGRATULATOINS! You won the following tickets for Euro08:"/></h2>
-        	<h:dataTable id="wonMatchesTable" rows="100" rendered="#{GameRegistry.rollout}"
+      		<h2><h:outputText rendered="#{GameRegistry.notWon}" value="We are  sorry! You did not win any tickets for Euro08."/></h2>
+			<h2><h:outputText rendered="#{GameRegistry.won}" value="CONGRATULATOINS! You won the following tickets for Euro08:"/></h2>
+        	<h:dataTable id="wonMatchesTable" rows="100" rendered="#{GameRegistry.won}"
                     value="#{GameRegistry.wonGames}"
                              var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
@@ -78,24 +78,21 @@
                        <h:outputText value="Cat. / Price"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category} / #{game.price}"/>
-                  </h:column>   
+                   <h:outputText value="#{game.category} / #{game.price} SFR"/>
+                  </h:column>
                   
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value=""/>
+                       <h:outputText value="Picture"/>
                        </h:panelGroup>
                     </f:facet>
-                    <h:form id="delete">
-                    	<h:commandLink value="Details" action="details"/>
-                    </h:form>
+                   <h:graphicImage value="../images/stade/#{game.category}.jpg" />
                   </h:column>
                   
-                </h:dataTable>
+                  </h:dataTable>
                 
-                <h3><h:outputText value="Details for {}" /></h3>
-      
+      <div id="gameListing">
         	<h2><h:outputText rendered="#{GameRegistry.someOrdered}" value="All Matches you requested tickets for (Maximum 4):"/></h2>
         	<h:dataTable id="orderedMatchesTable" rows="100" rendered="#{GameRegistry.someOrdered}"
                     value="#{GameRegistry.orderedGames}"
@@ -136,7 +133,7 @@
                        <h:outputText value="Cat. / Price"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category} / #{game.price}"/>
+                   <h:outputText value="#{game.category} / #{game.price} SFR"/>
                   </h:column>   
                   
                   <h:column>
@@ -150,7 +147,6 @@
                     	<h:commandButton value="Delete"  action="#{game.delete}" />
                     </h:form>
                   </h:column>
-                  
                 </h:dataTable>
                 
                 
@@ -194,7 +190,7 @@
                        <h:outputText value="Cat. / Price"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category} / #{game.price}"/>
+                   <h:outputText value="#{game.category} / #{game.price} SFR"/>
                   </h:column>   
                   
                   <h:column rendered="#{GameRegistry.anyLeft}">
