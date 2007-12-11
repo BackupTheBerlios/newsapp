@@ -7,6 +7,25 @@ public class Ordering {
 	private Ticket ticket_fkey;
 	private User user_fkey;
 	
+	public Ordering(){}
+	
+	public Ordering(int quantity, boolean status, Ticket ticket_fkey,
+			User user_fkey) {
+		super();
+		this.quantity = quantity;
+		this.status = status;
+		this.ticket_fkey = ticket_fkey;
+		this.user_fkey = user_fkey;
+	}
+	public Ordering(int id, int quantity, boolean status, Ticket ticket_fkey,
+			User user_fkey) {
+		super();
+		this.id = id;
+		this.quantity = quantity;
+		this.status = status;
+		this.ticket_fkey = ticket_fkey;
+		this.user_fkey = user_fkey;
+	}
 	public int getId() {
 		return id;
 	}

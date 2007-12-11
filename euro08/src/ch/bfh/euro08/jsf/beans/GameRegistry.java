@@ -26,16 +26,6 @@ public class GameRegistry {
 	private int request_number;
 	private int request_quantity;
 
-	public void delete()
-	{
-		System.out.println("Delete: " + delete_number);
-	}
-	
-	public void request()
-	{
-		System.out.println("Request: " + request_number);
-	}
-
 	public boolean getSomeOrdered() {
 
 		User managedUserBean = (User) JSFUtil.getManagedObject("user");
@@ -47,8 +37,7 @@ public class GameRegistry {
 		session.beginTransaction();
 
 		// ORDER
-		q = session
-				.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
+		q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
 		q.setParameter("inuserid", userid);
 		order_results = q.list();
 
