@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import ch.bfh.euro08.hibernate.beans.Match;
 import ch.bfh.euro08.hibernate.beans.Ordering;
 import ch.bfh.euro08.hibernate.beans.Stade;
+import ch.bfh.euro08.hibernate.beans.StadeCategory;
 import ch.bfh.euro08.hibernate.beans.Team;
 import ch.bfh.euro08.hibernate.beans.Ticket;
 import ch.bfh.euro08.hibernate.beans.User;
@@ -141,7 +142,8 @@ public class GameRegistry {
 		
 		List<RolloutListing> gameList = new ArrayList<RolloutListing>();
 		List<Ticket> ticket_result = null;
-		List<Integer> order_result = null;
+		List<Ordering> order_result = null;
+		List<StadeCategory> stadecategory_result = null;
 		Query q = null;
 		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -155,18 +157,22 @@ public class GameRegistry {
 			Ticket ticket = ticket_result.get(i);
 			
 			// REQUESTED 
-			q = session.createQuery("select SUM(ord.ticket_fkey) as sum from ordering ord where ord.ticket_fkey = :inticket group by ord.ticket_fkey ");
+			q = session.createQuery("select from Ordering ord where ord.ticket_fkey = :inticket");
 			q.setParameter("inticket", ticket.getId());
 			order_result = q.list();
-			int requested = order_result.get(0);
+			int requested = 0;
+			for (int j = 0; j < order_result.size(); j++) {
+				requested++;
+			}
 			
 			
 			// SEATS 
-			q = session.createQuery("select * from StadeCategory std where std.stade_fkey = :instade and std.category_fkey = :incat");
+			q = session.createQuery("select from StadeCategory std where std.stade_fkey = :instade and std.category_fkey = :incat");
 			q.setParameter("instade", ticket.getMatch_fkey().getStade_fkey().getId());
 			q.setParameter("incat", ticket.getCategory_fkey().getId());
-			order_result = q.list();
-			int seats = order_result.get(0);
+			stadecategory_result = q.list();
+			StadeCategory std = stadecategory_result.get(0);
+			int seats = std.getTickets();
 			
 			gameList.add(new RolloutListing(ticket.getMatch_fkey().getStade_fkey().getName(),
 					ticket.getMatch_fkey().getStade_fkey().getCountry(),
