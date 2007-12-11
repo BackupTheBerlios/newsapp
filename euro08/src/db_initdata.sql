@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Erstellungszeit: 11. Dezember 2007 um 18:08
+-- Erstellungszeit: 11. Dezember 2007 um 18:11
 -- Server Version: 5.0.45
 -- PHP-Version: 5.2.3
 
@@ -240,6 +240,7 @@ CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `superuser` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
+  `card` varchar(50) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -247,12 +248,12 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 -- 
 
-INSERT INTO `user` (`firstname`, `lastname`, `password`, `activationcode`, `email`, `id`, `superuser`, `active`) VALUES 
-('admin', 'admin', 'euro08', 'admin', 'admin@euro08.ch', 1, 1, 1),
-('Lars', 'Schnyder', 'euro08', 'euro08', 'schnl1@euro08.ch', 2, 0, 1),
-('Lorenz', 'Grimm', 'euro08', 'euro08', 'griml1@euro08.ch', 3, 0, 1),
-('Hans', 'Muster', 'euro08', 'activationcode', 'hans@muster.ch', 4, 0, 0),
-('Christian', 'Hunziker', 'euro08', 'activationcode', 'chrigu@euro08.ch', 5, 0, 0);
+INSERT INTO `user` (`firstname`, `lastname`, `password`, `activationcode`, `email`, `id`, `superuser`, `active`, `card`) VALUES 
+('admin', 'admin', 'euro08', 'admin', 'admin@euro08.ch', 1, 1, 1, ''),
+('Lars', 'Schnyder', 'euro08', 'euro08', 'schnl1@euro08.ch', 2, 0, 1, ''),
+('Lorenz', 'Grimm', 'euro08', 'euro08', 'griml1@euro08.ch', 3, 0, 1, ''),
+('Hans', 'Muster', 'euro08', 'activationcode', 'hans@muster.ch', 4, 0, 0, ''),
+('Christian', 'Hunziker', 'euro08', 'activationcode', 'chrigu@euro08.ch', 5, 0, 0, '');
 
 -- 
 -- Constraints der exportierten Tabellen

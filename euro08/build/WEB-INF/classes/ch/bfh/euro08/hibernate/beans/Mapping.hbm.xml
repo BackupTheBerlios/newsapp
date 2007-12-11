@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ch.bfh.euro08.beans.User">
+ <class name="ch.bfh.euro08.hibernate.beans.Match" table="game">
+  <id name="id" type="integer">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="datetime"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Team"
+   column="team1_fkey" name="team1_fkey"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Team"
+   column="team2_fkey" name="team2_fkey"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Stade"
+   column="stade_fkey" name="stade_fkey"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.User" table="user">
+  <id name="id" type="integer">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="firstname"/>
+  <property generated="never" lazy="false" name="lastname"/>
+  <property generated="never" lazy="false" name="email"/>
+  <property generated="never" lazy="false" name="activationcode"/>
+  <property generated="never" lazy="false" name="active"/>
+  <property generated="never" lazy="false" name="password"/>
+  <property generated="never" lazy="false" name="superuser"/>
+  <property name="card"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Category" table="category">
+  <id name="id" type="integer">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="name"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Ordering" table="ordering">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="quantity"/>
+  <property generated="never" lazy="false" name="status"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Ticket"
+   column="ticket_fkey" name="ticket_fkey"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.User"
+   column="user_fkey" name="user_fkey"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Stade" table="stade">
+  <id name="id"/>
+  <property generated="never" lazy="false" name="name"/>
+  <property generated="never" lazy="false" name="country"/>
+  <property generated="never" lazy="false" name="city"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.StadeCategory" table="stadecategory">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="description"/>
+  <property generated="never" lazy="false" name="tickets"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Category"
+   column="category_fkey" name="category_fkey"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Stade"
+   column="stade_fkey" name="stade_fkey"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Team" table="team">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="country"/>
+ </class>
+ <class name="ch.bfh.euro08.hibernate.beans.Ticket" table="ticket">
+  <id name="id">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="price"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Category"
+   column="category_fkey" insert="false" name="category_fkey" update="false"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Match"
+   column="match_fkey" insert="false" name="match_fkey" update="false"/>
+ </class>
+</hibernate-mapping>

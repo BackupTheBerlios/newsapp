@@ -1,10 +1,12 @@
 package ch.bfh.euro08.util;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import ch.bfh.euro08.hibernate.beans.Ordering;
@@ -23,8 +25,8 @@ public class GameListing {
 	private int orderID;
 
 	public GameListing(Ticket ticket, String stade, Date datetime,
-			String team1, String team2, String category,
-			String country, int price, int orderID) {
+			String team1, String team2, String category, String country,
+			int price, int orderID) {
 		super();
 		this.ticket = ticket;
 		this.stade = stade;
@@ -52,18 +54,29 @@ public class GameListing {
 
 	public void request() {
 
-			Session session = HibernateUtil.getSessionFactory()
-					.getCurrentSession();
-			session.beginTransaction();
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		Query q = null;
+		List<Ordering> order_results = null;
+		int userid = managedUserBean.getId();
 
-			try {
-				User managedUser = (User) JSFUtil.getManagedObject("user");
-				session.saveOrUpdate(new Ordering(1, false, ticket,
-						managedUser));
-				session.getTransaction().commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session
+				.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
+		q.setParameter("inuserid", userid);
+		order_results = q.list();
+
+		if (order_results.size() > 3) return;
+
+		try {
+			User managedUser = (User) JSFUtil.getManagedObject("user");
+			session.saveOrUpdate(new Ordering(1, false, ticket, managedUser));
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getStade() {
@@ -129,6 +142,5 @@ public class GameListing {
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
 	}
-
 
 }
