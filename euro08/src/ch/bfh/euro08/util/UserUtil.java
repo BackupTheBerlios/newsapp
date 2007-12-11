@@ -17,6 +17,7 @@ public class UserUtil
     userTo.setSuperuser(userFrom.isSuperuser());
     userTo.setActive(userFrom.isActive());
     userTo.setActivationcode(userFrom.getActivationcode());
+    userTo.setCard(userFrom.getCard());
   }
   
 

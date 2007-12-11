@@ -38,7 +38,7 @@
         <h2>Welcome</h2>
         <h:form id="app_index_userInfo">
         <p>Your Personal Data:</p>
-        <table width="200" border="1">
+        <table width="200" border="0">
           <tr>
             <td>Firstname</td>
             <td><h:outputText value="#{user.firstname}"/></td>
