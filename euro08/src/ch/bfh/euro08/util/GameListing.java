@@ -3,9 +3,6 @@ package ch.bfh.euro08.util;
 import java.sql.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -40,15 +37,29 @@ public class GameListing {
 	}
 
 	public void delete() {
+
+		List<Ordering> order_results = null;
+		Query q = null;
+
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		session.flush();
 
-		try {
-			Ordering ord = (Ordering) session.get(Ordering.class, orderID);
-			session.delete(ord);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		q = session
+				.createQuery("select from Ordering ord where ord.status = 1");
+		order_results = q.list();
+
+		if (order_results.size() < 1) {
+
+			try {
+				Ordering ord = (Ordering) session.get(Ordering.class, orderID);
+				session.delete(ord);
+				session.getTransaction().commit();
+				session.flush();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 	}
 
@@ -61,21 +72,24 @@ public class GameListing {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		session.flush();
 
 		// ORDER
 		q = session
-				.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
+				.createQuery("select from Ordering ord where ord.user_fkey = :inuserid");
 		q.setParameter("inuserid", userid);
 		order_results = q.list();
 
-		if (order_results.size() > 3) return;
+		if (order_results.size() < 4) {
 
-		try {
-			User managedUser = (User) JSFUtil.getManagedObject("user");
-			session.saveOrUpdate(new Ordering(1, false, ticket, managedUser));
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				User managedUser = (User) JSFUtil.getManagedObject("user");
+				session.save(new Ordering(1, false, ticket, managedUser));
+				session.getTransaction().commit();
+				session.flush();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

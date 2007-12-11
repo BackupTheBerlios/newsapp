@@ -93,7 +93,8 @@
                   </h:column>
                   
                 </h:dataTable>
-      
+                
+                <h3><h:outputText value="Details for {}" /></h3>
       
         	<h2><h:outputText rendered="#{GameRegistry.someOrdered}" value="All Matches you requested tickets for (Maximum 4):"/></h2>
         	<h:dataTable id="orderedMatchesTable" rows="100" rendered="#{GameRegistry.someOrdered}"
@@ -145,6 +146,7 @@
                        </h:panelGroup>
                     </f:facet>
                     <h:form id="delete">
+                    	<h:inputHidden  />
                     	<h:commandButton value="Delete"  action="#{game.delete}" />
                     </h:form>
                   </h:column>
@@ -152,7 +154,7 @@
                 </h:dataTable>
                 
                 
-            <h2><h:outputText value="All Matches:"/></h2>
+            <h2><h:outputText rendered="#{GameRegistry.notYetRollout}" value="All Matches:"/></h2>
         	<h:dataTable id="allMatchesTable" rows="100"
                     value="#{GameRegistry.allGames}" rendered="#{GameRegistry.notYetRollout}"
                              var="game" rowClasses="list-row-odd,list-row-even" 

@@ -1,7 +1,12 @@
 package ch.bfh.euro08.jsf.beans;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+
+import javax.faces.component.UIData;
 
 
 
@@ -9,14 +14,21 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 
+import ch.bfh.euro08.hibernate.beans.Match;
+import ch.bfh.euro08.hibernate.beans.Ordering;
+import ch.bfh.euro08.hibernate.beans.Stade;
+import ch.bfh.euro08.hibernate.beans.Team;
+import ch.bfh.euro08.hibernate.beans.Ticket;
 import ch.bfh.euro08.hibernate.beans.User;
+import ch.bfh.euro08.util.GameListing;
 import ch.bfh.euro08.util.HibernateUtil;
+import ch.bfh.euro08.util.JSFUtil;
+import ch.bfh.euro08.util.UserListing;
 
 
 public class UserRegistry {
-
-	private List RegisteredUsers = new ArrayList();
-
+	private UIData data = null;
+	
 	public UserRegistry() {}
 
 	public String AddRegisteredUser(User newUser) {
@@ -79,6 +91,40 @@ public class UserRegistry {
 			return true;
 		}
 		return false;
+	}
+	
+	public List getAllUsers() {
+		List<UserListing> userList = new ArrayList<UserListing>();
+		List<User> users_results = null;
+		Query q = null;
+		
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		int userid = managedUserBean.getId();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session.createQuery("select from User");
+		users_results = q.list();
+		
+		for (int i = 0; i < users_results.size(); i++) {
+			System.out.println("found ordered tickets");
+			User user = users_results.get(i);
+
+			userList.add(new UserListing(user.getFirstname(), user.getLastname(),
+					user.getEmail(), user.isSuperuser()));
+		}
+
+		session.close();
+		return userList;
+	}
+
+	public UIData getData() {
+		return data;
+	}
+
+	public void setData(UIData data) {
+		this.data = data;
 	}
 }
 	

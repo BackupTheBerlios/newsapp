@@ -2,7 +2,7 @@
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
--- Host: localhost
+-- Host: localhost 
 -- Erstellungszeit: 11. Dezember 2007 um 18:11
 -- Server Version: 5.0.45
 -- PHP-Version: 5.2.3

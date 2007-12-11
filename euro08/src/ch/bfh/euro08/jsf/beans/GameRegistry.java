@@ -59,13 +59,20 @@ public class GameRegistry {
 		session.beginTransaction();
 
 		// ORDER
-		q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid and ord.status = 0");
-		q.setParameter("inuserid", userid);
+		q = session.createQuery("select from Ordering ord where ord.status = 1");
 		order_results = q.list();
 	
 
-		if (order_results.size() > 0)
-			return true;
+		if (order_results.size() < 1)
+		{
+			// ORDER
+			q = session.createQuery("select from Ordering ord where ord.user_fkey = :inuserid");
+			q.setParameter("inuserid", userid);
+			order_results = q.list();
+			
+			if(order_results.size() > 1)return true;
+		}
+			
 		return false;
 	}
 	
