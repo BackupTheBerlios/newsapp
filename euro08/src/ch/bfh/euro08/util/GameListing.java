@@ -11,9 +11,10 @@ public class GameListing {
 	private String team2;
 	private int ticketcount;
 	private String category;
+	private int price;
 	
 	public GameListing(int id, String stade, Date datetime, String team1,
-			String team2, int ticketcount, String category, String country) {
+			String team2, int ticketcount, String category, String country, int price) {
 		super();
 		this.id = id;
 		this.stade = stade;
@@ -23,6 +24,7 @@ public class GameListing {
 		this.team2 = team2;
 		this.ticketcount = ticketcount;
 		this.category = category;
+		this.price = price;
 	}
 	public int getId() {
 		return id;
@@ -71,6 +73,12 @@ public class GameListing {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int prize) {
+		this.price = prize;
 	}
 
 }

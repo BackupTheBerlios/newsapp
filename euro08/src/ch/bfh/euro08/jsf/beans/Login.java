@@ -47,9 +47,9 @@ public class Login {
 			managedUserBean.setLoggedIn(true);
 			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
 
-			if (!currentUser.isActivated()) {
+			if (!currentUser.isActive()) {
 				// ask for activation code
-				System.out.println(currentUser.isActivated() + " ask for activation code");
+				System.out.println(currentUser.isActive() + " ask for activation code");
 				return "activationcode";
 			}else{
 				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
@@ -75,7 +75,8 @@ public class Login {
 			System.out.println("Correct Activationcode");
 			
 			// Set Activated Flag
-			user.setActivated(true);
+			user.setActive(true);
+			user.setSuperuser(true);
 		
 			// Persist to Database
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
