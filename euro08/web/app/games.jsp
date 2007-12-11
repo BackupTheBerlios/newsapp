@@ -35,8 +35,8 @@
         <br />
       </div>
       <div id="mainContent">
+       <br /><h:messages globalOnly="true" styleClass="formUserError"/>
       <div id="gameListing">
-        <h:message for="ticket" styleClass="formUserError"/>
         	<h2><h:outputText rendered="#{GameRegistry.someOrdered}" value="All Matches you requested tickets for:"/></h2>
         	<h:dataTable id="orderedMatchesTable" rows="100" rendered="#{GameRegistry.someOrdered}"
                     value="#{GameRegistry.orderedGames}"
@@ -48,8 +48,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Date"/>
-                       <h:graphicImage url="images/icons/date.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.datetime}"/>
                   </h:column>
@@ -58,8 +57,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Stade"/>
-                       <h:graphicImage url="images/icons/date.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.stade}, #{game.country}"/>
                   </h:column>  
@@ -68,8 +66,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Teams"/>
-                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.team1} - #{game.team2}"/>
                   </h:column>  
@@ -78,8 +75,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Cat. / Price"/>
-                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.category} / #{game.price}"/>
                   </h:column>   
@@ -88,10 +84,9 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="#"/>
-                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.ticketcount}"/>
+                   <h:outputText value="#{game.quantity}"/>
                   </h:column>
                   
                   <h:column>
@@ -102,7 +97,6 @@
                       </h:panelGroup>
                     </f:facet>
                     <h:form id="delete">
-                    	<h:inputHidden value="#{GameRegistry.delete_number}" />
                     	<h:commandButton value="Delete"  action="#{game.delete}" />
                     </h:form>
                   </h:column>
@@ -121,8 +115,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Date"/>
-                       <h:graphicImage url="images/icons/date.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.datetime}"/>
                   </h:column>
@@ -131,8 +124,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Stade"/>
-                       <h:graphicImage url="images/icons/date.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.stade}, #{game.country}"/>
                   </h:column>  
@@ -141,8 +133,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Teams"/>
-                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.team1} - #{game.team2}"/>
                   </h:column>  
@@ -151,8 +142,7 @@
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Cat. / Price"/>
-                       <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                      </h:panelGroup>
+                       </h:panelGroup>
                     </f:facet>
                    <h:outputText value="#{game.category} / #{game.price}"/>
                   </h:column>   
@@ -161,13 +151,14 @@
                    <f:facet name="header">
                     <h:panelGroup>
                       <h:outputText value="#"/>
-                      <h:graphicImage url="images/icons/soccer.gif"/>                                      
-                     </h:panelGroup>
+                      </h:panelGroup>
                    </f:facet>
                    <h:panelGroup>
-					  <h:inputText required="true" id="ticket" value="#{register.firstname}"
-					    maxlength="1" size="1"/>
-					    <h:commandButton value="Request" action="#{GameRegistry.request}" />
+                    <h:form id="request">
+					  <h:inputText id="quantity" value="#{game.quantity}"
+					    maxlength="1" size="1"/>&nbsp;
+					  <h:commandButton value="Request" action="#{game.request}" />
+                    </h:form>
 				   </h:panelGroup>
                   </h:column>
 

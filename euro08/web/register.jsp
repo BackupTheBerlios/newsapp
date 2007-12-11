@@ -36,10 +36,9 @@
 
 <div class="center">
 <h:panelGrid columns="2">
-
-  
   <f:facet name="footer">
     <h:panelGroup>
+    <br />
     <h:commandButton value="submit" 
       action="#{register.register}" />
       <br />

@@ -2,36 +2,41 @@ package ch.bfh.euro08.util;
 
 import java.sql.Date;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.hibernate.Session;
 
 import ch.bfh.euro08.hibernate.beans.Ordering;
-
+import ch.bfh.euro08.hibernate.beans.Ticket;
+import ch.bfh.euro08.hibernate.beans.User;
 
 public class GameListing {
-	private int id;
+	private Ticket ticket;
 	private String stade;
 	private String country;
 	private Date datetime;
 	private String team1;
 	private String team2;
-	private int ticketcount;
+	private int quantity;
 	private String category;
 	private int price;
-	private Ordering order = new Ordering();
+	private int orderID;
 
-	public GameListing(int id, String stade, Date datetime, String team1,
-			String team2, int ticketcount, String category, String country,
-			int price) {
+	public GameListing(Ticket ticket, String stade, Date datetime,
+			String team1, String team2, int quantity, String category,
+			String country, int price, int orderID) {
 		super();
-		this.id = id;
+		this.ticket = ticket;
 		this.stade = stade;
 		this.country = country;
 		this.datetime = datetime;
 		this.team1 = team1;
 		this.team2 = team2;
-		this.ticketcount = ticketcount;
+		this.quantity = quantity;
 		this.category = category;
 		this.price = price;
+		this.orderID = orderID;
 	}
 
 	public void delete() {
@@ -39,31 +44,36 @@ public class GameListing {
 		session.beginTransaction();
 
 		try {
-			session.delete(order);
+			Ordering ord = (Ordering) session.get(Ordering.class, orderID);
+			session.delete(ord);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void request() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
 
-		try {
-			session.save(order);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		System.out.println("QUANTITY: " + quantity);
+		if (quantity < 1) {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(
+							"Please insert only quantities bigger than 0."));
+		} else {
+			Session session = HibernateUtil.getSessionFactory()
+					.getCurrentSession();
+			session.beginTransaction();
+
+			try {
+				User managedUser = (User) JSFUtil.getManagedObject("user");
+				session.saveOrUpdate(new Ordering(quantity, false, ticket,
+						managedUser));
+				session.getTransaction().commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getStade() {
@@ -98,14 +108,6 @@ public class GameListing {
 		this.team2 = team2;
 	}
 
-	public int getTicketcount() {
-		return ticketcount;
-	}
-
-	public void setTicketcount(int ticketcount) {
-		this.ticketcount = ticketcount;
-	}
-
 	public String getCategory() {
 		return category;
 	}
@@ -128,6 +130,22 @@ public class GameListing {
 
 	public void setPrice(int prize) {
 		this.price = prize;
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

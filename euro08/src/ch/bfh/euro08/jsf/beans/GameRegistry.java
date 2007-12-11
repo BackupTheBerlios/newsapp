@@ -22,8 +22,6 @@ public class GameRegistry {
 
 	private UIData data = null;
 	private UIData data2 = null;
-	private int delete_number;
-	private int request_number;
 	private int request_quantity;
 
 	public boolean getSomeOrdered() {
@@ -64,12 +62,12 @@ public class GameRegistry {
 			System.out.println("found all tickets");
 			Ticket ticket = ticket_result.get(i);
 
-			gameList.add(new GameListing(ticket.getId(), ticket.getMatch_fkey()
+			gameList.add(new GameListing(ticket, ticket.getMatch_fkey()
 					.getStade_fkey().getName(), ticket.getMatch_fkey()
 					.getDatetime(), ticket.getMatch_fkey().getTeam1_fkey()
 					.getCountry(), ticket.getMatch_fkey().getTeam2_fkey()
 					.getCountry(), 0, ticket.getCategory_fkey().getName(), ticket.getMatch_fkey()
-					.getStade_fkey().getCountry(), ticket.getPrice()));
+					.getStade_fkey().getCountry(), ticket.getPrice(), 0));
 		}
 		
 		return gameList;
@@ -100,7 +98,7 @@ public class GameRegistry {
 			System.out.println("found ordered tickets");
 			Ordering order = order_results.get(i);
 
-			gameList.add(new GameListing(order.getId(), order.getTicket_fkey()
+			gameList.add(new GameListing(order.getTicket_fkey(), order.getTicket_fkey()
 					.getMatch_fkey().getStade_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getDatetime(), order
 					.getTicket_fkey().getMatch_fkey().getTeam1_fkey()
@@ -108,7 +106,7 @@ public class GameRegistry {
 					.getTeam2_fkey().getCountry(), order.getQuantity(), order
 					.getTicket_fkey().getCategory_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getStade_fkey()
-					.getCountry(), order.getTicket_fkey().getPrice()));
+					.getCountry(), order.getTicket_fkey().getPrice(), order.getId()));
 		}
 
 		session.close();
@@ -154,7 +152,7 @@ public class GameRegistry {
 		}
 
 	}
-	
+
 	public void scroll2(int row) {
 
 		int rows = data2.getRows();
@@ -179,28 +177,12 @@ public class GameRegistry {
 		this.data = data;
 	}
 
-	public int getDelete_number() {
-		return delete_number;
-	}
-
-	public void setDelete_number(int delete_number) {
-		this.delete_number = delete_number;
-	}
-
 	public UIData getData2() {
 		return data2;
 	}
 
 	public void setData2(UIData data2) {
 		this.data2 = data2;
-	}
-
-	public int getRequest_number() {
-		return request_number;
-	}
-
-	public void setRequest_number(int request_number) {
-		this.request_number = request_number;
 	}
 
 	public int getRequest_quantity() {
