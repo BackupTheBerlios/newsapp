@@ -54,6 +54,11 @@
   <managed-bean-class>ch.bfh.euro08.util.GameListing</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>rollout</managed-bean-name>
+  <managed-bean-class>ch.bfh.euro08.jsf.beans.Rollout</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/app/index.jsp</from-view-id>
   <navigation-case>

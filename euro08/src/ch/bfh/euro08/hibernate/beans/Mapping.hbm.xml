@@ -25,7 +25,7 @@
   <property generated="never" lazy="false" name="active"/>
   <property generated="never" lazy="false" name="password"/>
   <property generated="never" lazy="false" name="superuser"/>
-  <property name="card"/>
+  <property generated="never" lazy="false" name="card"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Category" table="category">
   <id name="id" type="integer">
@@ -43,6 +43,7 @@
    column="ticket_fkey" name="ticket_fkey"/>
   <many-to-one class="ch.bfh.euro08.hibernate.beans.User"
    column="user_fkey" name="user_fkey"/>
+  <property name="seat"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Stade" table="stade">
   <id name="id"/>

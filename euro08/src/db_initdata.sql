@@ -2,8 +2,8 @@
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
--- Host: localhost 
--- Erstellungszeit: 11. Dezember 2007 um 18:11
+-- Host: localhost
+-- Erstellungszeit: 11. Dezember 2007 um 21:02
 -- Server Version: 5.0.45
 -- PHP-Version: 5.2.3
 
@@ -83,18 +83,17 @@ CREATE TABLE `ordering` (
   PRIMARY KEY  (`id`),
   KEY `order_user_fkey` (`user_fkey`),
   KEY `order_ticket_fkey` (`ticket_fkey`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 -- 
 -- Daten für Tabelle `ordering`
 -- 
 
 INSERT INTO `ordering` (`user_fkey`, `ticket_fkey`, `id`, `quantity`, `status`, `seat`) VALUES 
-(2, 1, 9, 1, 0, 0),
-(2, 1, 12, 1, 0, 0),
-(2, 1, 17, 1, 0, 0),
-(2, 1, 18, 1, 0, 0),
-(2, 11, 19, 1, 0, 0);
+(2, 6, 14, 1, 1, 55),
+(2, 11, 20, 1, 1, 0),
+(2, 10, 21, 1, 0, 0),
+(2, 16, 22, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,37 +126,55 @@ INSERT INTO `stade` (`id`, `name`, `country`, `city`) VALUES
 -- 
 
 CREATE TABLE `stadecategory` (
-  `category_fkey` int(10) unsigned NOT NULL,
-  `stade_fkey` int(10) unsigned NOT NULL,
-  `tickets` int(10) unsigned NOT NULL default '0',
+  `id` int(11) NOT NULL auto_increment,
+  `stade_fkey` int(11) NOT NULL,
+  `category_fkey` int(11) NOT NULL,
+  `tickets` int(10) NOT NULL,
   `description` varchar(45) NOT NULL,
-  PRIMARY KEY  (`category_fkey`,`stade_fkey`),
-  KEY `stadecategory_stade_fkey` (`stade_fkey`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 -- 
 -- Daten für Tabelle `stadecategory`
 -- 
 
-INSERT INTO `stadecategory` (`category_fkey`, `stade_fkey`, `tickets`, `description`) VALUES 
-(1, 1, 300, 'Loge'),
-(1, 2, 400, 'Loge'),
-(1, 3, 200, 'Lounge'),
-(1, 4, 600, 'Trohn'),
-(2, 1, 350, 'Sitzplatz'),
-(2, 2, 430, 'Sitzplatz'),
-(2, 3, 520, 'Hängematte'),
-(2, 4, 400, 'Aussichtsturm'),
-(3, 1, 400, 'Stehplatz'),
-(3, 2, 300, 'Stehplatz'),
-(3, 3, 300, 'Stehplatz'),
-(3, 4, 200, 'Podest'),
-(4, 1, 150, 'Kajüte'),
-(4, 2, 600, 'Bungalow'),
-(4, 3, 500, 'Liegefplatz'),
-(4, 4, 400, 'Kunstrasen'),
-(5, 2, 200, 'Spezialplatz'),
-(5, 4, 300, 'Spezialplatz');
+INSERT INTO `stadecategory` (`id`, `stade_fkey`, `category_fkey`, `tickets`, `description`) VALUES 
+(1, 2, 5, 200, 'Spezialplatz'),
+(2, 4, 4, 400, 'Kunstrasen'),
+(3, 3, 4, 500, 'Liegefplatz'),
+(4, 2, 4, 600, 'Bungalow'),
+(5, 1, 4, 150, 'Kajüte'),
+(6, 4, 3, 200, 'Podest'),
+(7, 3, 3, 300, 'Stehplatz'),
+(8, 2, 3, 300, 'Stehplatz'),
+(9, 1, 3, 400, 'Stehplatz'),
+(10, 4, 2, 400, 'Aussichtsturm'),
+(11, 3, 2, 520, 'Hängematte'),
+(12, 2, 2, 430, 'Sitzplatz'),
+(13, 1, 2, 350, 'Sitzplatz'),
+(14, 4, 1, 600, 'Trohn'),
+(15, 3, 1, 200, 'Lounge'),
+(16, 2, 1, 400, 'Loge'),
+(17, 4, 5, 300, 'Spezialplatz'),
+(18, 1, 1, 300, 'Loge'),
+(21, 1, 1, 300, 'Loge'),
+(22, 4, 1, 600, 'Trohn'),
+(23, 3, 1, 200, 'Lounge'),
+(24, 2, 1, 400, 'Loge'),
+(25, 4, 2, 400, 'Aussichtsturm'),
+(26, 3, 2, 520, 'Hängematte'),
+(27, 2, 2, 430, 'Sitzplatz'),
+(28, 1, 2, 350, 'Sitzplatz'),
+(29, 4, 3, 200, 'Podest'),
+(30, 3, 3, 300, 'Stehplatz'),
+(31, 2, 3, 300, 'Stehplatz'),
+(32, 1, 3, 400, 'Stehplatz'),
+(33, 4, 4, 400, 'Kunstrasen'),
+(34, 3, 4, 500, 'Liegefplatz'),
+(35, 2, 4, 600, 'Bungalow'),
+(36, 1, 4, 150, 'Kajüte'),
+(37, 2, 5, 200, 'Spezialplatz'),
+(38, 4, 5, 300, 'Spezialplatz');
 
 -- --------------------------------------------------------
 
@@ -273,13 +290,6 @@ ALTER TABLE `game`
 ALTER TABLE `ordering`
   ADD CONSTRAINT `order_ticket_fkey` FOREIGN KEY (`ticket_fkey`) REFERENCES `ticket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_user_fkey` FOREIGN KEY (`user_fkey`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- 
--- Constraints der Tabelle `stadecategory`
--- 
-ALTER TABLE `stadecategory`
-  ADD CONSTRAINT `stadecategory_category_fkey` FOREIGN KEY (`category_fkey`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stadecategory_stade_fkey` FOREIGN KEY (`stade_fkey`) REFERENCES `stade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- 
 -- Constraints der Tabelle `ticket`

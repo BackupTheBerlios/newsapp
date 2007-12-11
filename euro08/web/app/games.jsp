@@ -37,7 +37,7 @@
       <div id="mainContent">
        <br /><h:messages globalOnly="true" styleClass="formUserError"/>
       
-      		<h2><h:outputText rendered="#{GameRegistry.notWon}" value="We are  sorry! You did not win any tickets for Euro08."/></h2>
+      		<h2><h:outputText rendered="#{GameRegistry.notWon}" value="We are  sorry! The tickets are distributed, but sadly, you did not win any tickets for Euro08."/></h2>
 			<h2><h:outputText rendered="#{GameRegistry.won}" value="CONGRATULATOINS! You won the following tickets for Euro08:"/></h2>
         	<h:dataTable id="wonMatchesTable" rows="100" rendered="#{GameRegistry.won}"
                     value="#{GameRegistry.wonGames}"

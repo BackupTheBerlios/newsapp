@@ -20,10 +20,11 @@ public class GameListing {
 	private String category;
 	private int price;
 	private int orderID;
+	private int seat;
 
 	public GameListing(Ticket ticket, String stade, Date datetime,
 			String team1, String team2, String category, String country,
-			int price, int orderID) {
+			int price, int orderID, int seat) {
 		super();
 		this.ticket = ticket;
 		this.stade = stade;
@@ -34,6 +35,9 @@ public class GameListing {
 		this.category = category;
 		this.price = price;
 		this.orderID = orderID;
+		this.seat = seat;
+		
+		
 	}
 
 	public void delete() {
@@ -84,7 +88,7 @@ public class GameListing {
 
 			try {
 				User managedUser = (User) JSFUtil.getManagedObject("user");
-				session.save(new Ordering(1, false, ticket, managedUser));
+				session.save(new Ordering(1, false, ticket, managedUser, 0));
 				session.getTransaction().commit();
 				session.flush();
 			} catch (Exception e) {
@@ -155,6 +159,18 @@ public class GameListing {
 
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
+	}
+
+	public int getSeat() {
+		return seat;
+	}
+
+	public int getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(int orderID) {
+		this.orderID = orderID;
 	}
 
 }

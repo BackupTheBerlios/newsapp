@@ -33,9 +33,6 @@
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="home::#app#index.jsp" NAME="output3" PATH="/app/index.jsp"
     TARGET="rules:#app#index.jsp" TITLE="home"/>
-   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="ticketmanagement::#admin#rollout.jsp" NAME="output4"
-    PATH="/admin/rollout.jsp" TARGET="rules:#admin#rollout.jsp" TITLE="ticketmanagement"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#index.jsp"
@@ -48,7 +45,14 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#games.jsp"
-  PATH="/app/games.jsp" SHAPE="448,465,0,0"/>
+  PATH="/app/games.jsp" SHAPE="448,465,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#app#games.jsp:0"
+   NAME="item" PATH="/app/games.jsp">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="details::#app#details.jsp" NAME="output" PATH="/app/details.jsp"
+    TARGET="rules:#app#details.jsp" TITLE="details"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#register.jsp"
   PATH="/register.jsp" SHAPE="256,657,0,0">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#register.jsp:0"
@@ -72,6 +76,14 @@
     PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.activate}:userview"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#admin#rollout.jsp"
-  PATH="/admin/rollout.jsp" SHAPE="352,705,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#details.jsp"
+  PATH="/app/details.jsp" SHAPE="784,673,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#*"
+  PATH="/app/*" SHAPE="32,993,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#app#*:0" NAME="item" PATH="/app/*">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="home::#app#index.jsp" NAME="output" PATH="/app/index.jsp"
+    TARGET="rules:#app#index.jsp" TITLE="home"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

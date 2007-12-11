@@ -35,13 +35,17 @@
       </div>
       <div id="mainContent">
       <h2>Ticket Rollout</h2>
+       <b>Do Rollout</b> 
+       <h:form id="admin_rollout_rollout">
+       	<h:commandButton action="#{rollout.rollout}" value="Rollout now!" />
+       </h:form>
+       
         
-        
-        	<h:dataTable id="orderedMatchesTable" rows="100" rendered="#{GameRegistry.someOrdered}"
-                    value="#{GameRegistry.orderedGames}"
+<h:dataTable id="allMatchesTable" rows="100"
+                    value="#{GameRegistry.allGames}" rendered="#{GameRegistry.notYetRollout}"
                              var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
-                             width="100%" binding="#{GameRegistry.data}">
+                             width="100%" binding="#{GameRegistry.data2}">
 
                   <h:column>
                     <f:facet name="header">
@@ -73,23 +77,24 @@
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Cat. / Price"/>
+                       <h:outputText value="Cat."/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.category} / #{game.price}"/>
+                   <h:outputText value="#{game.category}"/>
                   </h:column>   
                   
-                  <h:column>
-                    <f:facet name="header">
-                     <h:panelGroup>
-                       <h:outputText value=""/>
-                       </h:panelGroup>
-                    </f:facet>
-                    <h:form id="delete">
-                    	<h:commandButton value="Delete"  action="#{game.delete}" />
+                  <h:column rendered="#{GameRegistry.anyLeft}">
+                   <f:facet name="header">
+                    <h:panelGroup>
+                      </h:panelGroup>
+                   </f:facet>
+                   <h:panelGroup>
+                    <h:form id="request">
+					  <h:commandButton value="Request" action="#{game.request}" />
                     </h:form>
+				   </h:panelGroup>
                   </h:column>
-                  
+
                 </h:dataTable>
         
         <p><br />

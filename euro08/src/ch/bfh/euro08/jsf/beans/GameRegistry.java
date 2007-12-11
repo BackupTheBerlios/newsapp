@@ -96,8 +96,43 @@ public class GameRegistry {
 		return true;
 	}
 	
-	public boolean getRollout() {
-		return !getNotYetRollout();
+	public boolean getWon() {
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		Query q = null;
+		List<Ordering> order_results = null;
+		int userid = managedUserBean.getId();
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session.createQuery("select from Ordering ord where ord.status = 1 and ord.user_fkey = :inuserid");
+		q.setParameter("inuserid", userid);
+		order_results = q.list();
+	
+
+		if (order_results.size() > 0)
+			return true;
+		return false;
+	}
+	
+	public boolean getNotWon() {
+		User managedUserBean = (User) JSFUtil.getManagedObject("user");
+		Query q = null;
+		List<Ordering> order_results = null;
+		int userid = managedUserBean.getId();
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+
+		// ORDER
+		q = session.createQuery("select from Ordering ord where ord.status = 1 and ord.user_fkey = :inuserid");
+			q.setParameter("inuserid", userid);
+		order_results = q.list();
+	
+		if (order_results.size() > 0)
+			return false;
+		return true;
 	}
 
 	public List getAllGames() {
@@ -123,7 +158,7 @@ public class GameRegistry {
 					.getDatetime(), ticket.getMatch_fkey().getTeam1_fkey()
 					.getCountry(), ticket.getMatch_fkey().getTeam2_fkey()
 					.getCountry(), ticket.getCategory_fkey().getName(), ticket.getMatch_fkey()
-					.getStade_fkey().getCountry(), ticket.getPrice(), 0));
+					.getStade_fkey().getCountry(), ticket.getPrice(), 0, 0));
 		}
 		
 		
@@ -161,7 +196,6 @@ public class GameRegistry {
 		for (int i = 0; i < order_results.size(); i++) {
 			System.out.println("found won tickets");
 			Ordering order = order_results.get(i);
-
 			gameList.add(new GameListing(order.getTicket_fkey(), order.getTicket_fkey()
 					.getMatch_fkey().getStade_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getDatetime(), order
@@ -170,7 +204,7 @@ public class GameRegistry {
 					.getTeam2_fkey().getCountry(), order
 					.getTicket_fkey().getCategory_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getStade_fkey()
-					.getCountry(), order.getTicket_fkey().getPrice(), order.getId()));
+					.getCountry(), order.getTicket_fkey().getPrice(), order.getId(), order.getSeat()));
 		}
 		
 		Comparator<GameListing> comp =  new Comparator<GameListing>(){
@@ -183,6 +217,7 @@ public class GameRegistry {
 	           
 		Collections.sort(gameList, comp);
 		
+		session.flush();
 		session.close();
 		return gameList;
 	}
@@ -216,7 +251,7 @@ public class GameRegistry {
 					.getTeam2_fkey().getCountry(), order
 					.getTicket_fkey().getCategory_fkey().getName(), order
 					.getTicket_fkey().getMatch_fkey().getStade_fkey()
-					.getCountry(), order.getTicket_fkey().getPrice(), order.getId()));
+					.getCountry(), order.getTicket_fkey().getPrice(), order.getId(), order.getSeat()));
 		}
 		
 		Comparator<GameListing> comp =  new Comparator<GameListing>(){
