@@ -10,7 +10,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
+
 import ch.bfh.euro08.hibernate.beans.User;
+import ch.bfh.euro08.util.HibernateUtil;
 import ch.bfh.euro08.util.JSFUtil;
 import ch.bfh.euro08.util.UserUtil;
 
@@ -65,13 +68,34 @@ public class Login {
 
 	public String activate() {
 		User user = (User) JSFUtil.getManagedObject("user");
-		
-		if (user.getActivationcode() == activationcode.getValue().toString()) {
-			user.setActivated(true);
-			// ask for activation code
+		System.out.println("Activating...");
+		// Compare Activationcode with DB-Value
+		if (user.getActivationcode().equals((String) activationcode.getValue())) {
+			
 			System.out.println("Correct Activationcode");
-			return "success";
+			
+			// Set Activated Flag
+			user.setActivated(true);
+		
+			// Persist to Database
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			try {
+				session.update(user);
+				session.getTransaction().commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			// Redirect User
+			if (user.isSuperuser()) {
+				System.out.println("Go to Admininterface");
+				return "admin";
+			}
+			System.out.println("Go to Userinterface");
+			return "user";
 		}
+		System.out.println("Wrong Activationcode");
 		return "activationcode";
 		
 	}

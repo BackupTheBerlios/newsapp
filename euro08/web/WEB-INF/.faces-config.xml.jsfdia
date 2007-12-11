@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS ENTITY="JSFProcess">
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#login.jsp"
-  PATH="/login.jsp" SHAPE="32,273,0,0">
+  PATH="/login.jsp" SHAPE="272,128,50,57">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#login.jsp:0"
    NAME="item" PATH="/login.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="success:#{login.login}:#app#index.jsp" NAME="output"
-    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.login}:success"/>
+    PATH="/app/index.jsp" SHAPE="-1,16" TARGET="rules:#app#index.jsp" TITLE="#{login.login}:success"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="admin:#{login.login}:#admin#index.jsp" NAME="output1"
+    ID="admin:#{login.login}:#admin#index.jsp" NAME="output3"
     PATH="/admin/index.jsp" TARGET="rules:#admin#index.jsp" TITLE="#{login.login}:admin"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="activationcode:#{login.login}:#activationcode.jsp"
     NAME="output2" PATH="/activationcode.jsp"
     TARGET="rules:#activationcode.jsp" TITLE="#{login.login}:activationcode"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="register::#register.jsp" NAME="output1" PATH="/register.jsp"
+    SHAPE="-1,16" TARGET="rules:#register.jsp" TITLE="register"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="32,385,0,0">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="40,88,53,58">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="login::#login.jsp" NAME="output" PATH="/login.jsp"
+    ID="login::#login.jsp" NAME="output" PATH="/login.jsp" SHAPE="-1,16"
     TARGET="rules:#login.jsp" TITLE="login"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="success:#{login.logout}:#login.jsp" NAME="output1"
-    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="#{login.logout}:success"/>
+    PATH="/login.jsp" SHAPE="-1,16" TARGET="rules:#login.jsp" TITLE="#{login.logout}:success"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="games::#app#games.jsp" NAME="output2" PATH="/app/games.jsp"
     TARGET="rules:#app#games.jsp" TITLE="games"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#index.jsp"
-  PATH="/app/index.jsp" SHAPE="32,497,0,0">
+  PATH="/app/index.jsp" SHAPE="528,152,50,41">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#app#index.jsp:0"
    NAME="item" PATH="/app/index.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="games::#app#games.jsp" NAME="output" PATH="/app/games.jsp"
-    TARGET="rules:#app#games.jsp" TITLE="games"/>
+    SHAPE="-1,16" TARGET="rules:#app#games.jsp" TITLE="games"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#app#games.jsp"
-  PATH="/app/games.jsp" SHAPE="448,465,0,0"/>
+  PATH="/app/games.jsp" SHAPE="664,176,50,25"/>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#register.jsp"
-  PATH="/register.jsp" SHAPE="256,657,0,0">
+  PATH="/register.jsp" SHAPE="384,256,50,41">
   <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#register.jsp:0"
    NAME="item" PATH="/register.jsp">
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="success:#{register.register}:#app#index.jsp" NAME="output"
-    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{register.register}:success"/>
+    PATH="/app/index.jsp" SHAPE="-1,16" TARGET="rules:#app#index.jsp" TITLE="#{register.register}:success"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#activationcode.jsp"
+  PATH="/activationcode.jsp" SHAPE="32,417,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#activationcode.jsp:0"
+   NAME="item" PATH="/activationcode.jsp">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="admin:#{login.activate}:#admin#index.jsp" NAME="output"
+    PATH="/admin/index.jsp" TARGET="rules:#admin#index.jsp" TITLE="#{login.activate}:admin"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="user:#{login.activate}:#app#index.jsp" NAME="output1"
+    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.activate}:user"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#admin#index.jsp"
-  PATH="/admin/index.jsp" SHAPE="288,257,0,0"/>
- <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#activationcode.jsp"
-  PATH="/activationcode.jsp" SHAPE="288,433,0,0"/>
+  PATH="/admin/index.jsp" SHAPE="512,369,0,0"/>
 </PROCESS>
