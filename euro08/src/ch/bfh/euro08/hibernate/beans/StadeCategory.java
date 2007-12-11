@@ -7,12 +7,7 @@ public class StadeCategory {
 	private Category category_fkey;
 	private Stade stade_fkey;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -37,6 +32,13 @@ public class StadeCategory {
 	public void setStade_fkey(Stade stade_fkey) {
 		this.stade_fkey = stade_fkey;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
 	
 }

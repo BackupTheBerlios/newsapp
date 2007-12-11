@@ -140,9 +140,7 @@ public class GameRegistry {
 		List<GameListing> gameList = new ArrayList<GameListing>();
 		List<Ticket> ticket_result = null;
 		Query q = null;
-
-		User managedUserBean = (User) JSFUtil.getManagedObject("user");
-		int userid = managedUserBean.getId();
+		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 

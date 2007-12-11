@@ -42,7 +42,7 @@
        
         
 <h:dataTable id="allMatchesTable" rows="100"
-                    value="#{GameRegistry.allGames}" rendered="#{GameRegistry.notYetRollout}"
+                    value="#{GameRegistry.allGames}" 
                              var="game" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
                              width="100%" binding="#{GameRegistry.data2}">

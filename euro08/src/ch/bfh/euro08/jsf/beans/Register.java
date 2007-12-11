@@ -35,7 +35,7 @@ public class Register {
 		if (validateData()) {
 			// generate a Random- String 
 			Random r = new Random();
-			String activationcode = Long.toString(Math.abs(r.nextLong()), 36);
+			activationcode = Long.toString(Math.abs(r.nextLong()), 36);
 			
 			User newUser = new User();
 			  

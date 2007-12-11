@@ -43,10 +43,12 @@
    column="ticket_fkey" name="ticket_fkey"/>
   <many-to-one class="ch.bfh.euro08.hibernate.beans.User"
    column="user_fkey" name="user_fkey"/>
-  <property name="seat"/>
+  <property generated="never" lazy="false" name="seat"/>
  </class>
  <class name="ch.bfh.euro08.hibernate.beans.Stade" table="stade">
-  <id name="id"/>
+  <id name="id">
+   <generator class="increment"/>
+  </id>
   <property generated="never" lazy="false" name="name"/>
   <property generated="never" lazy="false" name="country"/>
   <property generated="never" lazy="false" name="city"/>
