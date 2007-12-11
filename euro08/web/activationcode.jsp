@@ -24,12 +24,12 @@
       <div id="header">
         <h1><img src="images/euro08.gif" alt="logo" width="69" height="88" /> Adv. Web - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
-      <div id="sidebar1">
+            <div id="sidebar1">
         <h2>Navigation</h2>
-        <p><h:commandLink value="View Tickets" action="games" /></p>
-        <form id="logout">
+        <h:form id="app_index_logout">
         	<h:commandButton value="Logout" action="#{login.logout}" />
-        </form>
+        </h:form>
+        <br />
       </div>
       <div id="mainContent">
         <h2>User Login</h2>

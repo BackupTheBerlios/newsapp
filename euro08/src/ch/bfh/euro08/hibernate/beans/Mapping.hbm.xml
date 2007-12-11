@@ -71,9 +71,9 @@
    <generator class="increment"/>
   </id>
   <property generated="never" lazy="false" name="price"/>
-  <many-to-one class="ch.bfh.euro08.hibernate.beans.Match"
-   column="match_fkey" name="match_fkey"/>
   <many-to-one class="ch.bfh.euro08.hibernate.beans.Category"
-   column="category_fkey" name="category_fkey"/>
+   column="category_fkey" insert="false" name="category_fkey" update="false"/>
+  <many-to-one class="ch.bfh.euro08.hibernate.beans.Match"
+   column="match_fkey" insert="false" name="match_fkey" update="false"/>
  </class>
 </hibernate-mapping>
