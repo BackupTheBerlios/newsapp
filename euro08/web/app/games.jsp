@@ -72,7 +72,7 @@
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Category"/>
+                       <h:outputText value="Cat."/>
                        <h:graphicImage url="images/icons/soccer.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
@@ -82,7 +82,7 @@
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Quantity"/>
+                       <h:outputText value="#"/>
                        <h:graphicImage url="images/icons/soccer.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
@@ -92,7 +92,7 @@
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value="Action"/>
+                       <h:outputText value=""/>
                        <h:graphicImage url="images/icons/soccer.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
@@ -100,8 +100,6 @@
                   </h:column>
 
                 </h:dataTable>
-            
-            
         </h:form>
         <p><br />
         </p>
