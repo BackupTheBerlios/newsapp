@@ -96,7 +96,7 @@
                        <h:graphicImage url="images/icons/soccer.gif"/>                                      
                       </h:panelGroup>
                     </f:facet>
-                   <h:commandButton value="Delete" action="#{GameRegistry.delete(game.id)}" />
+                   <h:commandButton value="Delete" action="#{GameRegistry.delete}" />
                   </h:column>
 
                 </h:dataTable>

@@ -9,6 +9,18 @@ public class Match {
 	private Date datetime;
 	private Team team1_fkey;
 	private Team team2_fkey;
+	
+	public Match(int id, Stade stade_fkey, Date datetime, Team team1_fkey,
+			Team team2_fkey) {
+		this.id = id;
+		this.stade_fkey = stade_fkey;
+		this.datetime = datetime;
+		this.team1_fkey = team1_fkey;
+		this.team2_fkey = team2_fkey;
+	}
+
+	public Match(){}
+	
 	public int getId() {
 		return id;
 	}

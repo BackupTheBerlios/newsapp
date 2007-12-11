@@ -5,11 +5,24 @@ public class Category {
 	private int id;
 	private String name;
 	
+	public Category(){}
 	public Category(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Category(String name) {
+		super();
+		this.name = name;
+	}
+	
+	public Category(Category cat)
+	{
+		this.id = cat.id;
+		this.name = cat.name;
+	}
+	
 	public int getId() {
 		return id;
 	}

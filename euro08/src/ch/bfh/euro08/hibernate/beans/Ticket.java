@@ -6,6 +6,26 @@ public class Ticket {
 	private Match match_fkey;
 	private Category category_fkey;
 	
+	public Ticket(){}
+	public Ticket(int id, int price, Match match_fkey, Category category_fkey) {
+		this.id = id;
+		this.price = price;
+		this.match_fkey = match_fkey;
+		this.category_fkey = category_fkey;
+	}
+	
+	public Ticket(int price, Match match_fkey, Category category_fkey) {
+		this.price = price;
+		this.match_fkey = match_fkey;
+		this.category_fkey = category_fkey;
+	}
+	public Ticket(Ticket tick) {
+		this.price = tick.price;
+		this.match_fkey = tick.match_fkey;
+		this.category_fkey = tick.category_fkey;
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
