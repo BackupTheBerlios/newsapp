@@ -76,6 +76,8 @@ public class Login {
 			
 			// Set Activated Flag
 			user.setActive(true);
+			// Set Activated-Session Variable
+			JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
 		
 			// Persist to Database
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -93,7 +95,7 @@ public class Login {
 				return "admin";
 			}
 			System.out.println("Go to Userinterface");
-			return "user";
+			return "userview";
 		}
 		System.out.println("Wrong Activationcode");
 		return "activationcode";

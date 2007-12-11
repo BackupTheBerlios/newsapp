@@ -71,8 +71,8 @@
     ID="admin:#{login.activate}:#admin#index.jsp" NAME="output"
     PATH="/admin/index.jsp" TARGET="rules:#admin#index.jsp" TITLE="#{login.activate}:admin"/>
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
-    ID="user:#{login.activate}:#app#index.jsp" NAME="output1"
-    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.activate}:user"/>
+    ID="userview:#{login.activate}:#app#index.jsp" NAME="output1"
+    PATH="/app/index.jsp" TARGET="rules:#app#index.jsp" TITLE="#{login.activate}:userview"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
