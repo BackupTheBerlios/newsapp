@@ -29,9 +29,12 @@
         <h:form id="app_index_logout">
 			<h:commandLink value="Home" action="home" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
-        	<h:commandButton value="Logout" action="#{login.logout}" />
+        	<h:commandButton value="Logout" action="#{login.logout}" /><br />
+        	<div id="hint">
+	Hint: <br /><br />Rollout / Rollback<br />-------------------<br />
+	Click on Rollout to distribute all tickets. You can rollback this action after you did it.
+	</div>
         </h:form>
-        <br />
       </div>
       <div id="mainContent">
       <h2>Ticket Rollout</h2>

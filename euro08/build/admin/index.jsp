@@ -24,10 +24,11 @@
       <div id="header">
         <h1><img src="../images/euro08.gif" alt="logo" width="69" height="88" /> Admininterface  - Euro 08  Ticketing System</h1>
       <!-- end #header --></div>
-            <div id="sidebar1">
+<div id="sidebar1">
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
-			<h:commandLink value="Home" action="admin" /><br />
+			<h:commandLink value="Home" action="login" /><br />
+			<h:commandLink value="Users" action="users" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>
@@ -37,17 +38,17 @@
         <h2>Welcome</h2>
         <h:form id="admin_index_userInfo">
         <p>Your Personal Data:</p>
-        <table width="200" border="1">
+        <table width="200" border="0" cellpadding="5" cellspacing="0">
           <tr>
-            <td>Firstname</td>
+            <td>Firstname: </td>
             <td><h:outputText value="#{user.firstname}"/></td>
           </tr>
           <tr>
-            <td>Lastname</td>
+            <td>Lastname: </td>
             <td><h:outputText value="#{user.lastname}"/></td>
           </tr>
           <tr>
-            <td>E-Mail</td>
+            <td>E-Mail: </td>
             <td><h:outputText value="#{user.email}"/></td>
           </tr>
         </table>

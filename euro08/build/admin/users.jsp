@@ -28,6 +28,7 @@
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
 			<h:commandLink value="Home" action="login" /><br />
+			<h:commandLink value="Users" action="users" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>
@@ -40,7 +41,16 @@
                              var="users" rowClasses="list-row-odd,list-row-even" 
                              headerClass="table-header"
                              width="100%" binding="#{UserRegistry.data}">
-                                   
+                           
+                  <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Lastname"/>
+                       </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{users.lastname}"/>
+                  </h:column> 
+                          
                    <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
@@ -50,14 +60,6 @@
                    <h:outputText value="#{users.firstname}"/>
                   </h:column>  
                  
-                  <h:column>
-                    <f:facet name="header">
-                     <h:panelGroup>
-                       <h:outputText value="Lastname"/>
-                       </h:panelGroup>
-                    </f:facet>
-                   <h:outputText value="#{users.lastname}"/>
-                  </h:column>  
                   
                   <h:column>
                     <f:facet name="header">
@@ -65,19 +67,17 @@
                        <h:outputText value="Email"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{users.superuser}"/>
+                   <h:outputText value="#{users.email}"/>
                   </h:column>   
                   
-                  <h:column>
+                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value=""/>
+                       <h:outputText value="Superuser"/>
                        </h:panelGroup>
                     </f:facet>
-                    <h:form id="superuser">
-                    	<h:commandButton value="Make Superuser"  action="#{users.superuser}" />
-                    </h:form>
-                  </h:column>
+                   <h:outputText value="#{users.superuser}"/>
+                  </h:column>  
                   
                 </h:dataTable>
         
