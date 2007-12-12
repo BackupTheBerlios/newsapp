@@ -1,15 +1,11 @@
 package ch.bfh.euro08.jsf.beans;
 
-
 import java.util.Random;
-
 import javax.faces.context.*;
 import javax.faces.application.*;
-
 import ch.bfh.euro08.hibernate.beans.User;
 import ch.bfh.euro08.util.JSFUtil;
 import ch.bfh.euro08.util.UserUtil;
-
 
 public class Register {
 
@@ -25,7 +21,6 @@ public class Register {
 	private final static String AUTH_USER = "Authorized_User";
 
 	public Register() {
-
 	}
 
 	public String register() {
@@ -56,8 +51,7 @@ public class Register {
 			    newUser = null;
 			    
 			    return(null);
-			  }
-			  else {
+			  } else {
 
 			    // Is a new user, continue logging in
 			    User managedUserBean = (User)JSFUtil.getManagedObject("user");
@@ -66,7 +60,6 @@ public class Register {
 
 			    //Place AUTH_USER string on session to disable security filter on session to disable security filter
 			    JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), AUTH_USER, "Authorized_User");
-
 			    
 			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registration Successful!"));
 			    System.out.println("Done Registering User..");
@@ -98,65 +91,49 @@ public class Register {
 	public String getFirstname() {
 		return firstname;
 	}
-
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
 	public String getLastname() {
 		return lastname;
 	}
-
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-
 	public String getEmailConfirm() {
 		return emailConfirm;
 	}
-
 	public void setEmailConfirm(String emailConfirm) {
 		this.emailConfirm = emailConfirm;
 	}
-
 	public String getPasswordConfirm() {
 		return passwordConfirm;
 	}
-
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getCard() {
 		return card;
 	}
-
 	public void setCard(String card) {
 		this.card = card;
 	}
-
 	public String getActivationcode() {
 		return activationcode;
 	}
-
 	public void setActivationcode(String activationcode) {
 		this.activationcode = activationcode;
 	}
-
 }

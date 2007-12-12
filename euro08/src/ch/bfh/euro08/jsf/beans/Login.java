@@ -51,17 +51,18 @@ public class Login {
 				// ask for activation code
 				System.out.println(currentUser.isActive() + " ask for activation code");
 				return "activationcode";
-			}else{
+			} else {
+				// Place ACT_USER user on session to disable security filter
 				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), ACT_USER, "Activated_User");
 			}
 			if (currentUser.isSuperuser()) {
-				// ask for activation code
+				// Place SUP_USER user on session to disable admin-security filter and go to admin interface
 				JSFUtil.storeOnSession(FacesContext.getCurrentInstance(), SUP_USER, "Super_User");
 				System.out.println(currentUser.isSuperuser() + " go to admin interface");
 				return "admin";
 			}
 			
-			// Place authorized user on session to disable security filter
+			
 			return "success";
 		}
 	}
