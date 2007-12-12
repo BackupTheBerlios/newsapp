@@ -3,6 +3,17 @@
 	font-size: x-small;
 }
 
+#hint{
+	font-size: small;
+	font-style: italic;
+	color: red;
+	border: 1px solid red;
+	padding: 5px;
+	margin: 20px;
+	margin-left: 5px;
+	background-color: white;
+}
+
 body  {
 	font: 100% Verdana, Arial, Helvetica, sans-serif;
 	background: #666666;
@@ -55,6 +66,7 @@ h3 {
 	padding: 10px 0; /* Durch die Verwendung der AuffÃ¼llung anstelle von RÃ¤ndern lÃ¤sst sich gewÃ¤hrleisten, dass das Element die Kanten des div nicht berÃ¼hrt. */
     }
     
+    
     /* Tipps fÃ¼r sidebar1:
     1. Da wir mit Prozentwerten arbeiten, ist es empfehlenswert, fÃ¼r die Randleiste keine AuffÃ¼llung zu verwenden. Sie wird bei standardgerechten Browsern der Breite hinzugefÃ¼gt, und dies wiederum fÃ¼hrt zu einer unbekannten tatsÃ¤chlichen Breite. 
     2. Zwischen der Kante des div und den darin liegenden Elementen kann ein Abstand eingefÃ¼gt werden, indem Sie diesen Elementen wie in ".twoColLiqLtHdr #sidebar1 p" demonstriert einen linken und rechten Rand zuweisen.
@@ -88,6 +100,7 @@ h3 {
     .twoColLiqLtHdr #footer { 
     	padding: 0 10px; /* Diese AuffÃ¼llung entspricht der linksbÃ¼ndigen Ausrichtung der Elemente in den divs, die darunter erscheinen. */
     	background:#DDDDDD;
+    	clear: both;
     } 
     .twoColLiqLtHdr #footer p {
     	margin: 0; /* Wenn Sie die RÃ¤nder des ersten Elements in der FuÃŸzeile auf 0 einstellen, kÃ¶nnen Sie unerwartete AbstÃ¤nde zwischen divs vermeiden. */

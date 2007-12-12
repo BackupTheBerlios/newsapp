@@ -27,7 +27,7 @@
             <div id="sidebar1">
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
-			<h:commandLink value="Home" action="login" /><br />
+			<h:commandLink value="Home" action="home" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" />
         </h:form>
@@ -35,12 +35,15 @@
       </div>
       <div id="mainContent">
       <h2>Ticket Rollout</h2>
-       <b>Do Rollout</b> 
+       <h3>Rollout / Rollback</h3> 
        <h:form id="admin_rollout_rollout">
-       	<h:commandButton action="#{rollout.rollout}" value="Rollout now!" />
+       	<h:commandButton rendered="#{rollout.notDone}" action="#{rollout.rollout}" value="Rollout!" />
+       	<h:outputText value="Click to roll out!" rendered="#{rollout.notDone}" />
+       	<h:commandButton rendered="#{rollout.done}" action="#{rollout.rollback}" value="Rollback!" />
+       	<h:outputText value="Rollout has been rolled out! Click to roll back!" rendered="#{rollout.done}" />
        </h:form>
-       
-        
+       <br /><h3>Statistic</h3>
+        <div id="gameListing">
 <h:dataTable id="rolloutTable" rows="100"
                     value="#{GameRegistry.rolloutGames}" 
                              var="game" rowClasses="list-row-odd,list-row-even" 
@@ -74,19 +77,28 @@
                    <h:outputText value="#{game.team1} - #{game.team2}"/>
                   </h:column>  
                   
+                 <h:column>
+                    <f:facet name="header">
+                     <h:panelGroup>
+                       <h:outputText value="Cat."/>
+                       </h:panelGroup>
+                    </f:facet>
+                   <h:outputText value="#{game.category}"/>
+                  </h:column> 
+                  
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
                        <h:outputText value="Statistic"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{game.requested_seats} req / #{game.available_seats} av }"/>
+                   <h:outputText value="#{game.requested_seats} requested / #{game.available_seats} available "/>
                   </h:column>   
                   
 
 
                 </h:dataTable>
-        
+        </div>
         <p><br />
         </p>
         <!-- end #mainContent --></div>

@@ -87,6 +87,7 @@
                        <h:outputText value="Picture"/>
                        </h:panelGroup>
                     </f:facet>
+                    <h:outputText value="Cat: #{game.category} - Seat: #{game.seat}"/>
                    <h:graphicImage value="../images/stade/#{game.category}.jpg" />
                   </h:column>
                   

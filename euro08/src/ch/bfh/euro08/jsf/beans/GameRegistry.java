@@ -133,7 +133,17 @@ public class GameRegistry {
 		order_results = q.list();
 	
 		if (order_results.size() > 0)
-			return true;
+		{
+			q = session.createQuery("select from Ordering ord where ord.status = 1 and ord.user_fkey = :inuserid");
+			q.setParameter("inuserid", userid);
+			order_results = q.list();
+			
+			if (order_results.size() < 1)
+			{
+				return true;
+			}
+			
+		}
 		return false;
 	}
 
@@ -156,6 +166,14 @@ public class GameRegistry {
 		for (int i = 0; i < ticket_result.size(); i++) {
 			Ticket ticket = ticket_result.get(i);
 			
+			// SEATS 
+			q = session.createQuery("select from StadeCategory std where std.stade_fkey = :instade and std.category_fkey = :incat");
+			q.setParameter("instade", ticket.getMatch_fkey().getStade_fkey().getId());
+			q.setParameter("incat", ticket.getCategory_fkey().getId());
+			stadecategory_result = q.list();
+			StadeCategory std = stadecategory_result.get(0);
+			int seats = std.getTickets();
+			
 			// REQUESTED 
 			q = session.createQuery("select from Ordering ord where ord.ticket_fkey = :inticket");
 			q.setParameter("inticket", ticket.getId());
@@ -164,15 +182,6 @@ public class GameRegistry {
 			for (int j = 0; j < order_result.size(); j++) {
 				requested++;
 			}
-			
-			
-			// SEATS 
-			q = session.createQuery("select from StadeCategory std where std.stade_fkey = :instade and std.category_fkey = :incat");
-			q.setParameter("instade", ticket.getMatch_fkey().getStade_fkey().getId());
-			q.setParameter("incat", ticket.getCategory_fkey().getId());
-			stadecategory_result = q.list();
-			StadeCategory std = stadecategory_result.get(0);
-			int seats = std.getTickets();
 			
 			gameList.add(new RolloutListing(ticket.getMatch_fkey().getStade_fkey().getName(),
 					ticket.getMatch_fkey().getStade_fkey().getCountry(),

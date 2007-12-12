@@ -28,14 +28,22 @@ public class AuthorizedFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         
         String AUTH_USER = "Authorized_User";
+        String SUP_USER = "Super_User";
         String validuser = null;
+        String superuser;
         
         HttpSession session = req.getSession(true);        
         
         //If authorization key not in session, redirect to login page.
         validuser = (String) session.getAttribute(AUTH_USER);
+        superuser = (String) session.getAttribute(SUP_USER);
         
-        if(validuser != null) {
+        if(superuser !=null)
+        {
+        	res.sendRedirect(req.getContextPath() +  "/faces/admin/index.jsp");
+        	return;
+        }else if(validuser != null)
+        {
         	res.sendRedirect(req.getContextPath() +  "/faces/app/index.jsp");
         	return;
         } 

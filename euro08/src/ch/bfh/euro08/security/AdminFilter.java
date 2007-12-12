@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class SecurityFilter implements Filter {
+public class AdminFilter implements Filter {
 	private FilterConfig _filterConfig = null;
 
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -28,30 +28,15 @@ public class SecurityFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
-		String AUTH_USER = "Authorized_User";
-		String ACT_USER = "Activated_User";
 		String SUP_USER = "Super_User";
-		String validuser = null;
 		String superuser = null;
 
 		HttpSession session = req.getSession(true);
 
 		// If authorization key not in session, redirect to login page.
-		validuser = (String) session.getAttribute(AUTH_USER);
 		superuser = (String) session.getAttribute(SUP_USER);
 
-		if (validuser != null && superuser == null) {
-
-			String actuser = null;
-			actuser = (String) session.getAttribute(ACT_USER);
-			
-			if (actuser == null){
-				res.sendRedirect(req.getContextPath() + "/faces/activationcode.jsp");
-				return;
-			}
-
-			// If the user is allowed access to the URI, let the flow proceed as
-			// normal
+		if (superuser != null) {
 			chain.doFilter(request, response);
 			return;
 		} else {
