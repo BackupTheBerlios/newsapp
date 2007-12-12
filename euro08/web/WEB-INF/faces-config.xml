@@ -161,6 +161,10 @@
    <to-view-id>/admin/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>users</from-outcome>
+   <to-view-id>/admin/users.jsp</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <validator>
   <validator-id>futureDateValidate</validator-id>

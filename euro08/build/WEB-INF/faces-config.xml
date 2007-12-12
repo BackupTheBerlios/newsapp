@@ -60,13 +60,6 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
-  <from-view-id>/app/index.jsp</from-view-id>
-  <navigation-case>
-   <from-outcome>games</from-outcome>
-   <to-view-id>/app/games.jsp</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
   <from-view-id>/register.jsp</from-view-id>
   <navigation-case>
    <from-action>#{register.register}</from-action>
@@ -138,12 +131,10 @@
    <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/app/games.jsp</from-view-id>
   <navigation-case>
-   <from-outcome>details</from-outcome>
-   <to-view-id>/app/details.jsp</to-view-id>
+   <from-outcome>admin</from-outcome>
+   <to-view-id>/admin/index.jsp</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -153,10 +144,26 @@
    <to-view-id>/app/index.jsp</to-view-id>
    <redirect/>
   </navigation-case>
-    <navigation-case>
+  <navigation-case>
+   <from-outcome>games</from-outcome>
+   <to-view-id>/app/games.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/admin/*</from-view-id>
+  <navigation-case>
    <from-outcome>ticketmanagement</from-outcome>
    <to-view-id>/admin/rollout.jsp</to-view-id>
    <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>home</from-outcome>
+   <to-view-id>/admin/index.jsp</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>users</from-outcome>
+   <to-view-id>/admin/users.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
  <validator>

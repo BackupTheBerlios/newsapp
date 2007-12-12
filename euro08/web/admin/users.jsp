@@ -66,19 +66,17 @@
                        <h:outputText value="Email"/>
                        </h:panelGroup>
                     </f:facet>
-                   <h:outputText value="#{users.superuser}"/>
-                  </h:column>   
-                  
+                   <h:outputText value="#{users.email}"/>
+                  </h:column>    
+                                   
                   <h:column>
                     <f:facet name="header">
                      <h:panelGroup>
-                       <h:outputText value=""/>
+                       <h:outputText value="Superuser"/>
                        </h:panelGroup>
                     </f:facet>
-                    <h:form id="superuser">
-                    	<h:commandButton value="Make Superuser"  action="#{users.superuser}" />
-                    </h:form>
-                  </h:column>
+                   <h:outputText value="#{users.superuser}"/>
+                  </h:column>   
                   
                 </h:dataTable>
         

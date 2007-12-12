@@ -28,6 +28,7 @@
         <h2>Navigation</h2>
         <h:form id="app_index_logout">
 			<h:commandLink value="Home" action="home" /><br />
+			<h:commandLink value="User listing" action="users" /><br />
         	<h:commandLink value="Ticket management" action="ticketmanagement" /><br /><br />
         	<h:commandButton value="Logout" action="#{login.logout}" /><br />
         	<div id="hint">

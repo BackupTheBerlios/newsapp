@@ -104,11 +104,11 @@ public class UserRegistry {
 		session.beginTransaction();
 
 		// ORDER
-		q = session.createQuery("select from User");
+		q = session.createQuery("select from User usr order by usr.lastname");
 		users_results = q.list();
 		
 		for (int i = 0; i < users_results.size(); i++) {
-			System.out.println("found ordered tickets");
+			System.out.println("found all users");
 			User user = users_results.get(i);
 
 			userList.add(new UserListing(user.getFirstname(), user.getLastname(),

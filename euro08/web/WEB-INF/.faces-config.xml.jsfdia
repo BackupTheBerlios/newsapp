@@ -88,6 +88,11 @@
    <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
     ID="home::#admin#index.jsp" NAME="output1" PATH="/admin/index.jsp"
     TARGET="rules:#admin#index.jsp" TITLE="home"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="users::#admin#users.jsp" NAME="output2" PATH="/admin/users.jsp"
+    TARGET="rules:#admin#users.jsp" TITLE="users"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#admin#users.jsp"
+  PATH="/admin/users.jsp" SHAPE="368,1633,0,0"/>
 </PROCESS>

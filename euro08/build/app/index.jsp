@@ -38,17 +38,17 @@
         <h2>Welcome</h2>
         <h:form id="app_index_userInfo">
         <p>Your Personal Data:</p>
-        <table width="200" border="1">
+       <table width="200" border="0" cellpadding="5" cellspacing="0">
           <tr>
-            <td>Firstname</td>
+            <td>Firstname:</td>
             <td><h:outputText value="#{user.firstname}"/></td>
           </tr>
           <tr>
-            <td>Lastname</td>
+            <td>Lastname:</td>
             <td><h:outputText value="#{user.lastname}"/></td>
           </tr>
           <tr>
-            <td>E-Mail</td>
+            <td>E-Mail:</td>
             <td><h:outputText value="#{user.email}"/></td>
           </tr>
         </table>

@@ -11,7 +11,7 @@ public class Rollout {
 
 	public Rollout() {
 	}
-		
+	
 	public String rollback() {
 		List<Ordering> order = null;	
 		Query q = null;
